@@ -1,5 +1,6 @@
 ---
 title: Prototype and Prototype Chain
+date: 2022-01-18
 ---
 
 ## Use Constructor Function create an object

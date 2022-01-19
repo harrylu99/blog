@@ -1,23 +1,26 @@
 
 module.exports = {
-    title: 'Blog',
-    description: 'Blog',
+    title: `Harry's Blog`,
+    description: 'Almost there...',
     base: '/blog/',
     locales: {
         '/': {
             lang: 'en-US',
-            title: "Harry's Blog",
-            description: 'Any stuff'
+            title: `Harry's Blog`,
+            description: ` 👨‍💻console.log( ) `,
         },
         '/zh/': {
             lang: 'zh-CN',
             title: '个人博客',
-            description: '个人博客'
+            description: '个人博客',
         }
     },
     theme: 'reco',
     themeConfig: {
         subSidebar: 'auto',
+        noFoundPageByTencent: false,
+        author: 'Harry Lu',
+        startYear: '2022',
         locales: {
             '/': {
                 selectText: 'Languages',
@@ -34,12 +37,7 @@ module.exports = {
                 lastUpdated: 'Last Updated', // string | boolean,
                 nav: [
                     { text: 'Home', link: '/' },
-                    {
-                        text: 'More Infos',
-                        items: [
-                            { text: 'Github', link: 'https://github.com/harrylu99' }
-                        ]
-                    }
+                    { text: 'GitHub', link: 'https://github.com/harrylu99', icon: 'reco-github' },
                 ],
                 sidebar: {
                     '/': [{
@@ -54,6 +52,9 @@ module.exports = {
                             { title: "About JavaScript", path: "/js/About" },
                             { title: "Prototype and Prototypr chain", path: "/js/Prototype" },
                             { title: "Scope", path: "/js/Scope" },
+                            { title: "Execution", path: "js/Execution" },
+                            { title: "Variable Object", path: "/js/VariableObject" },
+                            { title: "Scope Chain", path: "/js/ScopeChain" },
                         ]
                     },
                     {
