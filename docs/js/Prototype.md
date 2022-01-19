@@ -178,6 +178,7 @@ Most browsers support this non-standard method to access the prototype, however 
 Q:
 About Function\_\_proto\_\_===Function.prototype
 In my understading that Function is also an instance of Function itself? How to understand the design concept of js, does Function act as chicken and eggs came at the same time?
+
 A:
 Function as a built-in object, already exists before it runs, so it will not generate itself according to itself, therefore, there is no which came first question, just the chicken and eggs. As for why Function.\_\_proto\_\_== Function.prototype, I think there are two possibilities: one is to maintain consistency with other functions, and the other is just to indicate a relationship.
 
