@@ -1,1 +1,5 @@
-'# 你好 VuePress'
+---
+home: true
+title: Harry's Blog
+heroText: Hello, World!
+---

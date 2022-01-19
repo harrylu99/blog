@@ -172,3 +172,13 @@ person.constructor === Person.prototype.constructor
 Most browsers support this non-standard method to access the prototype, however it does not exist in Person.prototype, in fact, it comes from Object.prototype, which is not so much a property as a getter/setter. When we using obj.\_\_proto\_\_, it could be seems as returning Object.getPrototypeOf(obj).
 
 ### Inheritance
+
+## Q&A
+
+Q:
+About Function\_\_proto\_\_===Function.prototype
+In my understading that Function is also an instance of Function itself? How to understand the design concept of js, does Function act as chicken and eggs came at the same time?
+A:
+Function as a built-in object, already exists before it runs, so it will not generate itself according to itself, therefore, there is no which came first question, just the chicken and eggs. As for why Function.\_\_proto\_\_== Function.prototype, I think there are two possibilities: one is to maintain consistency with other functions, and the other is just to indicate a relationship.
+
+In general, I think that there is a Function first, and then the implementation points to the prototype to Function.prototype, but we cannot infer backwards that because Function.\_\_proto\_\_== Function.prototype, Function calls itself to generate itself.
