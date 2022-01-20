@@ -5,24 +5,24 @@ date: 2022-01-20
 
 ## Foreword
 
-We have talked about when JavaScript code executes a piece of executable code, a corresponding execution context is created in the previous chapter.
+When JavaScript code executes a piece of executable code, a corresponding execution context is created.
 For each execution context, there are three important attributes:
 
 - Variable object (VO)
 - Scope chain
 - this
 
-This chapter will focus on the scope chain.
+This article will focus on the scope chain.
 
 ## Scope Chain
 
-From the last chapter, we know that when we are looking for a variable, it will look up the variable object in the current context first and if it is not found, it will go to look up from the variable object of the context executed by the parent (the parent at the lexical level) and the variable object of the global context will be found all the way to the global context, that is the global object. Thus a linked list consisting of multiple variable objects of execution context is called a scope chain.
+From the last article, we know that when we are looking for a variable, it will look up the variable object in the current context first and if it is not found, it will go to look up from the variable object of the context executed by the parent (the parent at the lexical level) and the variable object of the global context will be found to the global context, that is the global object. Thus a linked list consisting of multiple variable objects of an execution context is called a scope chain.
 
 Now, let's explain how a scope chain is created and changed in terms of the creation and activation of a function.
 
 ## Creation of The Function
 
-Each function has a internal attribute scope and when the function have been created, it will holds all the parent variables into it. We could say that scope is the hierarchical chain of all parent variables. But remember that scope is not a complete scope chain.
+Each function has an internal attribute scope and when the function has been created, it will hold all the parent variables into it. We could say that scope is the hierarchical chain of all parent variables. But remember that scope is not a complete scope chain.
 
 Let's take an example
 
@@ -152,7 +152,7 @@ ECStack = [
 ## Q&A
 
 Q:
-When the checkscope function had been created,before saving to the scope chain of [[scope]] and preparing checkscope is executed, is there any difference between the scope chain created by the copy function [[scope]] property? Why are there two scope chains?
+When the checkscope function had been created, before saving to the scope chain of [[scope]] and preparing checkscope is executed, is there any difference between the scope chain created by the copy function [[scope]] property? Why are there two scope chains?
 
 A:
-When the checkscope function is created, it saves the scope chain generated according to the lexical method and when the checkscope is executed, it will copy the scope chain as the initialization of its own scope chain. Then, generate a variable object according to the environment, then add this variable object to the scope chain of this copy which completely builds its own scope chain. As for why there are two scope chains, it is because the final scope cannot be determined when the function is created, so why copy instead of directly modifying? Probably because the function will be called many times.
+When the checkscope function is created, it saves the scope chain generated according to the lexical method and when the checkscope is executed, it will copy the scope chain as the initialization of its scope chain. Then, generate a variable object according to the environment, then add this variable object to the scope chain of this copy which completely builds its scope chain. As for why there are two scope chains, it is because the final scope cannot be determined when the function is created, so why copy instead of directly modifying? Probably because the function will be called many times.

@@ -5,14 +5,14 @@ date: 2022-01-19
 
 ## Foreword
 
-We have talked about when JavaScript code executes a piece of executable code, a corresponding execution context is created in the previous chapter.
+When JavaScript code executes a piece of executable code, a corresponding execution context is created.
 For each execution context, there are three important attributes:
 
 - Variable object (VO)
 - Scope chain
 - this
 
-This chapter will focus on the process of creating variable objects.
+This article will focus on the process of creating variable objects.
 
 ## Variable Object
 
@@ -62,7 +62,7 @@ To sum up, the variable object in a global execution context is the global objec
 
 We use the activation object (AO) to represent the variable object in the context of a function.
 
-The AO and the variable object(VO) are actually one thing, but the differences is that AO is normative or engine implementation, it can not be accessed in the JavaScript environment, the execution context of the variable object will be activated when entering an execution context.
+The AO and the variable object(VO) are one thing, but the difference is that AO is normative or engine implementation, it can not be accessed in the JavaScript environment, the execution context of the variable object will be activated when entering an execution context.
 
 The AO is created when it enters the function context and is initialized by the function's arguments property. The value of arguments property is an Arguments object.
 
@@ -72,7 +72,7 @@ The code for the execution contexts is processed in two phases: parsing and exec
 
 ### Parsing
 
-When it get into the execution contexts, the code has not been executed at this time yet,
+When it gets into the execution contexts, the code has not been executed at this time yet,
 
 Variable objects include:
 
@@ -80,13 +80,13 @@ Variable objects include:
 
   - A property of a variable object consisting of a name and corresponding value is created.
 
-  - If there do not have arguments, the property value will set to undefined.
+  - If there do not have arguments, the property value will be set to undefine.
 
 - Function declarations
 
   - Properties of a variable object consisting of a name and corresponding value are created.
 
-  - If a same name variable object already exists with a property , it will completely replaced.
+  - If the same name variable object already exists with a property, it will be completely replaced.
 
 - Variable declarations
 
@@ -143,9 +143,9 @@ AO = {
 }
 ```
 
-In conslusion,
+In conclusion,
 
-- The initialization of variable object in a global execution context is a global object.
+- The initialization of a variable object in a global execution context is a global object.
 
 - Variable object initialization for function context only includes Arguments objects.
 
@@ -153,7 +153,7 @@ In conslusion,
 
 - During the code execution phase, the property values of the variable object are modified again.
 
-## Thinking Questions
+## Bonus Questions
 
 1.
 

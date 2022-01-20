@@ -40,37 +40,39 @@ module.exports = {
                     { text: 'GitHub', link: 'https://github.com/harrylu99', icon: 'reco-github' },
                 ],
                 sidebar: {
-                    '/': [{
-                        title: "About this blog",
-                        path: '/',
-                        collapsable: false,
-                    },
-                    {
-                        title: "JavaScript",
-                        collapsable: true,
-                        children: [
-                            { title: "About JavaScript", path: "/js/About" },
-                            { title: "Prototype and Prototypr chain", path: "/js/Prototype" },
-                            { title: "Scope", path: "/js/Scope" },
-                            { title: "Execution", path: "js/Execution" },
-                            { title: "Variable Object", path: "/js/VariableObject" },
-                            { title: "Scope Chain", path: "/js/ScopeChain" },
-                        ]
-                    },
-                    {
-                        title: "Vue",
-                        collapsable: true,
-                        children: [
-                            { title: "About Vue", path: "/vue/About" },
-                        ]
-                    },
-                    {
-                        title: "React",
-                        collapsable: true,
-                        children: [
-                            { title: "About React", path: "/react/About" },
-                        ]
-                    }],
+                    '/': [
+                        {
+                            title: "About this blog",
+                            path: '/',
+                            collapsable: false,
+                        },
+                        {
+                            title: "JavaScript",
+                            collapsable: true,
+                            children: [
+                                { title: "About JavaScript", path: "/js/About" },
+                                { title: "Prototype and Prototypr chain", path: "/js/Prototype" },
+                                { title: "Scope", path: "/js/Scope" },
+                                { title: "Execution Stack", path: "js/ExecutionStack" },
+                                { title: "Variable Object", path: "/js/VariableObject" },
+                                { title: "Scope Chain", path: "/js/ScopeChain" },
+                                { title: "This", path: "/js/This" },
+                            ]
+                        },
+                        {
+                            title: "Vue",
+                            collapsable: true,
+                            children: [
+                                { title: "About Vue", path: "/vue/About" },
+                            ]
+                        },
+                        {
+                            title: "React",
+                            collapsable: true,
+                            children: [
+                                { title: "About React", path: "/react/About" },
+                            ]
+                        }],
                 }
             },
             '/zh/': {

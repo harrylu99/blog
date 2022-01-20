@@ -1,5 +1,5 @@
 ---
-title: Execution Context
+title: Execution Context Stack
 date: 2022-01-19
 ---
 
@@ -43,11 +43,11 @@ function foo() {
 foo(); // foo2
 ```
 
-Because the JavaScript engine does not analyze and execute programs line by line, but analyzes executions piece by piece. When executing a piece of code, there is a "preparation work", such as the variable promotion in the first example and function promotion in the second example.
+Because the JavaScript engine does not analyze and execute programs line by line but analyzes executions piece by piece. When executing a piece of code, there is a "preparation work", such as the variable promotion in the first example and function promotion in the second example.
 
 But how is the "piece" in this "piece by piece" divided?
 
-What kind of code does the JavaScript engine need do the "pre-work"?
+What kind of code does the JavaScript engine need to do the "pre-work"?
 
 ## Executable Code
 
@@ -59,11 +59,11 @@ For example, when a function is executed, there is preparation work and we give 
 
 ## Execution Context Stack
 
-Here is our problem, we have so much functions and how to manage the execution contexts have been created?
+Here is our problem, we have so many functions and how to manage the execution contexts that have been created?
 
 So the JavaScript engine creates an Execution context stack (ECS) to manage the execution context.
 
-To simulate the behavior of the ECS, let's define the ECS as an array:
+To simulate the behaviour of the ECS, let's define the ECS as an array:
 
 ```
 ECStack = [];
@@ -122,9 +122,9 @@ ECStack.pop();
 
 ```
 
-## Answer For the Last Chapter
+## Answer For the Last Article
 
-Okay, now we understand how the execution context stack handles execution context, let's take a look at the question of the previous chapter:
+Okay, now we understand how the execution context stack handles execution context, let's take a look at the question of the previous article:
 
 ```
 var scope = "global scope";
@@ -172,4 +172,4 @@ ECStack.push(<f> functionContext);
 ECStack.pop();
 ```
 
-In order to explain the difference in the execution of the two functions in more detail, we need to explore what the execution context contains, so welcome to the next chapter, Variable Object.
+To explain the difference in the execution of the two functions in more detail, we need to explore what the execution context contains, so welcome to the next article, Variable Object.
