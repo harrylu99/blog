@@ -22,7 +22,7 @@ We will get into **this** with ECMASciript5.
 
 ## Types
 
-From the chapter 8
+From the ECMASciript5 chapter 8
 
 > Types are further subclassified into ECMAScript language types and specification types.
 
