@@ -91,7 +91,7 @@ module.exports = {
                 algolia: {},
                 lastUpdated: '最后更新', // string | boolean,
                 nav: [
-                    { text: '首页', link: '/zh' },
+                    { text: '首页', link: '/zh/' },
                     {
                         text: '更多',
                         items: [
