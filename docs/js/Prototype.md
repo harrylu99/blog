@@ -34,11 +34,11 @@ console.log(person1.name) // Kevin
 console.log(person2.name) // Kevin
 ```
 
-So, what is the stuff that the prototype point to in this function? Is the prototype of this function?
+So, what does the prototype point to in this function? Is the prototype of this function?
 
-The prototype of the function points to an object which is the prototype of the instance, created by calling the constructor function. In the example above, the prototype of the function points to the prototype of person1 and person2.
+The prototype of the function points to an object which is the prototype of the instance, created by calling the constructor function. In the example, the prototype of the function points to the prototype of _person1_ and _person2_.
 
-But what is the prototype? We have been talking about it for a long time. Here is my understanding of the prototype. Each JavaScript object(except null) will be connected with something when it has been created, and we named that something as the prototype, each object will inherit attributes from the prototype.
+But what is the prototype? We have been talking about it for a long time. Here is my understanding of the prototype. Each JavaScript object(except null) will be connected with something when it has been created and we named that something as the prototype, each object will inherit attributes from the prototype.
 
 ![prototype 1](../images/prototype1.png)
 
@@ -78,7 +78,7 @@ console.log(Person === Person.prototype.constructor); // true
 
 ![prototype 3](../images/prototype3.png)
 
-☕Take a break and here is the summary example of all we have talked about.
+☕ Take a break and here is the summary example of all we have talked about.
 
 ```
 function Person() {
@@ -112,9 +112,9 @@ console.log(person.name) // Kevin
 
 In this case, we added a name to the instance person, so we could get Daisy when we console the person.name.
 
-When we deleted the person's name attribute, you will find out that Kevin is what we get when we do the console log. Here is the reason that we have already known: when we cannot find the name attribute from the person's \_\_proto\_\_, we will go to the Person.prototype to find the stuff that we need and luckily we can find name attribute on Person.prototype which is Kevin.
+When we deleted the person's name attribute, you will find out that Kevin is what we get when we do the console.log. Here is the reason that we have already known: when we cannot find the name attribute from the person's \_\_proto\_\_, we will go to the Person.prototype to find the attribute and luckily we can find name attribute on Person.prototype which is Kevin.
 
-So, what if we still cannot find the thing that we need on the prototype?
+So, what if we still cannot find the attribute that we need on the prototype?
 
 ## Prototype's \_\_proto\_\_
 
@@ -141,9 +141,9 @@ We could find out that the \_\_proto\_\_ of Object.prototype is null.
 
 But what is the null means here?
 
-The value of Object.prototype.**proto** is null and Object.prototype does not have \_\_proto\_\_ is the same thing.
+The value of Object.prototype.\_\_proto\_\_ is null equals to Object.prototype does not have \_\_proto\_\_.
 
-So it could stop finding attributes when it reached the Object.prototype.
+So it will stop finding attributes when it reached the Object.prototype.
 
 The chain structure composed of interrelated prototypes is the prototype chain, that is, the blue line in the pic.
 

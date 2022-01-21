@@ -51,12 +51,14 @@ module.exports = {
                             collapsable: true,
                             children: [
                                 { title: "About JavaScript", path: "/js/About" },
-                                { title: "Prototype and Prototypr chain", path: "/js/Prototype" },
+                                { title: "Prototype and Prototype chain", path: "/js/Prototype" },
                                 { title: "Scope", path: "/js/Scope" },
                                 { title: "Execution Stack", path: "js/ExecutionStack" },
                                 { title: "Variable Object", path: "/js/VariableObject" },
                                 { title: "Scope Chain", path: "/js/ScopeChain" },
                                 { title: "This", path: "/js/This" },
+                                { title: "Execution Context", path: "/js/ExecutionContext" },
+                                { title: "Closure", path: "/js/Closure" },
                             ]
                         },
                         {

@@ -1,5 +1,5 @@
 ---
-title: Understand This With the ECMAScript Specification
+title: Understanding This With the ECMAScript Specification
 date: 2022-01-20
 ---
 
