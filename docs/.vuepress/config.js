@@ -42,7 +42,7 @@ module.exports = {
                 sidebar: {
                     '/': [
                         {
-                            title: "About this blog",
+                            title: "👨‍💻 About this blog",
                             path: '/',
                             collapsable: false,
                         },
@@ -50,7 +50,7 @@ module.exports = {
                             title: "JavaScript",
                             collapsable: true,
                             children: [
-                                { title: "About JavaScript", path: "/js/About" },
+                                // { title: "About JavaScript", path: "/js/About" },
                                 { title: "Prototype and Prototype chain", path: "/js/Prototype" },
                                 { title: "Scope", path: "/js/Scope" },
                                 { title: "Execution Stack", path: "js/ExecutionStack" },
@@ -59,6 +59,14 @@ module.exports = {
                                 { title: "This", path: "/js/This" },
                                 { title: "Execution Context", path: "/js/ExecutionContext" },
                                 { title: "Closure", path: "/js/Closure" },
+                                { title: "Let and Const", path: "/js/LetAndConst"}
+                            ]
+                        },
+                        {
+                            title: "React",
+                            collapsable: true,
+                            children: [
+                                { title: "About React", path: "/react/About" },
                             ]
                         },
                         {
@@ -68,13 +76,8 @@ module.exports = {
                                 { title: "About Vue", path: "/vue/About" },
                             ]
                         },
-                        {
-                            title: "React",
-                            collapsable: true,
-                            children: [
-                                { title: "About React", path: "/react/About" },
-                            ]
-                        }],
+
+                    ],
                 }
             },
             '/zh/': {
