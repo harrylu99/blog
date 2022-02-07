@@ -17,9 +17,9 @@ There are two mainstream solutions for throttle, one is using the timestamp and 
 
 ## Use Timestamp
 
-Let's take a look with the timestamp solution.
+Let's take a look at the timestamp solution.
 
-We take the current timestamp when the event is triggered, subtract the previous timestamp(the initial value is set to 0), execute the function when the result greater than the time period. And when the result is less than the time period, function would not be execute.
+We take the current timestamp when the event is triggered, subtract the previous timestamp(the initial value is set to 0), execute the function when the result is greater than the time period. And when the result is less than the time period, the function would not be executed.
 
 ```
 function throttle(func, wait) {
@@ -46,9 +46,9 @@ container.onmousemove = throttle(getUserAction, 1000);
 
 ## Use Timer
 
-And next, we talk about the second solution which is use the timer.
+And next, we talk about the second solution which is to use the timer.
 
-We could set a timer when trigger an event and when it has been trigger again, depends on if the timer existing or not. If the timer exists, it will not execute untill the timer execute and then execute the function, empty the timer so the next timer could be set.
+We could set a timer when triggering an event and when it has been triggered again, depending on if the timer exists or not. If the timer exists, it will not execute until the timer executes and then execute the function, empty the timer so the next timer could be set.
 
 ```
 function throttle(func, wait) {
@@ -69,11 +69,11 @@ function throttle(func, wait) {
 }
 ```
 
-Compare these two solution, we could find out that the first solution will execute immidate but the second one will execute after n seconds. Besides, it cannot execute event when it stop triggering when you use the timestamp but it still execute the event once after stop triggering by using timer.
+Compare these two solutions, we could find out that the first solution will execute immediately but the second one will execute after n seconds. Besides, it cannot execute an event when it stops triggering when you use the timestamp but it still executes the event once after stopping triggering by using the timer.
 
 ## Combination
 
-We have talked and compared those two solutions and we could have a complete throttle function by combinate these two.
+We have talked and compared those two solutions and we could have a complete throttle function by combining these two.
 
 ```
 function throttle(func, wait) {
@@ -111,3 +111,72 @@ function throttle(func, wait) {
 Try it with your localhost.
 
 ## Optimize
+
+Now, we have a requirement that needs to custom the result have or have not the beginning and the ending.
+
+We could have _options_ as our third parameter and judge the result based on the value of _options_. And we regulate that if the value of leading is false, that means to disable the first execution. And the false of trailing stands for disabling the callback of trigger.
+
+```
+function throttle(func, wait, options) {
+    var timeout, context, args, result;
+    var previous = 0;
+    if (!options) options = {};
+
+    var later = function() {
+        previous = options.leading === false ? 0 : new Date().getTime();
+        timeout = null;
+        func.apply(context, args);
+        if (!timeout) context = args = null;
+    };
+
+    var throttled = function() {
+        var now = new Date().getTime();
+        if (!previous && options.leading === false) previous = now;
+        var remaining = wait - (now - previous);
+        context = this;
+        args = arguments;
+        if (remaining <= 0 || remaining > wait) {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            previous = now;
+            func.apply(context, args);
+            if (!timeout) context = args = null;
+        } else if (!timeout && options.trailing !== false) {
+            timeout = setTimeout(later, remaining);
+        }
+    };
+    return throttled;
+}
+```
+
+## Cancel
+
+Let's add cancel method for throttle as well.
+
+```
+...
+throttled.cancel = function() {
+    clearTimeout(timeout);
+    previous = 0;
+    timeout = null;
+}
+...
+```
+
+## Note
+
+We need to be aware that we cannot set leading: false and trailing: false at the same time. The reason for it is that when you move your mouse out, the timer would not be set cause the trailing is false and it will execute immediately when you move the mouse in, it against the leading: false. As a result, this throttle could only use in three cases.
+
+```
+container.onmousemove = throttle(getUserAction, 1000);
+container.onmousemove = throttle(getUserAction, 1000, {
+    leading: false
+});
+container.onmousemove = throttle(getUserAction, 1000, {
+    trailing: false
+});
+```
+
+And now, we have finally implemented a completed throttle function from the underscore!
