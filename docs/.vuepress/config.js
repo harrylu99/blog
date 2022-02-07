@@ -37,7 +37,8 @@ module.exports = {
                 lastUpdated: 'Last Updated', // string | boolean,
                 nav: [
                     { text: 'Home', link: '/' },
-                    { text: 'GitHub', link: 'https://github.com/harrylu99', icon: 'reco-github' },
+                    { text: 'My Site', link: 'https://harrylu99.github.io', icon: 'reco-coding' },
+                    // { text: 'Suggestion', link: 'https://harrylu99.github.io', icon: 'reco-suggestion' },
                 ],
                 sidebar: {
                     '/': [
