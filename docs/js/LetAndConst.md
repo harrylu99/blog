@@ -282,4 +282,81 @@ And here, the result will be 'a' as well when we using _const_. The reason is th
 
 ## Babel
 
-https://github.com/mqyqingfeng/Blog/issues/82
+How are they be compiled in Babel? Let's check the code after compilation.
+
+```
+let value = 1;
+```
+
+Compiled
+
+```
+var value = 1;
+```
+
+We can find out that Babel have been compile the _let_ to _var_. Let's look at this example.
+
+```
+if(false){
+    let value = 1;
+}
+console.log(value); // Uncaught ReferenceError: value is not defined
+```
+
+If it compile to _var_, the result must be undefined. However, Babel is smart, the compilation of it should be
+
+```
+if(false){
+    var _value = 1;
+}
+console.log(value);
+```
+
+Take a look at this example
+
+```
+let value = 1;
+{
+    let value = 2;
+}
+value = 3;
+```
+
+```
+var value = 1;
+{
+    var _value = 2;
+}
+value = 3;
+```
+
+The only difference between these two is that the variable names are different.
+
+So, what about the _let_ in the loop?
+
+```
+var funcs = [];
+for (let i = 0; i < 10; i++){
+    funcs[i] = function(){
+        console.log(i);
+    };
+}
+funcs[0](); //0
+```
+
+It have been compiled to
+
+```
+var funcs = [];
+
+var _loop = function _loop(i) {
+    funcs[i] = function () {
+        console.log(i);
+    };
+};
+
+for (var i = 0; i < 10; i++) {
+    _loop(i);
+}
+funcs[0](); // 0
+```

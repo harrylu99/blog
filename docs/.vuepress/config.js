@@ -50,7 +50,7 @@ module.exports = {
                             title: "JavaScript",
                             collapsable: true,
                             children: [
-                                // { title: "About JavaScript", path: "/js/About" },
+                                { title: "About JavaScript", path: "/js/About" },
                                 { title: "Prototype and Prototype chain", path: "/js/Prototype" },
                                 { title: "Scope", path: "/js/Scope" },
                                 { title: "Execution Stack", path: "js/ExecutionStack" },
@@ -59,7 +59,9 @@ module.exports = {
                                 { title: "This", path: "/js/This" },
                                 { title: "Execution Context", path: "/js/ExecutionContext" },
                                 { title: "Closure", path: "/js/Closure" },
-                                { title: "Let and Const", path: "/js/LetAndConst"}
+                                { title: "Let and Const", path: "/js/LetAndConst" },
+                                { title: "Debounce", path: "/js/Debounce" },
+                                { title: "Throttle", path: "/js/Throttle" },
                             ]
                         },
                         {
@@ -76,7 +78,6 @@ module.exports = {
                                 { title: "About Vue", path: "/vue/About" },
                             ]
                         },
-
                     ],
                 }
             },
@@ -98,35 +99,37 @@ module.exports = {
                 algolia: {},
                 lastUpdated: '最后更新', // string | boolean,
                 nav: [
-                    { text: '首页', link: '/zh/' },
-                    {
-                        text: '更多',
-                        items: [
-                            { text: 'Github', link: 'https://github.com/luyao99' }
-                        ]
-                    }
+                    { text: 'Home', link: '/zh' },
+                    { text: 'GitHub', link: 'https://github.com/harrylu99', icon: 'reco-github' },
                 ],
                 sidebar: {
-                    '/zh/': [{
-                        title: "关于",
-                        path: '/zh/',
-                        collapsable: false,
-                    }, {
-                        title: "JavaScript",
-                        path: '/zh/js/',
-                        collapsable: true,
-                    },
-                    {
-                        title: "Vue",
-                        path: '/zh/vue/',
-                        collapsable: true,
-                    },
-                    {
-                        title: "React",
-                        path: '/zh/react/',
-                        collapsable: true,
-                    }],
-
+                    '/zh/': [
+                        {
+                            title: "关于博客",
+                            path: '/zh/',
+                            collapsable: false,
+                        }, {
+                            title: "JavaScript",
+                            collapsable: true,
+                            children: [
+                                { title: "About JavaScript", path: "/zh/js/About" },
+                            ]
+                        },
+                        {
+                            title: "React",
+                            collapsable: true,
+                            children: [
+                                { title: "About React", path: "/zh/react/About" },
+                            ]
+                        },
+                        {
+                            title: "Vue",
+                            collapsable: true,
+                            children: [
+                                { title: "About Vue", path: "/zh/vue/About" },
+                            ]
+                        },
+                    ],
                 }
             }
         }
