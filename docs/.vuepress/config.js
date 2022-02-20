@@ -69,6 +69,7 @@ module.exports = {
                 { title: 'Debounce', path: '/js/Debounce' },
                 { title: 'Throttle', path: '/js/Throttle' },
 
+                { title: 'ES6 Arrow Function', path: '/js/ArrowFunction' },
                 { title: 'ES6 Let and Const', path: '/js/LetAndConst' },
               ],
             },
