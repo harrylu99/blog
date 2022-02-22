@@ -150,3 +150,78 @@ var value = 1;
 var result = (() => this.value).bind({value: 2})();
 console.log(result); // 1
 ```
+
+### Without arguments
+
+Arrow function does not have its own arguments object, however, it can acces the outside arguments object.
+
+```
+function constant() {
+    return () => arguments[0]
+}
+
+var result = constant(1);
+console.log(result()); // 1
+```
+
+So, what if we want to get the arguments of the arrow function?
+
+```
+let nums = (...nums) => nums;
+```
+
+As you can see, you named parameter or the rest parameter for access the arguments.
+
+### Cannot use new keyword
+
+There are two build-in methods in JavaScript, [[Call]] and [[Construct]], [[Construct]] method will be excuted when you using new for call a function and it will create an instance followed by excute the function, lastely, it will bind the _this_ with the instance. For use the function straightly, [[Call]] method would be excuted and it go with the function.
+
+However, arrow function does not have the [[Construct]] method, which means if we use new for call the function, it is not going to work.
+
+```
+var Foo = () => {};
+var foo = new Foo(); // TypeError: Foo is not a constructor
+```
+
+### No new.target
+
+As we explained above, arrow function cannot be used by the keyword new, so that it does not have new.target value.
+
+### No prototype
+
+Since the function cannot used by new, it does not need to create the prototype. As a result, arrow function does not have prototype.
+
+```
+var Foo = () => {};
+console.log(Foo.prototype); // undefined
+```
+
+### No super
+
+There is no doubt that you cannot use super in arrow function casue it does not have prototype attribute. And it is as the same as this, arguments and new.target, it depends on the closest non-arrow funuction.
+
+## Conclusion
+
+In conclusion, we could summary that arrow function from MDN
+
+> An arrow function expression has a shorter syntax than a function expression and does not have its own this, arguments, super, or new.target. These function expressions are best suited for non-method functions, and they cannot be used as constructors.
+
+So, what is the non-method function?
+
+> A method is a function which is a property of an object.
+
+The function in the object attribute is named method, so non-method means the function that is not used as object. And here is another example for you to understand it.
+
+```
+var obj = {
+  i: 10,
+  b: () => console.log(this.i, this),
+  c: function() {
+    console.log( this.i, this)
+  }
+}
+obj.b();
+// undefined Window
+obj.c();
+// 10, Object {...}
+```
