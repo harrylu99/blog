@@ -71,7 +71,7 @@ module.exports = {
 
                                 { title: 'ES6 Let and Const', path: '/js/LetAndConst' },
                                 { title: 'ES6 Arrow Function', path: '/js/ArrowFunction' },
-
+                                { title: 'ES6 for...of', path: '/js/ForOf' },
                             ],
                         },
                         {
