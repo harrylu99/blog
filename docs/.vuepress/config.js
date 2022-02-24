@@ -73,6 +73,7 @@ module.exports = {
                                 { title: 'ES6 Arrow Function', path: '/js/ArrowFunction' },
                                 { title: 'ES6 for...of', path: '/js/ForOf' },
                                 { title: 'Promise', path: '/js/Promise' },
+                                { title: 'Async ', path: '/js/Async' },
                             ],
                         },
                         {
