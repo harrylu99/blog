@@ -1,5 +1,5 @@
 ---
-title: ES6 for...of
+title: for...of
 date: 2022-02-22
 ---
 

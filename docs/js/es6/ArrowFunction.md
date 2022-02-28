@@ -1,5 +1,5 @@
 ---
-title: ES6 Arrow Function
+title: Arrow Function
 date: 2022-02-20
 ---
 

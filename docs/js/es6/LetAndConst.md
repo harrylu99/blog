@@ -1,5 +1,5 @@
 ---
-title: ES6 Let and Const
+title: Let and Const
 date: 2022-01-25
 ---
 
