@@ -26,7 +26,7 @@ Each function has an internal attribute scope and when the function has been cre
 
 Let's take an example
 
-```
+```js
 function foo() {
     function bar() {
         ...
@@ -36,7 +36,7 @@ function foo() {
 
 When the function created, the scope should be
 
-```
+```js
 foo.[[scope]] = [
   globalContext.VO
 ];
@@ -53,7 +53,7 @@ When the function is activated, it enters the function context, after the VO/AO 
 
 At this point the scope chain of the execution context, we name it Scope:
 
-```
+```js
 Scope = [AO].concat([[Scope]]);
 ```
 
@@ -63,11 +63,11 @@ Now, the scope chain is created.
 
 Let's summarize the creation process of the scope chain and variable object in the function execution context with the variable object and execution context stack mentioned earlier.
 
-```
+```js
 var scope = "global scope";
-function checkscope(){
-    var scope2 = 'local scope';
-    return scope2;
+function checkscope() {
+  var scope2 = "local scope";
+  return scope2;
 }
 checkscope();
 ```
@@ -76,7 +76,7 @@ Procedure:
 
 1.  The checkscope function is created, saving the scope chain to the inner attribute [[scope]].
 
-```
+```js
 checkscope.[[scope]] = [
     globalContext.VO
 ];
@@ -84,16 +84,13 @@ checkscope.[[scope]] = [
 
 2. Execute the checkscope function, function execution context has been created, execution context of checkscope function has been put into the execution context stack.
 
-```
-ECStack = [
-    checkscopeContext,
-    globalContext
-];
+```js
+ECStack = [checkscopeContext, globalContext];
 ```
 
 3. The checkscope function is not executed immediately, it start doing the preparatory work, the first step: copy the function [[scope]] property to create a scope chain.
 
-```
+```js
 checkscopeContext = {
     Scope: checkscope.[[scope]],
 }
@@ -101,7 +98,7 @@ checkscopeContext = {
 
 4. Second step: Create active object by using arguments and initialize the active object, with the formal parameters, function declarations and variable declarations.
 
-```
+```js
 checkscopeContext = {
     AO: {
         arguments: {
@@ -115,38 +112,36 @@ checkscopeContext = {
 
 5. Step three: Put the active object into the top of the checkscope scope chain.
 
-```
+```js
 checkscopeContext = {
-    AO: {
-        arguments: {
-            length: 0
-        },
-        scope2: undefined
+  AO: {
+    arguments: {
+      length: 0,
     },
-    Scope: [AO, [[Scope]]]
-}
+    scope2: undefined,
+  },
+  Scope: [AO, [[Scope]]],
+};
 ```
 
 6. After the perp-work, the function had been start executing and the attribute values of the AO had been modifing.
 
-```
+```js
 checkscopeContext = {
-    AO: {
-        arguments: {
-            length: 0
-        },
-        scope2: 'local scope'
+  AO: {
+    arguments: {
+      length: 0,
     },
-    Scope: [AO, [[Scope]]]
-}
+    scope2: "local scope",
+  },
+  Scope: [AO, [[Scope]]],
+};
 ```
 
 7.  Find the value of scope2, the function context popped out of the execution context stack.
 
-```
-ECStack = [
-    globalContext
-];
+```js
+ECStack = [globalContext];
 ```
 
 ## Q&A

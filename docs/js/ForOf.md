@@ -9,30 +9,30 @@ Today is 22-02-2022 on the calander, just looks like 0 and 2 are doing a loop. S
 
 Let's start with a standard for loop
 
-```
+```js
 var colors = ["red", "green", "blue"];
 
 for (var i = 0, len = colors.length; i < len; i++) {
-    console.log(colors[i]);
+  console.log(colors[i]);
 }
 ```
 
 It looks goes smooth, but check this one
 
-```
+```js
 function unique(array) {
-    var res = [];
-    for (var i = 0, arrayLen = array.length; i < arrayLen; i++) {
-        for (var j = 0, resLen = res.length; j < resLen; j++) {
-            if (array[i] === res[j]) {
-                break;
-            }
-        }
-        if (j === resLen) {
-            res.push(array[i]);
-        }
+  var res = [];
+  for (var i = 0, arrayLen = array.length; i < arrayLen; i++) {
+    for (var j = 0, resLen = res.length; j < resLen; j++) {
+      if (array[i] === res[j]) {
+        break;
+      }
     }
-    return res;
+    if (j === resLen) {
+      res.push(array[i]);
+    }
+  }
+  return res;
 }
 ```
 
@@ -44,20 +44,20 @@ Iterator is an object which have next() method. You will get a result object as 
 
 We could create an iterator by ES5
 
-```
+```js
 function createIterator(items) {
-    var i = 0;
-    return {
-        next: function() {
-            var done = i >= item.length;
-            var value = !done ? items[i++] : undefined;
+  var i = 0;
+  return {
+    next: function () {
+      var done = i >= item.length;
+      var value = !done ? items[i++] : undefined;
 
-            return {
-                done: done,
-                value: value
-            };
-        }
-    };
+      return {
+        done: done,
+        value: value,
+      };
+    },
+  };
 }
 
 // iterator is an object
@@ -73,11 +73,11 @@ console.log(iterator.next()); // { done: true, value: undefined }
 
 ES6 provide for...of for us as a mothod to loop the iterator object. Let's try to use it to rewirte the code above.
 
-```
+```js
 var iterator = createIterator([1, 2, 3]);
 
 for (let value of iterator) {
-    console.log(value);
+  console.log(value);
 }
 ```
 
@@ -89,13 +89,13 @@ Actually, we could call the data iterable when it have the iterator interface, a
 
 For example,
 
-```
+```js
 const obj = {
-    value: 1
+  value: 1,
 };
 
 for (value of obj) {
-    console.log(value);
+  console.log(value);
 }
 
 // TypeError: iterator is not iterable
@@ -103,17 +103,17 @@ for (value of obj) {
 
 If we add Symbol.iterator to this object
 
-```
+```js
 const obj = {
-    value: 1
+  value: 1,
 };
 
-obj[Symbol.iterator] = function() {
-    return createIterator([1, 2, 3]);
+obj[Symbol.iterator] = function () {
+  return createIterator([1, 2, 3]);
 };
 
 for (value of obj) {
-    console.log(value);
+  console.log(value);
 }
 
 // 1
@@ -127,11 +127,11 @@ Therefore, we know that what for...of loop for, is the Symbol.iterator of the ob
 
 If we use for...of loop an array object
 
-```
+```js
 const colors = ["red", "green", "blue"];
 
 for (let color of colors) {
-    console.log(color);
+  console.log(color);
 }
 
 // red
@@ -141,15 +141,15 @@ for (let color of colors) {
 
 Althought we have not add Symbol.iterator, it still working. The reason of it is that ES6 have set the Stmbol.iterator attribute as a defult setting. Also, we could change it by ourselves.
 
-```
+```js
 var colors = ["red", "green", "blue"];
 
-colors[Symbol.iterator] = function() {
-    return createIterator([1, 2, 3]);
+colors[Symbol.iterator] = function () {
+  return createIterator([1, 2, 3]);
 };
 
 for (let color of colors) {
-    console.log(color);
+  console.log(color);
 }
 
 // 1

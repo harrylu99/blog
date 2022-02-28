@@ -13,40 +13,44 @@ Some events might triggered frequently in the development, for example
 
 Let's take a look at this example.
 
-```
+```html
 // index.html
 
 <!DOCTYPE html>
 <html lang="zh-cmn-Hans">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1" />
     <title>debounce</title>
     <style>
-        #container{
-            width: 100%; height: 200px; line-height: 200px; text-align: center; color: #fff; background-color: #444; font-size: 30px;
-        }
+      #container {
+        width: 100%;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        color: #fff;
+        background-color: #444;
+        font-size: 30px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="container"></div>
     <script src="debounce.js"></script>
-</body>
-
+  </body>
 </html>
 ```
 
-```
+```js
 // debounce.js
 
 var count = 1;
-var container = document.getElementById('container');
+var container = document.getElementById("container");
 
 function getUserAction() {
-    container.innerHTML = count++;
-};
+  container.innerHTML = count++;
+}
 
 container.onmousemove = getUserAction;
 ```
@@ -67,19 +71,19 @@ The principle of debounce is that the execution has to be executed after n secon
 
 Based on the principle above, we could have this first version code
 
-```
+```js
 function debounce(func, wait) {
-    var timeout;
-    return function () {
-        clearTimeout(timeout)
-        timeout = setTimeout(func, wait);
-    }
+  var timeout;
+  return function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(func, wait);
+  };
 }
 ```
 
 To usr it, we could use the example above. Try it with your localhost.
 
-```
+```js
 container.onmousemove = debounce(getUserAction, 1000);
 ```
 
@@ -91,7 +95,7 @@ The count decreased from 165 to 1 which is what we expect! We have done an amazi
 
 When we console.log(this) in the getUserAction function without debounce function, the value of this should be
 
-```
+```html
 <div id="container"></div>
 ```
 
@@ -99,18 +103,18 @@ When we use debounce function, this will point to the Window object. So, we need
 
 Here is the second version of our debounce code
 
-```
+```js
 function debounce(func, wait) {
-    var timeout;
+  var timeout;
 
-    return function () {
-        var context = this;
+  return function () {
+    var context = this;
 
-        clearTimeout(timeout)
-        timeout = setTimeout(function(){
-            func.apply(context)
-        }, wait);
-    }
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      func.apply(context);
+    }, wait);
+  };
 }
 ```
 
@@ -118,30 +122,30 @@ function debounce(func, wait) {
 
 JavaScript provides event object _event_ in the event handle function, let's edit getUserAction function.
 
-```
+```js
 function getUserAction(e) {
-    console.log(e);
-    container.innerHTML = count++;
-};
+  console.log(e);
+  container.innerHTML = count++;
+}
 ```
 
 It will print the MouseEvent object here if we do not use debounce function.
 
 However, it will print undefined in our debounce function. Let's update our code for a bit.
 
-```
+```js
 function debounce(func, wait) {
-    var timeout;
+  var timeout;
 
-    return function () {
-        var context = this;
-        var args = arguments;
+  return function () {
+    var context = this;
+    var args = arguments;
 
-        clearTimeout(timeout)
-        timeout = setTimeout(function(){
-            func.apply(context, args)
-        }, wait);
-    }
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      func.apply(context, args);
+    }, wait);
+  };
 }
 ```
 
@@ -153,30 +157,28 @@ Our code seems good here, but to make this function more perfect, we need to thi
 
 Here we have a requirement that needs the function should be executed immediately when I trigger the event and it could be re-executed after n seconds. This requirement seems more reasonable in our daily life tbh. So, we could add a parameter _immediate_ to judge if execute immediately or not.
 
-```
+```js
 function debounce(func, wait, immediate) {
+  var timeout;
 
-    var timeout;
+  return function () {
+    var context = this;
+    var args = arguments;
 
-    return function () {
-        var context = this;
-        var args = arguments;
-
-        if (timeout) clearTimeout(timeout);
-        if (immediate) {
-            // 如果已经执行过，不再执行
-            var callNow = !timeout;
-            timeout = setTimeout(function(){
-                timeout = null;
-            }, wait)
-            if (callNow) func.apply(context, args)
-        }
-        else {
-            timeout = setTimeout(function(){
-                func.apply(context, args)
-            }, wait);
-        }
+    if (timeout) clearTimeout(timeout);
+    if (immediate) {
+      // 如果已经执行过，不再执行
+      var callNow = !timeout;
+      timeout = setTimeout(function () {
+        timeout = null;
+      }, wait);
+      if (callNow) func.apply(context, args);
+    } else {
+      timeout = setTimeout(function () {
+        func.apply(context, args);
+      }, wait);
     }
+  };
 }
 ```
 
@@ -184,31 +186,29 @@ function debounce(func, wait, immediate) {
 
 Notice that getUserAction function might have the value of return so we also need the execution result of the return function. However, we could only return the execution result of the return function when the _immediate_ is true because of that we have used setTimeout and we have assigned the return value of func.apply(context, args) with the variables, the value will always be undefined when it returned when the values of _immediate_ are false.
 
-```
+```js
 function debounce(func, wait, immediate) {
+  var timeout, result;
 
-    var timeout, result;
+  return function () {
+    var context = this;
+    var args = arguments;
 
-    return function () {
-        var context = this;
-        var args = arguments;
-
-        if (timeout) clearTimeout(timeout);
-        if (immediate) {
-            // Do not execute if it have been execute.
-            var callNow = !timeout;
-            timeout = setTimeout(function(){
-                timeout = null;
-            }, wait)
-            if (callNow) result = func.apply(context, args)
-        }
-        else {
-            timeout = setTimeout(function(){
-                func.apply(context, args)
-            }, wait);
-        }
-        return result;
+    if (timeout) clearTimeout(timeout);
+    if (immediate) {
+      // Do not execute if it have been execute.
+      var callNow = !timeout;
+      timeout = setTimeout(function () {
+        timeout = null;
+      }, wait);
+      if (callNow) result = func.apply(context, args);
+    } else {
+      timeout = setTimeout(function () {
+        func.apply(context, args);
+      }, wait);
     }
+    return result;
+  };
 }
 ```
 
@@ -216,58 +216,56 @@ function debounce(func, wait, immediate) {
 
 At least, we might need to meet another requirement which is I want to cancel the decounce function. For example, if I have set the time of the decouce function as 10 seconds and I want a button that could cancel the debounce function when I press it so that I could trigger again.
 
-```
+```js
 function debounce(func, wait, immediate) {
+  var timeout, result;
 
-    var timeout, result;
+  var debounced = function () {
+    var context = this;
+    var args = arguments;
 
-    var debounced = function () {
-        var context = this;
-        var args = arguments;
-
-        if (timeout) clearTimeout(timeout);
-        if (immediate) {
-            // 如果已经执行过，不再执行
-            var callNow = !timeout;
-            timeout = setTimeout(function(){
-                timeout = null;
-            }, wait)
-            if (callNow) result = func.apply(context, args)
-        }
-        else {
-            timeout = setTimeout(function(){
-                func.apply(context, args)
-            }, wait);
-        }
-        return result;
-    };
-
-    debounced.cancel = function() {
-        clearTimeout(timeout);
+    if (timeout) clearTimeout(timeout);
+    if (immediate) {
+      // 如果已经执行过，不再执行
+      var callNow = !timeout;
+      timeout = setTimeout(function () {
         timeout = null;
-    };
+      }, wait);
+      if (callNow) result = func.apply(context, args);
+    } else {
+      timeout = setTimeout(function () {
+        func.apply(context, args);
+      }, wait);
+    }
+    return result;
+  };
 
-    return debounced;
+  debounced.cancel = function () {
+    clearTimeout(timeout);
+    timeout = null;
+  };
+
+  return debounced;
 }
 ```
 
 Here is the way how to use to cancel function
 
-```
+```js
 var count = 1;
-var container = document.getElementById('container');
+var container = document.getElementById("container");
 
 function getUserAction(e) {
-    container.innerHTML = count++;
-};
+  container.innerHTML = count++;
+}
 
 var setUseAction = debounce(getUserAction, 10000, true);
 
 container.onmousemove = setUseAction;
 
-document.getElementById("button").addEventListener('click', function(){
-    setUseAction.cancel();
-})
+document.getElementById("button").addEventListener("click", function () {
+  setUseAction.cancel();
+});
 ```
 
 So far, we have fully implemented a debounce function from underscore, Congratulations! And we will talk about the throttle in the next article.

@@ -11,11 +11,11 @@ Definition of closure from MDN
 
 Take a look with this example
 
-```
+```js
 var a = 1;
 
 function foo() {
-    console.log(a);
+  console.log(a);
 }
 
 foo();
@@ -41,14 +41,14 @@ We are going to focus on the practice view of closure.
 
 Start with an example
 
-```
+```js
 var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f;
+function checkscope() {
+  var scope = "local scope";
+  function f() {
+    return scope;
+  }
+  return f;
 }
 
 var foo = checkscope();
@@ -74,17 +74,17 @@ And if you try to run this code in PHP, it will give you an error because f func
 
 After we draw the execution process, we know that the f execution context maintains a scope chain
 
-```
+```js
 fContext = {
-    Scope: [AO, checkscopeContext.AO, globalContext.VO],
-}
+  Scope: [AO, checkscopeContext.AO, globalContext.VO],
+};
 ```
 
 And yes, thanks to this scope chain, the f function could access the value of checkscopeContext.AO which means JavaScript will make checkscopeContext.AO 'alive' in the Memory when f function uses the checkscopeContext.AO. So that f function could find it through its scope chain. And this is the closure we are talking about.
 
 ## Interview Question
 
-```
+```js
 var data = [];
 
 for (var i = 0; i < 3; i++) {
@@ -102,7 +102,7 @@ All the answer will be 3. Let's start analyzing it.
 
 Before execuate data[0] function, the VO of the Global Context is
 
-```
+```js
 globalContext = {
     VO: {
         data: [...],
@@ -113,7 +113,7 @@ globalContext = {
 
 When execuate the data[0], the scope chain of data[0] should be
 
-```
+```js
 data[0]Context = {
     Scope: [AO, globalContext.VO]
 }
@@ -125,14 +125,14 @@ Same as data[1] and data[2].
 
 If we changed it to the closure
 
-```
+```js
 var data = [];
 
 for (var i = 0; i < 3; i++) {
   data[i] = (function (i) {
-        return function(){
-            console.log(i);
-        }
+    return function () {
+      console.log(i);
+    };
   })(i);
 }
 
@@ -143,7 +143,7 @@ data[2]();
 
 Before execuate data[0] function, the VO of the Global Context is
 
-```
+```js
 globalContext = {
     VO: {
         data: [...],
@@ -156,16 +156,16 @@ As the same as before.
 
 AO of the anonymous function's context
 
-```
+```js
 AnonymousFunctionContext = {
-    AO: {
-        arguments: {
-            0: 0,
-            length: 1
-        },
-        i: 0
-    }
-}
+  AO: {
+    arguments: {
+      0: 0,
+      length: 1,
+    },
+    i: 0,
+  },
+};
 ```
 
 AO of data[0]Context does not have value i, so it will go to the Context.AO of anonymous function by scope chain, which is 0 will stop here cause it finds the variable here.

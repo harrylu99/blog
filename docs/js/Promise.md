@@ -11,29 +11,29 @@ Eveytime when we talk abou promise, we might start talking with callback or the 
 
 We might have this code when we using callback
 
-```
-doA( function(){
-    doB();
+```js
+doA(function () {
+  doB();
 
-    doC( function(){
-        doD();
-    } )
+  doC(function () {
+    doD();
+  });
 
-    doE();
-} );
+  doE();
+});
 
 doF();
 ```
 
 From the code, we might know that the order of the excution should be
 
-```
-doA()
-doF()
-doB()
-doC()
-doE()
-doD()
+```js
+doA();
+doF();
+doB();
+doC();
+doE();
+doD();
 ```
 
 It looks quite simple atm, but it could be much more complex in the real development enviroment. For debugging some feature inside the code, you might spend a lot of time for skipping between diferent functions. The reason of it is that the way how the human thinking, is it different with the way how does this code been write. So that we need spend more focus and enegery to think about the real excuation order.
@@ -44,12 +44,12 @@ And that is not the worest part of the nested callback. In fact, we might add a 
 
 We should control our code all the time, but when we using callback, is the function could be executed depends on the callback API, for example
 
-```
+```js
 // execution of callback depends on the buy module
-import {buy} from './buy.js';
+import { buy } from "./buy.js";
 
-buy(itemData, function(res) {
-    console.log(res)
+buy(itemData, function (res) {
+  console.log(res);
 });
 ```
 
@@ -65,54 +65,54 @@ To sum up, for solving these, you may have to do some processing in the callback
 
 Let's take a look with this example, which needs to find the largest file under the floder.
 
-```
-var fs = require('fs');
-var path = require('path');
+```js
+var fs = require("fs");
+var path = require("path");
 
 function findLargest(dir, cb) {
-    // find all files
-    fs.readdir(dir, function(er, files) {
-        if (er) return cb(er);
+  // find all files
+  fs.readdir(dir, function (er, files) {
+    if (er) return cb(er);
 
-        var counter = files.length;
-        var errored = false;
-        var stats = [];
+    var counter = files.length;
+    var errored = false;
+    var stats = [];
 
-        files.forEach(function(file, index) {
-            // get the file infos
-            fs.stat(path.join(dir, file), function(er, stat) {
+    files.forEach(function (file, index) {
+      // get the file infos
+      fs.stat(path.join(dir, file), function (er, stat) {
+        if (errored) return;
 
-                if (errored) return;
+        if (er) {
+          errored = true;
+          return cb(er);
+        }
 
-                if (er) {
-                    errored = true;
-                    return cb(er);
-                }
+        stats[index] = stat;
 
-                stats[index] = stat;
-
-                if (--counter == 0) {
-
-                    var largest = stats
-                        .filter(function(stat) { return stat.isFile() })
-                        .reduce(function(prev, next) {
-                            if (prev.size > next.size) return prev
-                            return next
-                        })
-
-                    cb(null, files[stats.indexOf(largest)])
-                }
+        if (--counter == 0) {
+          var largest = stats
+            .filter(function (stat) {
+              return stat.isFile();
             })
-        })
-    })
+            .reduce(function (prev, next) {
+              if (prev.size > next.size) return prev;
+              return next;
+            });
+
+          cb(null, files[stats.indexOf(largest)]);
+        }
+      });
+    });
+  });
 }
 ```
 
-```
+```js
 // find the largest file
-findLargest('./', function(er, filename) {
-    if (er) return console.error(er)
-    console.log('largest file was:', filename)
+findLargest("./", function (er, filename) {
+  if (er) return console.error(er);
+  console.log("largest file was:", filename);
 });
 ```
 
@@ -134,76 +134,76 @@ And we could use promise for solve most of the problems.
 
 For example
 
-```
-request(url, function(err, res, body) {
-    if (err) handleError(err);
-    fs.writeFile('1.txt', body, function(err) {
-        request(url2, function(err, res, body) {
-            if (err) handleError(err)
-        })
-    })
+```js
+request(url, function (err, res, body) {
+  if (err) handleError(err);
+  fs.writeFile("1.txt", body, function (err) {
+    request(url2, function (err, res, body) {
+      if (err) handleError(err);
+    });
+  });
 });
 ```
 
 After we use promise
 
-```
+```js
 request(url)
-.then(function(result) {
-    return writeFileAsynv('1.txt', result)
-})
-.then(function(result) {
-    return request(url2)
-})
-.catch(function(e){
-    handleError(e)
-});
+  .then(function (result) {
+    return writeFileAsynv("1.txt", result);
+  })
+  .then(function (result) {
+    return request(url2);
+  })
+  .catch(function (e) {
+    handleError(e);
+  });
 ```
 
 And when we use promise to handle the example in the callback hell section
 
-```
-var fs = require('fs');
-var path = require('path');
+```js
+var fs = require("fs");
+var path = require("path");
 
-var readDir = function(dir) {
-    return new Promise(function(resolve, reject) {
-        fs.readdir(dir, function(err, files) {
-            if (err) reject(err);
-            resolve(files)
-        })
-    })
-}
+var readDir = function (dir) {
+  return new Promise(function (resolve, reject) {
+    fs.readdir(dir, function (err, files) {
+      if (err) reject(err);
+      resolve(files);
+    });
+  });
+};
 
-var stat = function(path) {
-    return new Promise(function(resolve, reject) {
-        fs.stat(path, function(err, stat) {
-            if (err) reject(err)
-            resolve(stat)
-        })
-    })
-}
+var stat = function (path) {
+  return new Promise(function (resolve, reject) {
+    fs.stat(path, function (err, stat) {
+      if (err) reject(err);
+      resolve(stat);
+    });
+  });
+};
 
 function findLargest(dir) {
-    return readDir(dir)
-        .then(function(files) {
-            let promises = files.map(file => stat(path.join(dir, file)))
-            return Promise.all(promises).then(function(stats) {
-                return { stats, files }
-            })
+  return readDir(dir)
+    .then(function (files) {
+      let promises = files.map((file) => stat(path.join(dir, file)));
+      return Promise.all(promises).then(function (stats) {
+        return { stats, files };
+      });
+    })
+    .then((data) => {
+      let largest = data.stats
+        .filter(function (stat) {
+          return stat.isFile();
         })
-        .then(data => {
+        .reduce((prev, next) => {
+          if (prev.size > next.size) return prev;
+          return next;
+        });
 
-            let largest = data.stats
-                .filter(function(stat) { return stat.isFile() })
-                .reduce((prev, next) => {
-                    if (prev.size > next.size) return prev
-                    return next
-                })
-
-            return data.files[data.stats.indexOf(largest)]
-        })
-
+      return data.files[data.stats.indexOf(largest)];
+    });
 }
 ```
 
@@ -219,25 +219,24 @@ Promise could resolve and only do it one time. The rest would be ignore.
 
 We could use Promise.race
 
-```
+```js
 function timeoutPromise(delay) {
-    return new Promise( function(resolve,reject){
-        setTimeout( function(){
-            reject( "Timeout!" );
-        }, delay );
-    } );
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      reject("Timeout!");
+    }, delay);
+  });
 }
 
-Promise.race( [
-    foo(),
-    timeoutPromise( 3000 )
-] )
-.then(function(){}, function(err){});
+Promise.race([foo(), timeoutPromise(3000)]).then(
+  function () {},
+  function (err) {}
+);
 ```
 
 3. Could be synchronous execution or asynchronous execution
 
-```
+```js
 var cache = {...};
 function downloadFile(url) {
       if(cache.has(url)) {
@@ -253,13 +252,13 @@ console.log('3');
 
 If we use Promise
 
-```
-var promise = new Promise(function (resolve){
-    resolve();
-    console.log(1);
+```js
+var promise = new Promise(function (resolve) {
+  resolve();
+  console.log(1);
 });
-promise.then(function(){
-    console.log(2);
+promise.then(function () {
+  console.log(2);
 });
 console.log(3);
 
@@ -270,136 +269,143 @@ console.log(3);
 
 1. Nested Promise
 
-```
+```js
 // bad
-loadSomething().then(function(something) {
-    loadAnotherthing().then(function(another) {
-        DoSomethingOnThem(something, another);
-    });
+loadSomething().then(function (something) {
+  loadAnotherthing().then(function (another) {
+    DoSomethingOnThem(something, another);
+  });
 });
 ```
 
-```
+```js
 // good
-Promise.all([loadSomething(), loadAnotherthing()])
-.then(function ([something, another]) {
-    DoSomethingOnThem(...[something, another]);
+Promise.all([loadSomething(), loadAnotherthing()]).then(function ([
+  something,
+  another,
+]) {
+  DoSomethingOnThem(...[something, another]);
 });
 ```
 
 2. Broken Promise chain
 
-```
+```js
 // bad
 function anAsyncCall() {
-    var promise = doSomethingAsync();
-    promise.then(function() {
-        somethingComplicated();
-    });
+  var promise = doSomethingAsync();
+  promise.then(function () {
+    somethingComplicated();
+  });
 
-    return promise;
+  return promise;
 }
 ```
 
-```
+```js
 // good
 function anAsyncCall() {
-    var promise = doSomethingAsync();
-    return promise.then(function() {
-        somethingComplicated()
-    });
+  var promise = doSomethingAsync();
+  return promise.then(function () {
+    somethingComplicated();
+  });
 }
 ```
 
 3. Messy Set
 
-```
+```js
 // bad
 function workMyCollection(arr) {
-    var resultArr = [];
-    function _recursive(idx) {
-        if (idx >= resultArr.length) return resultArr;
+  var resultArr = [];
+  function _recursive(idx) {
+    if (idx >= resultArr.length) return resultArr;
 
-        return doSomethingAsync(arr[idx]).then(function(res) {
-            resultArr.push(res);
-            return _recursive(idx + 1);
-        });
-    }
+    return doSomethingAsync(arr[idx]).then(function (res) {
+      resultArr.push(res);
+      return _recursive(idx + 1);
+    });
+  }
 
-    return _recursive(0);
+  return _recursive(0);
 }
 ```
 
 Both of following are good.
 
-```
+```js
 function workMyCollection(arr) {
-    return Promise.all(arr.map(function(item) {
-        return doSomethingAsync(item);
-    }));
+  return Promise.all(
+    arr.map(function (item) {
+      return doSomethingAsync(item);
+    })
+  );
 }
 ```
 
-```
+```js
 function workMyCollection(arr) {
-    return arr.reduce(function(promise, item) {
-        return promise.then(function(result) {
-            return doSomethingAsyncWithResult(item, result);
-        });
-    }, Promise.resolve());
+  return arr.reduce(function (promise, item) {
+    return promise.then(function (result) {
+      return doSomethingAsyncWithResult(item, result);
+    });
+  }, Promise.resolve());
 }
 ```
 
 4. catch
 
-```
+```js
 // bad
-somethingAync.then(function() {
+somethingAync.then(
+  function () {
     return somethingElseAsync();
-}, function(err) {
+  },
+  function (err) {
     handleMyError(err);
-});
+  }
+);
 ```
 
-```
+```js
 // good
 somethingAsync
-.then(function() {
-    return somethingElseAsync()
-})
-.then(null, function(err) {
+  .then(function () {
+    return somethingElseAsync();
+  })
+  .then(null, function (err) {
     handleMyError(err);
-});
+  });
 ```
 
-```
+```js
 // good
 somethingAsync()
-.then(function() {
+  .then(function () {
     return somethingElseAsync();
-})
-.catch(function(err) {
+  })
+  .catch(function (err) {
     handleMyError(err);
-});
+  });
 ```
 
 ## Promisify
 
 Sometimes we might need a promisify method for change callback to Promise.
 
-```
+```js
 function promisify(original) {
-    return function (...args) {
-        return new Promise((resolve, reject) => {
-            args.push(function callback(err, ...values) {
-                if (err) {
-                    return reject(err);
-                }
-                return resolve(...values)
-            });
-            original.call(this, ...args);
-        });
-    };
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      args.push(function callback(err, ...values) {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(...values);
+      });
+      original.call(this, ...args);
+    });
+  };
 }
 ```
 
@@ -409,16 +415,16 @@ function promisify(original) {
 
 You might be curious about how could promise eat the error? Let's take a look at this example.
 
-```
-throw new Error('error');
-console.log('error');
+```js
+throw new Error("error");
+console.log("error");
 ```
 
 In this case, error would not be console because of the throw error.
 
-```
+```js
 const promise = new Promise(null);
-console.log('error');
+console.log("error");
 ```
 
 And the example above also would be stop for executed. The reason of it is that if a Promise is used in an invalid way and an error effect the construction of a normal Promise, the result would be an run exception instead of a rejected Promise.
@@ -443,10 +449,9 @@ Promise can only have a completion value or a rejection reason, but we often nee
 
 Maybe we could use destructuring assignment to make it look better.
 
-```
-Promise.all([Promise.resolve(1), Promise.resolve(2)])
-.then(([x, y]) => {
-    console.log(x, y);
+```js
+Promise.all([Promise.resolve(1), Promise.resolve(2)]).then(([x, y]) => {
+  console.log(x, y);
 });
 ```
 

@@ -5,14 +5,13 @@ date: 2022-01-18
 
 ## Use Constructor Function create an object
 
-```
-function Person() {
-}
+```js
+function Person() {}
 
 var person = new Person();
-person.name = 'Kevin';
+person.name = "Kevin";
 
-console.log(person.name) // Kevin
+console.log(person.name); // Kevin
 ```
 
 In the example above, _Person_ is a _constructor_ and we use _new_ created an instance _person_.
@@ -21,17 +20,15 @@ In the example above, _Person_ is a _constructor_ and we use _new_ created an in
 
 Each Function has a _prototype_ attribute, e.g.
 
-```
-function Person() {
-
-}
-Person.prototype.name = 'Kevin';
+```js
+function Person() {}
+Person.prototype.name = "Kevin";
 
 var person1 = new Person();
 var person2 = new Person();
 
-console.log(person1.name) // Kevin
-console.log(person2.name) // Kevin
+console.log(person1.name); // Kevin
+console.log(person2.name); // Kevin
 ```
 
 So, what does the prototype point to in this function? Is the prototype of this function?
@@ -50,10 +47,8 @@ A: We have \_\_proto\_\_ attribute describe this relationship. Every JS object(e
 
 Try it in your browser:
 
-```
-function Person() {
-
-}
+```js
+function Person() {}
 var person = new Person();
 
 console.log(person.__proto__ === Person.prototype); // true
@@ -69,10 +64,8 @@ Definition: Each prototype has a constructor attribute points to its own constru
 
 Try to console this:
 
-```
-function Person() {
-
-}
+```js
+function Person() {}
 console.log(Person === Person.prototype.constructor); // true
 ```
 
@@ -80,34 +73,30 @@ console.log(Person === Person.prototype.constructor); // true
 
 ☕ Take a break and here is the summary example of all we have talked about.
 
-```
-function Person() {
-
-}
+```js
+function Person() {}
 var person = new Person();
 
-console.log(person.__proto__ == Person.prototype) // true
-console.log(Person.prototype.constructor == Person) // true
-console.log(Object.getPrototypeOf(person) === Person.prototype) // true
+console.log(person.__proto__ == Person.prototype); // true
+console.log(Person.prototype.constructor == Person); // true
+console.log(Object.getPrototypeOf(person) === Person.prototype); // true
 ```
 
 ## Instance and Prototype
 
 Let's start with an example
 
-```
-function Person() {
+```js
+function Person() {}
 
-}
-
-Person.prototype.name = 'Kevin';
+Person.prototype.name = "Kevin";
 var person = new Person();
 
-person.name = 'Daisy';
-console.log(person.name) // Daisy
+person.name = "Daisy";
+console.log(person.name); // Daisy
 
 delete person.name;
-console.log(person.name) // Kevin
+console.log(person.name); // Kevin
 ```
 
 In this case, we added a name to the instance person, so we could get Daisy when we console the person.name.
@@ -120,11 +109,11 @@ So, what if we still cannot find the attribute that we need on the prototype?
 
 Check the code below
 
-```
+```js
 var obj = new Object();
-obj.name = 'Kevin'
+obj.name = "Kevin";
 
-console.log(obj.name) // Kevin
+console.log(obj.name); // Kevin
 ```
 
 Prototype object was created by Object fucntion, as a result, \_\_proto\_\_ of the instance points to the constructor function's prototype.
@@ -133,8 +122,8 @@ Prototype object was created by Object fucntion, as a result, \_\_proto\_\_ of t
 
 ## Prototype Chain
 
-```
-console.log(Object.prototype.__proto__ === null) // true
+```js
+console.log(Object.prototype.__proto__ === null); // true
 ```
 
 We could find out that the \_\_proto\_\_ of Object.prototype is null.
@@ -153,18 +142,16 @@ The chain structure composed of interrelated prototypes is the prototype chain, 
 
 ### Constructor
 
-```
-function Person() {
-
-}
+```js
+function Person() {}
 var person = new Person();
 console.log(person.constructor === Person); // true
 ```
 
 When we get person.constructor, person do not have constructor attribute, when it can not read the constructor, it will go to find in the prototype of person.
 
-```
-person.constructor === Person.prototype.constructor
+```js
+person.constructor === Person.prototype.constructor;
 ```
 
 ### \_\_proto\_\_
