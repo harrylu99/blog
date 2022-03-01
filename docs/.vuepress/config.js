@@ -109,6 +109,10 @@ module.exports = {
                   collapsable: true,
                   children: [
                     { title: "Concept", path: "/react/sourceCode/Concept" },
+                    {
+                      title: "Architecture",
+                      path: "/react/sourceCode/Architecture",
+                    },
                   ],
                 },
               ],
