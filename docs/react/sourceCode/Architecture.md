@@ -13,11 +13,42 @@ We have talked about the concept of `React` in the last article and to sum up, t
 
 There are two layers in React15, which are
 
-- Reconciler -- Find the modified components
-- Renderer -- Render the modified components to the page
+- Reconciler -- Find the modified components.
+- Renderer -- Render the modified components to the page.
 
 ### Reconciler
 
 You should know that we could use `this.setState`, `this.forceUpdate`, `ReactDOM.render`, etc APIs for trigger the updates in `React`.
 
-_Reconciler_ would do these when
+_Reconciler_ would do the following steps when updating.
+
+- Translate JSX to virtual DOM by using render method from function component or class component.
+- Compare the virtual DOM with the virtual DOM from the last time updated.
+- Find out the updates through the compartion.
+- Notice Renderer for rendering the updated virtual DOM to the page.
+
+[You can check here for more details about Reconciler](https://reactjs.org/docs/codebase-overview.html#reconcilers)
+
+### Renderer
+
+`React` support mutil-platfrom and each platform has different Renderer. What we are going to talking about here is ReactDOM, which take resposibility for rendering in the browser.
+
+Besides, `React` has
+
+- ReactNative for rendering App component
+- ReactTest for rendring plain JS object for test
+- ReactArt for rendring Canvas, SVG or VML(IE8)
+
+When there is an update, Renderer receive the notification from Reconciler and then it rendering the latest component.
+
+[Check what React say about Renderer](https://reactjs.org/docs/codebase-overview.html#renderers)
+
+## Problem
+
+`mount` component uses [mountComponent](https://github.com/facebook/react/blob/15-stable/src/renderers/dom/shared/ReactDOMComponent.js#L498) and `update` component uses [updateComponent](https://github.com/facebook/react/blob/15-stable/src/renderers/dom/shared/ReactDOMComponent.js#L877) in Reconciler. These two methods update the children components recursively.
+
+Updates cannot be puaused or stopped cause the recursive. When it update with a deep layer, the interaction might be stutter.
+
+So, what if we paused the updating manually in React 15?
+
+The answer is, the page will show with the part have updated and the part have not updated yet at the same time, which means the update cannot be asynchronously. And that is the reason why `React` team wanted to update their architecture.

@@ -113,6 +113,14 @@ module.exports = {
                       title: "Architecture",
                       path: "/react/sourceCode/Architecture",
                     },
+                    {
+                      title: "New Architecture",
+                      path: "/react/sourceCode/NewArchitecture",
+                    },
+                    {
+                      title: "Fiber - Mental Model",
+                      path: "/react/sourceCode/FiberMentalModel",
+                    },
                   ],
                 },
               ],
