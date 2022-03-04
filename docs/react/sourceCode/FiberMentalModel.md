@@ -146,4 +146,4 @@ Now, we could think both of `Fiber` and `Generator` as an implemetation of the A
 
 `React` has its own state update mechanism, which support task with different priority, could pause and resume and could resumes from where it left off. In fact, each updated task unit is the `Fiber` of the `React Element`.
 
-We will talk about how `Fiber` implement in the next article.
+We will talk about how `Fiber` implement in the next section.

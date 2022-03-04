@@ -121,6 +121,14 @@ module.exports = {
                       title: "Fiber - Mental Model",
                       path: "/react/sourceCode/FiberMentalModel",
                     },
+                    {
+                      title: "Fiber - Implementation",
+                      path: "/react/sourceCode/FiberImplementation",
+                    },
+                    {
+                      title: "Fiber - Working Principle",
+                      path: "/react/sourceCode/FiberWorkingPrinciple",
+                    },
                   ],
                 },
               ],
