@@ -5,7 +5,7 @@ name: Deploy Blog Pages
 on:
   push:
     branches:
-      - main
+      - master
 
 # 任务
 jobs:
