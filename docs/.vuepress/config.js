@@ -135,7 +135,7 @@ module.exports = {
             },
 
             {
-              title: "Test",
+              title: "Vue",
               collapsable: true,
               children: [{ title: "About Vue", path: "/vue/About" }],
             },
