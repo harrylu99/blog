@@ -12,11 +12,11 @@ on:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
- docs:
-    runs-on: ubuntu-latest
 
-   steps:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
     - name: Checkout
       uses: actions/checkout@master
 
@@ -28,6 +28,24 @@ jobs:
         TARGET_BRANCH: master
         BUILD_SCRIPT: yarn && yarn build
         BUILD_DIR: docs/.vuepress/dist
+        CNAME: https://www.xxx.com
+
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#    steps:
+#     - name: Checkout
+#       uses: actions/checkout@master
+
+#     - name: vuepress-deploy
+#       uses: harrylu99/blog@master
+#       env:
+#         ACCESS_TOKEN: ${{ secrets.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 }}
+#         TARGET_REPO: harrylu99/blog
+#         TARGET_BRANCH: master
+#         BUILD_SCRIPT: yarn && yarn build
+#         BUILD_DIR: docs/.vuepress/dist
 
 #       # 运行构建脚本
 #       - name: Build VuePress site
