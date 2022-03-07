@@ -135,14 +135,14 @@ module.exports = {
             },
 
             {
-              title: "Vue",
+              title: "Test",
               collapsable: true,
               children: [{ title: "About Vue", path: "/vue/About" }],
             },
           ],
         },
       },
-      
+
       "/zh/": {
         // 多语言下拉菜单的标题
         selectText: "选择语言",
