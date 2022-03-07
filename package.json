@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:nav": "vuepress nav docs"
+  },
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "blog ",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.9.0"
+  },
+  "dependencies": {
+    "vuepress-theme-reco": "^1.6.10"
+  }
+}
