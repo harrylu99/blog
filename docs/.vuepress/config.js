@@ -139,6 +139,11 @@ module.exports = {
               collapsable: true,
               children: [{ title: "About Vue", path: "/vue/About" }],
             },
+            {
+              title: "ASP.NET",
+              collapsable: true,
+              children: [{ title: "About ASP.NET", path: "/ASP.NET/About" }],
+            },
           ],
         },
       },
