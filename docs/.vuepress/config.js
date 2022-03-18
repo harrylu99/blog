@@ -14,6 +14,7 @@ module.exports = {
       description: "个人博客",
     },
   },
+  plugins: [],
   theme: "reco",
   themeConfig: {
     subSidebar: "auto",
@@ -59,12 +60,18 @@ module.exports = {
                   title: "Basic",
                   collapsable: true,
                   children: [
-                    { title: "About JavaScript", path: "/jsBasic/About" },
+                    {
+                      title: "About JavaScript",
+                      path: "/jsBasic/About",
+                    },
                     {
                       title: "Prototype and Prototype chain",
                       path: "/jsBasic/Prototype",
                     },
-                    { title: "Scope", path: "/jsBasic/Scope" },
+                    {
+                      title: "Scope",
+                      path: "/jsBasic/Scope",
+                    },
                     {
                       title: "Execution Stack",
                       path: "/jsBasic/ExecutionStack",
@@ -73,15 +80,30 @@ module.exports = {
                       title: "Variable Object",
                       path: "/jsBasic/VariableObject",
                     },
-                    { title: "Scope Chain", path: "/jsBasic/ScopeChain" },
-                    { title: "This", path: "/jsBasic/This" },
+                    {
+                      title: "Scope Chain",
+                      path: "/jsBasic/ScopeChain",
+                    },
+                    {
+                      title: "This",
+                      path: "/jsBasic/This",
+                    },
                     {
                       title: "Execution Context",
                       path: "/jsBasic/ExecutionContext",
                     },
-                    { title: "Closure", path: "/jsBasic/Closure" },
-                    { title: "Debounce", path: "/jsBasic/Debounce" },
-                    { title: "Throttle", path: "/jsBasic/Throttle" },
+                    {
+                      title: "Closure",
+                      path: "/jsBasic/Closure",
+                    },
+                    {
+                      title: "Debounce",
+                      path: "/jsBasic/Debounce",
+                    },
+                    {
+                      title: "Throttle",
+                      path: "/jsBasic/Throttle",
+                    },
                   ],
                 },
                 // ES6
@@ -89,11 +111,26 @@ module.exports = {
                   title: "ES6",
                   collapsable: true,
                   children: [
-                    { title: "Let and Const", path: "/jsES6/LetAndConst" },
-                    { title: "Arrow Function", path: "/jsES6/ArrowFunction" },
-                    { title: "for...of", path: "/jsES6/ForOf" },
-                    { title: "Promise", path: "/jsES6/Promise" },
-                    { title: "Async ", path: "/jsES6/Async" },
+                    {
+                      title: "Let and Const",
+                      path: "/jsES6/LetAndConst",
+                    },
+                    {
+                      title: "Arrow Function",
+                      path: "/jsES6/ArrowFunction",
+                    },
+                    {
+                      title: "for...of",
+                      path: "/jsES6/ForOf",
+                    },
+                    {
+                      title: "Promise",
+                      path: "/jsES6/Promise",
+                    },
+                    {
+                      title: "Async ",
+                      path: "/jsES6/Async",
+                    },
                   ],
                 },
               ],
@@ -137,12 +174,61 @@ module.exports = {
             {
               title: "Vue",
               collapsable: true,
-              children: [{ title: "About Vue", path: "/vue/About" }],
+              children: [
+                {
+                  title: "About Vue",
+                  path: "/vue/About",
+                },
+              ],
             },
+
             {
-              title: "ASP.NET",
+              title: "BackEnd",
               collapsable: true,
-              children: [{ title: "About ASP.NET", path: "/ASP.NET/About" }],
+              children: [
+                // C#
+                {
+                  title: "C# Basic",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "About C#",
+                      path: "/cSharpBasic/About",
+                    },
+                    {
+                      title: "Structure and Data Type",
+                      path: "/cSharpBasic/StructureAndDataType",
+                    },
+                    {
+                      title: "Method",
+                      path: "/cSharpBasic/Method",
+                    },
+                    {
+                      title: "Nullable",
+                      path: "/cSharpBasic/Nullable",
+                    },
+                    {
+                      title: "Struct",
+                      path: "/cSharpBasic/Struct",
+                    },
+                    {
+                      title: "Class",
+                      path: "/cSharpBasic/Class",
+                    },
+                  ],
+                },
+                // ASP.NET
+                {
+                  title: "ASP.NET",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "About ASP.NET",
+                      path: "/ASP.NET/About",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
