@@ -14,6 +14,7 @@ module.exports = {
       description: "个人博客",
     },
   },
+  plugins: [],
   theme: "reco",
   themeConfig: {
     subSidebar: "auto",
@@ -59,29 +60,50 @@ module.exports = {
                   title: "Basic",
                   collapsable: true,
                   children: [
-                    { title: "About JavaScript", path: "/js/basic/About" },
+                    {
+                      title: "About JavaScript",
+                      path: "/jsBasic/About",
+                    },
                     {
                       title: "Prototype and Prototype chain",
-                      path: "/js/basic/Prototype",
+                      path: "/jsBasic/Prototype",
                     },
-                    { title: "Scope", path: "/js/basic/Scope" },
+                    {
+                      title: "Scope",
+                      path: "/jsBasic/Scope",
+                    },
                     {
                       title: "Execution Stack",
-                      path: "js/basic/ExecutionStack",
+                      path: "/jsBasic/ExecutionStack",
                     },
                     {
                       title: "Variable Object",
-                      path: "/js/basic/VariableObject",
+                      path: "/jsBasic/VariableObject",
                     },
-                    { title: "Scope Chain", path: "/js/basic/ScopeChain" },
-                    { title: "This", path: "/js/basic/This" },
+                    {
+                      title: "Scope Chain",
+                      path: "/jsBasic/ScopeChain",
+                    },
+                    {
+                      title: "This",
+                      path: "/jsBasic/This",
+                    },
                     {
                       title: "Execution Context",
-                      path: "/js/basic/ExecutionContext",
+                      path: "/jsBasic/ExecutionContext",
                     },
-                    { title: "Closure", path: "/js/basic/Closure" },
-                    { title: "Debounce", path: "/js/basic/Debounce" },
-                    { title: "Throttle", path: "/js/basic/Throttle" },
+                    {
+                      title: "Closure",
+                      path: "/jsBasic/Closure",
+                    },
+                    {
+                      title: "Debounce",
+                      path: "/jsBasic/Debounce",
+                    },
+                    {
+                      title: "Throttle",
+                      path: "/jsBasic/Throttle",
+                    },
                   ],
                 },
                 // ES6
@@ -89,11 +111,26 @@ module.exports = {
                   title: "ES6",
                   collapsable: true,
                   children: [
-                    { title: "Let and Const", path: "/js/es6/LetAndConst" },
-                    { title: "Arrow Function", path: "/js/es6/ArrowFunction" },
-                    { title: "for...of", path: "/js/es6/ForOf" },
-                    { title: "Promise", path: "/js/es6/Promise" },
-                    { title: "Async ", path: "/js/es6/Async" },
+                    {
+                      title: "Let and Const",
+                      path: "/jsES6/LetAndConst",
+                    },
+                    {
+                      title: "Arrow Function",
+                      path: "/jsES6/ArrowFunction",
+                    },
+                    {
+                      title: "for...of",
+                      path: "/jsES6/ForOf",
+                    },
+                    {
+                      title: "Promise",
+                      path: "/jsES6/Promise",
+                    },
+                    {
+                      title: "Async ",
+                      path: "/jsES6/Async",
+                    },
                   ],
                 },
               ],
@@ -108,26 +145,26 @@ module.exports = {
                   title: "Source Code",
                   collapsable: true,
                   children: [
-                    { title: "Concept", path: "/react/sourceCode/Concept" },
+                    { title: "Concept", path: "/reactSourceCode/Concept" },
                     {
                       title: "Architecture",
-                      path: "/react/sourceCode/Architecture",
+                      path: "/reactSourceCode/Architecture",
                     },
                     {
                       title: "New Architecture",
-                      path: "/react/sourceCode/NewArchitecture",
+                      path: "/reactSourceCode/NewArchitecture",
                     },
                     {
                       title: "Fiber - Mental Model",
-                      path: "/react/sourceCode/FiberMentalModel",
+                      path: "/reactSourceCode/FiberMentalModel",
                     },
                     {
                       title: "Fiber - Implementation",
-                      path: "/react/sourceCode/FiberImplementation",
+                      path: "/reactSourceCode/FiberImplementation",
                     },
                     {
                       title: "Fiber - Working Principle",
-                      path: "/react/sourceCode/FiberWorkingPrinciple",
+                      path: "/reactSourceCode/FiberWorkingPrinciple",
                     },
                   ],
                 },
@@ -137,11 +174,66 @@ module.exports = {
             {
               title: "Vue",
               collapsable: true,
-              children: [{ title: "About Vue", path: "/vue/About" }],
+              children: [
+                {
+                  title: "About Vue",
+                  path: "/vue/About",
+                },
+              ],
+            },
+
+            {
+              title: "BackEnd",
+              collapsable: true,
+              children: [
+                // C#
+                {
+                  title: "C# Basic",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "About C#",
+                      path: "/cSharpBasic/About",
+                    },
+                    {
+                      title: "Structure and Data Type",
+                      path: "/cSharpBasic/StructureAndDataType",
+                    },
+                    {
+                      title: "Method",
+                      path: "/cSharpBasic/Method",
+                    },
+                    {
+                      title: "Nullable",
+                      path: "/cSharpBasic/Nullable",
+                    },
+                    {
+                      title: "Struct",
+                      path: "/cSharpBasic/Struct",
+                    },
+                    {
+                      title: "Class",
+                      path: "/cSharpBasic/Class",
+                    },
+                  ],
+                },
+                // ASP.NET
+                {
+                  title: "ASP.NET",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "About ASP.NET",
+                      path: "/ASP.NET/About",
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
       },
+
       "/zh/": {
         // 多语言下拉菜单的标题
         selectText: "选择语言",

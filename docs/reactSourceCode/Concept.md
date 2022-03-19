@@ -59,7 +59,7 @@ It could be not time left for layout or render if the runtime of script needs mo
 
 From the example above, the script might needs more time for execution based on the amount of the components, which is 3000. And we could find out that the runtime of the JS is 73.65ms from the execution stack, which is much more than a FPS, it causes the FPS drops and page stutter.
 
-![execution stack of js](../../images/concept1.png)
+![execution stack of js](../images/concept1.png)
 
 How can we solve this? Ans yes, `React` have already slove this for us.
 
@@ -76,7 +76,7 @@ ReactDOM.unstable_createRoot(rootEl).render(<App />);
 
 And now, you could find out that our 'long mission' has been sliced into each FPS and usually it takes about 5ms. As we talked before, now the browser has enough time for layout and render.
 
-![execution stack of js 2](../../images/concept2.png)
+![execution stack of js 2](../images/concept2.png)
 
 Therefore, the key to help the neckbottle of CPU is implement the time slice. And the time slice is switch the synchronous update to the asynchronous update which could be paused.
 

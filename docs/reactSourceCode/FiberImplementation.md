@@ -92,7 +92,7 @@ function App() {
 
 The Fiber Tree should be looks like
 
-![Fiber Tree](../../images/fiber1.png)
+![Fiber Tree](../images/fiber1.png)
 
 ## Static data structure
 
