@@ -36,19 +36,19 @@ Some explain examples:
 
 With this reference, in JavaScript the global object is the Window object.
 
-```
+```js
 console.log(this); //Window
 ```
 
 The global object is an object that instantiated by the Object constructor.
 
-```
+```js
 console.log(this instanceof Object); // true
 ```
 
 In JavaScript, global objects have the window attribute pointing to themselves.
 
-```
+```js
 var a = 1;
 console.log(window.a); // 1
 
@@ -96,14 +96,13 @@ Variable objects include:
 
 For Example:
 
-```
+```js
 function foo(a) {
   var b = 2;
   function c() {}
-  var d = function() {};
+  var d = function () {};
 
   b = 3;
-
 }
 
 foo(1);
@@ -111,7 +110,7 @@ foo(1);
 
 After entering the execution contexts, the AO is
 
-```
+```js
 AO = {
     arguments: {
         0: 1,
@@ -130,7 +129,7 @@ During the code execution phase, the code is executed sequentially, modifying th
 
 Again, in the example above, when the code is finished executing, the AO is:
 
-```
+```js
 AO = {
     arguments: {
         0: 1,
@@ -157,28 +156,28 @@ In conclusion,
 
 1.
 
-```
+```js
 function foo() {
-    console.log(a);
-    a = 1;
+  console.log(a);
+  a = 1;
 }
 
 foo(); // ???
 
 function bar() {
-    a = 1;
-    console.log(a);
+  a = 1;
+  console.log(a);
 }
 bar(); // ???
 ```
 
 2.
 
-```
+```js
 console.log(foo);
 
-function foo(){
-    console.log("foo");
+function foo() {
+  console.log("foo");
 }
 
 var foo = 1;

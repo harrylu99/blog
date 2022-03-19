@@ -19,16 +19,16 @@ The opposite of the lexical scope is the dynamic scope which means the scope of 
 
 Try these code:
 
-```
+```js
 var value = 1;
 
 function foo() {
-    console.log(value);
+  console.log(value);
 }
 
 function bar() {
-    var value = 2;
-    foo();
+  var value = 2;
+  foo();
 }
 
 bar();
@@ -55,26 +55,26 @@ Some languages using dynamic scope
 
 ## Bonus Questions
 
-```
+```js
 var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f();
+function checkscope() {
+  var scope = "local scope";
+  function f() {
+    return scope;
+  }
+  return f();
 }
 checkscope();
 ```
 
-```
+```js
 var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f;
+function checkscope() {
+  var scope = "local scope";
+  function f() {
+    return scope;
+  }
+  return f;
 }
 checkscope()();
 ```

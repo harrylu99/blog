@@ -1,5 +1,5 @@
 ---
-title: ES6 Let and Const
+title: Let and Const
 date: 2022-01-25
 ---
 
@@ -7,19 +7,19 @@ date: 2022-01-25
 
 Variables declared through _var_ have hoisting feature.
 
-```
+```js
 if (condition) {
-    var value = 1;
+  var value = 1;
 }
 console.log(value);
 ```
 
 You might think it create value only when the condition is true and it should print error when the condition is false. However, the code is same the same as the code below because of the hoisting.
 
-```
+```js
 var value;
 if (condition) {
-    value = 1;
+  value = 1;
 }
 console.log(value);
 ```
@@ -28,7 +28,7 @@ The result is undefined when the condition is false.
 
 Besides, in the for loop
 
-```
+```js
 for (var i = 0; i < 10; i++) {
     ...
 }
@@ -49,16 +49,16 @@ Some characteristics of the _let_ and _const_
 
 1. Cannot be hoisting.
 
-```
+```js
 if (false) {
-    let value = 1;
+  let value = 1;
 }
 console.log(value); // Uncaught ReferenceError: value is not defined
 ```
 
 2. Dulicapte declaration returns error
 
-```
+```js
 var value = 1;
 let value = 2; // Uncaught SyntaxError: Identifier 'value' has already been declared
 ```
@@ -67,14 +67,14 @@ let value = 2; // Uncaught SyntaxError: Identifier 'value' has already been decl
 
 When you are using _var_ for declaration in the global scope, it will created an brand new global scope for the attribute of the gobal object.
 
-```
+```js
 var value = 1;
 console.log(window.value); // 1
 ```
 
 But it is not gonna happen when you using _let_ or _const_
 
-```
+```js
 let value = 1;
 console.log(window.value); // undefined
 ```
@@ -83,10 +83,10 @@ const is used for declare the constants, which cannot be modified after it has b
 
 note: const declaration does not allow to modify the bindings, but the values cloud be update. This means it is okay to update the values in the object when the object is declared by the const.
 
-```
+```js
 const data = {
-    value: 1
-}
+  value: 1,
+};
 
 // Okay
 data.value = 2;
@@ -100,65 +100,65 @@ data = {}; // Uncaught TypeError: Assignment to constant variable.
 
 The variable declared by _let_ and _const_ would not hosting to the top of the scope, it gives error when you tring to use the variable before it has been declared.
 
-```
+```js
 console.log(typeof value); // Uncaught ReferenceError: value is not defined
 let value = 1;
 ```
 
 The reason of it is that in JavaScripte enginee, either hosting them to the top of the scope(using var) or save the declaration in the TDZ. Visting the variables in the TDZ will triggers error. It can be visited after the variable declaration has been excuted and removed from the TDZ.
 
-```
+```js
 var value = "global";
 
 // Example 1
-(function() {
-    console.log(value);
+(function () {
+  console.log(value);
 
-    let value = 'local';
-}());
+  let value = "local";
+})();
 
 // Example 2
 {
-    console.log(value);
+  console.log(value);
 
-    const value = 'local';
-};
+  const value = "local";
+}
 ```
 
 In the examples above, error Uncaught ReferenceError: value is not defined will be given rather than print the "global" because of the TDZ.
 
 ## Block Scope in the Loop
 
-```
+```js
 var funcs = [];
 for (var i = 0; i < 3; i++) {
-    funcs[i] = function () {
-        console.log(i);
-    };
+  funcs[i] = function () {
+    console.log(i);
+  };
 }
 funcs[0](); // 3
 ```
 
-```
+```js
 var funcs = [];
 for (var i = 0; i < 3; i++) {
-    funcs[i] = (function(i){
-        return function() {
-            console.log(i);
-        }
-    }(i))
+  funcs[i] = (function (i) {
+    return function () {
+      console.log(i);
+    };
+  })(i);
 }
 funcs[0](); // 0
 ```
 
 ES6 let provide a new solution
 
-```
+```js
 var funcs = [];
 for (let i = 0; i < 3; i++) {
-    funcs[i] = function () {
-        console.log(i);
-    };
+  funcs[i] = function () {
+    console.log(i);
+  };
 }
 funcs[0](); // 0
 ```
@@ -167,9 +167,9 @@ The question is, why the value of i could be print here? In the pervious secrion
 
 If it is not dulicapte declarate, it should be given error when it process the second time's loop.
 
-```
+```js
 for (let i = 0; i < 3; i++) {
-  let i = 'abc';
+  let i = "abc";
   console.log(i);
 }
 // abc
@@ -177,9 +177,9 @@ for (let i = 0; i < 3; i++) {
 // abc
 ```
 
-```
+```js
 for (var i = 0; i < 3; i++) {
-  var i = 'abc';
+  var i = "abc";
   console.log(i);
 }
 // abc
@@ -195,9 +195,9 @@ What would layer do when we using the _let_
 
 To put it simple, create a hidden scope inside the brackets. And that's why we cloud get this.
 
-```
+```js
 for (let i = 0; i < 3; i++) {
-  let i = 'abc';
+  let i = "abc";
   console.log(i);
 }
 // abc
@@ -207,19 +207,19 @@ for (let i = 0; i < 3; i++) {
 
 Then, create a new variable everytime iterate the loop and initial it by using the value of the same variable in the pervious iterate.
 
-```
+```js
 var funcs = [];
 for (let i = 0; i < 3; i++) {
-    funcs[i] = function () {
-        console.log(i);
-    };
+  funcs[i] = function () {
+    console.log(i);
+  };
 }
 funcs[0](); // 0
 ```
 
 As the same as
 
-```
+```js
 //Pseudocode
 
 (let i = 0) {
@@ -247,12 +247,12 @@ When executing a function, the correct value could be found according to the lex
 
 What if we use _const_ ?
 
-```
+```js
 var funcs = [];
 for (const i = 0; i < 10; i++) {
-    funcs[i] = function () {
-        console.log(i);
-    };
+  funcs[i] = function () {
+    console.log(i);
+  };
 }
 funcs[0](); // Uncaught TypeError: Assignment to constant variable.
 ```
@@ -261,15 +261,16 @@ The reason why we got error here is that we are tring to modify the value of the
 
 Let's check about for in loop.
 
-```
-var funcs = [], object = {a: 1, b: 1, c: 1};
+```js
+var funcs = [],
+  object = { a: 1, b: 1, c: 1 };
 for (var key in object) {
-    funcs.push(function(){
-        console.log(key)
-    });
+  funcs.push(function () {
+    console.log(key);
+  });
 }
 
-funcs[0]()
+funcs[0]();
 ```
 
 the result is 'c'
@@ -284,48 +285,48 @@ And here, the result will be 'a' as well when we using _const_. The reason is th
 
 How are they be compiled in Babel? Let's check the code after compilation.
 
-```
+```js
 let value = 1;
 ```
 
 Compiled
 
-```
+```js
 var value = 1;
 ```
 
 We can find out that Babel have been compile the _let_ to _var_. Let's look at this example.
 
-```
-if(false){
-    let value = 1;
+```js
+if (false) {
+  let value = 1;
 }
 console.log(value); // Uncaught ReferenceError: value is not defined
 ```
 
 If it compile to _var_, the result must be undefined. However, Babel is smart, the compilation of it should be
 
-```
-if(false){
-    var _value = 1;
+```js
+if (false) {
+  var _value = 1;
 }
 console.log(value);
 ```
 
 Take a look at this example
 
-```
+```js
 let value = 1;
 {
-    let value = 2;
+  let value = 2;
 }
 value = 3;
 ```
 
-```
+```js
 var value = 1;
 {
-    var _value = 2;
+  var _value = 2;
 }
 value = 3;
 ```
@@ -334,29 +335,29 @@ The only difference between these two is that the variable names are different.
 
 So, what about the _let_ in the loop?
 
-```
+```js
 var funcs = [];
-for (let i = 0; i < 10; i++){
-    funcs[i] = function(){
-        console.log(i);
-    };
+for (let i = 0; i < 10; i++) {
+  funcs[i] = function () {
+    console.log(i);
+  };
 }
 funcs[0](); //0
 ```
 
 It have been compiled to
 
-```
+```js
 var funcs = [];
 
 var _loop = function _loop(i) {
-    funcs[i] = function () {
-        console.log(i);
-    };
+  funcs[i] = function () {
+    console.log(i);
+  };
 };
 
 for (var i = 0; i < 10; i++) {
-    _loop(i);
+  _loop(i);
 }
 funcs[0](); // 0
 ```

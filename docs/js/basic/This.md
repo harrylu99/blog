@@ -63,31 +63,31 @@ Referenced name is the name of the attribute.
 
 For example
 
-```
+```js
 var foo = 1;
 
 // Reference is：
 var fooReference = {
-    base: EnvironmentRecord,
-    name: 'foo',
-    strict: false
+  base: EnvironmentRecord,
+  name: "foo",
+  strict: false,
 };
 ```
 
-```
+```js
 var foo = {
-    bar: function () {
-        return this;
-    }
+  bar: function () {
+    return this;
+  },
 };
 
 foo.bar(); // foo
 
 // bar's Reference is：
 var BarReference = {
-    base: foo,
-    propertyName: 'bar',
-    strict: false
+  base: foo,
+  propertyName: "bar",
+  strict: false,
 };
 ```
 
@@ -109,16 +109,16 @@ Simple understanding: It returns true when the base value is an object.
 
 In addition, a method for obtaining the corresponding value from the Reference type is described in the 8.7.1: GetValue.
 
-```
+```js
 var foo = 1;
 
 var fooReference = {
-    base: EnvironmentRecord,
-    name: 'foo',
-    strict: false
+  base: EnvironmentRecord,
+  name: "foo",
+  strict: false,
 };
 
-GetValue(fooReference) // 1;
+GetValue(fooReference); // 1;
 ```
 
 GetValue returns the true value of the object.
@@ -178,28 +178,28 @@ MemberExpression :
 
 e.g.
 
-```
+```js
 function foo() {
- console.log(this)
- }
+  console.log(this);
+}
 
- foo(); // MemberExpression is foo
+foo(); // MemberExpression is foo
 
- function foo() {
-     return function() {
-         console.log(this)
-     }
- }
+function foo() {
+  return function () {
+    console.log(this);
+  };
+}
 
- foo()(); // MemberExpression is foo()
+foo()(); // MemberExpression is foo()
 
- var foo = {
-     bar: function () {
-         return this;
-     }
- }
+var foo = {
+  bar: function () {
+    return this;
+  },
+};
 
- foo.bar(); // MemberExpression is foo.bar
+foo.bar(); // MemberExpression is foo.bar
 ```
 
 So a simple understanding of MemberExpression is actually the left part of ().
@@ -210,26 +210,26 @@ The key is to see how the specification handles the various MemberExpressions, a
 
 e.g.
 
-```
- var value = 1;
+```js
+var value = 1;
 
- var foo = {
- value: 2,
- bar: function () {
-     return this.value;
- }
- }
+var foo = {
+  value: 2,
+  bar: function () {
+    return this.value;
+  },
+};
 
- //example 1
- console.log(foo.bar());
- //example 2
- console.log((foo.bar)());
- //example 3
- console.log((foo.bar = foo.bar)());
- //example 4
- console.log((false || foo.bar)());
- //example 5
- console.log((foo.bar, foo.bar)());
+//example 1
+console.log(foo.bar());
+//example 2
+console.log(foo.bar());
+//example 3
+console.log((foo.bar = foo.bar)());
+//example 4
+console.log((false || foo.bar)());
+//example 5
+console.log((foo.bar, foo.bar)());
 ```
 
 #### Example 1 foo.bar()
@@ -242,11 +242,11 @@ Check out the specification 11.2.1 Property Accessors, which shows a computation
 
 So we know that expression will return a Refrence type and the value is
 
-```
+```js
 var Reference = {
   base: foo,
-  name: 'bar',
-  strict: false
+  name: "bar",
+  strict: false,
 };
 ```
 
@@ -258,7 +258,7 @@ The base value is foo, which is an object, so the IsPropertyReference(ref) resul
 
 And we can know the value of **this** now.
 
-```
+```js
 this = GetBase(ref),
 ```
 
@@ -268,8 +268,8 @@ We do spend a lot of time to prove this point to foo, but after we knowing the p
 
 #### Example 2 (foo.bar)()
 
-```
-console.log((foo.bar)());
+```js
+console.log(foo.bar());
 ```
 
 foo.bar wrapped by (), check specification 11.1.6 The Grouping Operator.
@@ -316,20 +316,20 @@ The return value is not Refrence type caused it used GetValue and this is undefi
 
 #### Result
 
-```
+```js
 var value = 1;
 
 var foo = {
   value: 2,
   bar: function () {
     return this.value;
-  }
-}
+  },
+};
 
 //Example 1
 console.log(foo.bar()); // 2
 //Example 2
-console.log((foo.bar)()); // 2
+console.log(foo.bar()); // 2
 //Example 3
 console.log((foo.bar = foo.bar)()); // 1
 //Example 4
@@ -342,9 +342,9 @@ Note: In strict mode, example 2.3 will report error.
 
 #### Bonus
 
-```
+```js
 function foo() {
-    console.log(this)
+  console.log(this);
 }
 
 foo();
@@ -352,11 +352,11 @@ foo();
 
 MemberExpression is foo, parses identifiers, check the specification 10.3.1 Identifier Resolution, it returns a value of type Reference:
 
-```
+```js
 var fooReference = {
-    base: EnvironmentRecord,
-    name: 'foo',
-    strict: false
+  base: EnvironmentRecord,
+  name: "foo",
+  strict: false,
 };
 ```
 

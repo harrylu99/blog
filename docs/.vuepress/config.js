@@ -1,141 +1,197 @@
 module.exports = {
   title: `Harry's Blog`,
-  description: 'Almost there...',
-  base: '/blog/',
+  description: "Almost there...",
+  base: "/blog/",
   locales: {
-    '/': {
-      lang: 'en-US',
+    "/": {
+      lang: "en-US",
       title: `Harry's Blog`,
       description: ` 👨‍💻console.log( ) `,
     },
-    '/zh/': {
-      lang: 'zh-CN',
-      title: '个人博客',
-      description: '个人博客',
+    "/zh/": {
+      lang: "zh-CN",
+      title: "个人博客",
+      description: "个人博客",
     },
   },
-  theme: 'reco',
+  theme: "reco",
   themeConfig: {
-    subSidebar: 'auto',
+    subSidebar: "auto",
     noFoundPageByTencent: false,
-    author: 'Harry Lu',
-    startYear: '2022',
+    author: "Harry Lu",
+    startYear: "2022",
     locales: {
-      '/': {
-        selectText: 'Languages',
-        label: 'English',
-        ariaLabel: 'Languages',
-        editLinkText: 'Edit this page on GitHub',
+      "/": {
+        selectText: "Languages",
+        label: "English",
+        ariaLabel: "Languages",
+        editLinkText: "Edit this page on GitHub",
         serviceWorker: {
           updatePopup: {
-            message: 'New content is available.',
-            buttonText: 'Refresh',
+            message: "New content is available.",
+            buttonText: "Refresh",
           },
         },
         algolia: {},
-        lastUpdated: 'Last Updated', // string | boolean,
+        lastUpdated: "Last Updated", // string | boolean,
         nav: [
-          { text: 'Home', link: '/' },
+          { text: "Home", link: "/" },
           {
-            text: 'My Site',
-            link: 'https://harrylu99.github.io',
-            icon: 'reco-coding',
+            text: "My Site",
+            link: "https://harrylu99.github.io",
+            icon: "reco-coding",
           },
           // { text: 'Suggestion', link: 'https://harrylu99.github.io', icon: 'reco-suggestion' },
         ],
         sidebar: {
-          '/': [
+          "/": [
             {
-              title: '👨‍💻 About this blog',
-              path: '/',
+              title: "👨‍💻 About this blog",
+              path: "/",
               collapsable: false,
             },
             {
-              title: 'JavaScript',
+              title: "JavaScript",
               collapsable: true,
               children: [
-                { title: 'About JavaScript', path: '/js/About' },
+                // Basic
                 {
-                  title: 'Prototype and Prototype chain',
-                  path: '/js/Prototype',
+                  title: "Basic",
+                  collapsable: true,
+                  children: [
+                    { title: "About JavaScript", path: "/js/basic/About" },
+                    {
+                      title: "Prototype and Prototype chain",
+                      path: "/js/basic/Prototype",
+                    },
+                    { title: "Scope", path: "/js/basic/Scope" },
+                    {
+                      title: "Execution Stack",
+                      path: "js/basic/ExecutionStack",
+                    },
+                    {
+                      title: "Variable Object",
+                      path: "/js/basic/VariableObject",
+                    },
+                    { title: "Scope Chain", path: "/js/basic/ScopeChain" },
+                    { title: "This", path: "/js/basic/This" },
+                    {
+                      title: "Execution Context",
+                      path: "/js/basic/ExecutionContext",
+                    },
+                    { title: "Closure", path: "/js/basic/Closure" },
+                    { title: "Debounce", path: "/js/basic/Debounce" },
+                    { title: "Throttle", path: "/js/basic/Throttle" },
+                  ],
                 },
-                { title: 'Scope', path: '/js/Scope' },
-                { title: 'Execution Stack', path: 'js/ExecutionStack' },
-                { title: 'Variable Object', path: '/js/VariableObject' },
-                { title: 'Scope Chain', path: '/js/ScopeChain' },
-                { title: 'This', path: '/js/This' },
-                { title: 'Execution Context', path: '/js/ExecutionContext' },
-                { title: 'Closure', path: '/js/Closure' },
-                { title: 'Debounce', path: '/js/Debounce' },
-                { title: 'Throttle', path: '/js/Throttle' },
-
-                { title: 'ES6 Arrow Function', path: '/js/ArrowFunction' },
-                { title: 'ES6 Let and Const', path: '/js/LetAndConst' },
+                // ES6
+                {
+                  title: "ES6",
+                  collapsable: true,
+                  children: [
+                    { title: "Let and Const", path: "/js/es6/LetAndConst" },
+                    { title: "Arrow Function", path: "/js/es6/ArrowFunction" },
+                    { title: "for...of", path: "/js/es6/ForOf" },
+                    { title: "Promise", path: "/js/es6/Promise" },
+                    { title: "Async ", path: "/js/es6/Async" },
+                  ],
+                },
               ],
             },
+
             {
-              title: 'React',
+              title: "React",
               collapsable: true,
-              children: [{ title: 'About React', path: '/react/About' }],
+              children: [
+                // Source Code
+                {
+                  title: "Source Code",
+                  collapsable: true,
+                  children: [
+                    { title: "Concept", path: "/react/sourceCode/Concept" },
+                    {
+                      title: "Architecture",
+                      path: "/react/sourceCode/Architecture",
+                    },
+                    {
+                      title: "New Architecture",
+                      path: "/react/sourceCode/NewArchitecture",
+                    },
+                    {
+                      title: "Fiber - Mental Model",
+                      path: "/react/sourceCode/FiberMentalModel",
+                    },
+                    {
+                      title: "Fiber - Implementation",
+                      path: "/react/sourceCode/FiberImplementation",
+                    },
+                    {
+                      title: "Fiber - Working Principle",
+                      path: "/react/sourceCode/FiberWorkingPrinciple",
+                    },
+                  ],
+                },
+              ],
             },
+
             {
-              title: 'Vue',
+              title: "Vue",
               collapsable: true,
-              children: [{ title: 'About Vue', path: '/vue/About' }],
+              children: [{ title: "About Vue", path: "/vue/About" }],
             },
           ],
         },
       },
-      '/zh/': {
+      "/zh/": {
         // 多语言下拉菜单的标题
-        selectText: '选择语言',
+        selectText: "选择语言",
         // 该语言在下拉菜单中的标签
-        label: '简体中文',
+        label: "简体中文",
         // 编辑链接文字
-        editLinkText: '在 GitHub 上编辑此页',
+        editLinkText: "在 GitHub 上编辑此页",
         // Service Worker 的配置
         serviceWorker: {
           updatePopup: {
-            message: '发现新内容可用.',
-            buttonText: '刷新',
+            message: "发现新内容可用.",
+            buttonText: "刷新",
           },
         },
         // 当前 locale 的 algolia docsearch 选项
         algolia: {},
-        lastUpdated: '最后更新', // string | boolean,
+        lastUpdated: "最后更新", // string | boolean,
         nav: [
-          { text: 'Home', link: '/zh' },
+          { text: "Home", link: "/zh" },
           {
-            text: 'GitHub',
-            link: 'https://github.com/harrylu99',
-            icon: 'reco-github',
+            text: "GitHub",
+            link: "https://github.com/harrylu99",
+            icon: "reco-github",
           },
         ],
         sidebar: {
-          '/zh/': [
+          "/zh/": [
             {
-              title: '关于博客',
-              path: '/zh/',
+              title: "关于博客",
+              path: "/zh/",
               collapsable: false,
             },
             {
-              title: 'JavaScript',
+              title: "JavaScript",
               collapsable: true,
-              children: [{ title: 'About JavaScript', path: '/zh/js/About' }],
+              children: [{ title: "About JavaScript", path: "/zh/js/About" }],
             },
             {
-              title: 'React',
+              title: "React",
               collapsable: true,
-              children: [{ title: 'About React', path: '/zh/react/About' }],
+              children: [{ title: "About React", path: "/zh/react/About" }],
             },
             {
-              title: 'Vue',
+              title: "Vue",
               collapsable: true,
-              children: [{ title: 'About Vue', path: '/zh/vue/About' }],
+              children: [{ title: "About Vue", path: "/zh/vue/About" }],
             },
           ],
         },
       },
     },
   },
-}
+};

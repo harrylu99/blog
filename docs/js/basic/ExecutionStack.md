@@ -7,37 +7,29 @@ date: 2022-01-19
 
 Compare the code
 
-```
+```js
 var foo = function () {
+  console.log("foo1");
+};
 
-    console.log('foo1');
-
-}
-
-foo();  // foo1
+foo(); // foo1
 
 var foo = function () {
-
-    console.log('foo2');
-
-}
+  console.log("foo2");
+};
 
 foo(); // foo2
 ```
 
-```
+```js
 function foo() {
-
-    console.log('foo1');
-
+  console.log("foo1");
 }
 
-foo();  // foo2
+foo(); // foo2
 
 function foo() {
-
-    console.log('foo2');
-
+  console.log("foo2");
 }
 
 foo(); // foo2
@@ -65,31 +57,29 @@ So the JavaScript engine creates an Execution context stack (ECS) to manage the 
 
 To simulate the behaviour of the ECS, let's define the ECS as an array:
 
-```
+```js
 ECStack = [];
 ```
 
 Imagine when JavaScript starts to explain the execution code, the first thing you will meet is the global code. As a result, when initializing, you will press a global execution context into the ECS, we use globalContext to represent it here and only when the entire application ends, ECStack will be emptied. So, before the end of the program, there will always be a globalContext at the bottom of the ECStack:
 
-```
-ECStack = [
-    globalContext
-];
+```js
+ECStack = [globalContext];
 ```
 
 And here is code we will have
 
-```
+```js
 function fun3() {
-    console.log('fun3')
+  console.log("fun3");
 }
 
 function fun2() {
-    fun3();
+  fun3();
 }
 
 function fun1() {
-    fun2();
+  fun2();
 }
 
 fun1();
@@ -97,7 +87,7 @@ fun1();
 
 When a function is executed, an execution context is created and pushed into the execution context stack, and when the function is finished executing, the execution context of the function is popped out of the stack. Let's take a look at how to handle the above code:
 
-```
+```js
 // Pseudocode
 
 // fun1()
@@ -126,26 +116,26 @@ ECStack.pop();
 
 Okay, now we understand how the execution context stack handles execution context, let's take a look at the question of the previous article:
 
-```
+```js
 var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f();
+function checkscope() {
+  var scope = "local scope";
+  function f() {
+    return scope;
+  }
+  return f();
 }
 checkscope();
 ```
 
-```
+```js
 var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f;
+function checkscope() {
+  var scope = "local scope";
+  function f() {
+    return scope;
+  }
+  return f;
 }
 checkscope()();
 ```
@@ -156,7 +146,7 @@ The answer is their execution context stack changes differently.
 
 Let's mock the first part:
 
-```
+```js
 ECStack.push(<checkscope> functionContext);
 ECStack.push(<f> functionContext);
 ECStack.pop();
@@ -165,7 +155,7 @@ ECStack.pop();
 
 And here is the second part:
 
-```
+```js
 ECStack.push(<checkscope> functionContext);
 ECStack.pop();
 ECStack.push(<f> functionContext);

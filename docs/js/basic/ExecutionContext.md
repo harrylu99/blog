@@ -18,26 +18,26 @@ And in the previous articles, we have talked about Variable Object, Scope Chain 
 
 Take a look at these code script.
 
-```
+```js
 var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f();
+function checkscope() {
+  var scope = "local scope";
+  function f() {
+    return scope;
+  }
+  return f();
 }
 checkscope();
 ```
 
-```
+```js
 var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f;
+function checkscope() {
+  var scope = "local scope";
+  function f() {
+    return scope;
+  }
+  return f;
 }
 checkscope()();
 ```
@@ -52,29 +52,24 @@ Let's start with the first script.
 
 1. Global code executed and a global execution context has been created, the global context is pressed into the execution context stack.
 
-```
-ECStack = [
-    globalContext
-];
+```js
+ECStack = [globalContext];
 ```
 
 2. Global context initialization.
 
-```
+```js
 globalContext = {
-    VO: [global],
-    Scope: [globalContext.VO],
-    this: globalContext.VO
-}
+  VO: [global],
+  Scope: [globalContext.VO],
+  this: globalContext.VO,
+};
 ```
 
 3. Execute the checkscope function, create the checkscope function execution context and the execution context of the checkscope function is pressed into the execution context stack.
 
-```
-ECStack = [
-    checkscopeContext,
-    globalContext
-];
+```js
+ECStack = [checkscopeContext, globalContext];
 ```
 
 4. The execution context of the checkscope function starts initializing.
@@ -89,7 +84,7 @@ ECStack = [
 
 At the same time, the f function has been created, saving the scope chain with the inside attribute [[scope]] of the f function.
 
-```
+```js
 checkscopeContext = {
     AO: {
         arguments: {
@@ -105,57 +100,48 @@ checkscopeContext = {
 
 5. Execute f function, execution context of f function has been created, execution context of f function press into the stack.
 
-```
-ECStack = [
-    fContext,
-    checkscopeContext,
-    globalContext
-];
+```js
+ECStack = [fContext, checkscopeContext, globalContext];
 ```
 
 6. The execution context of the f function starts initializing. Same as the step 4.
 
-```
+```js
 fContext = {
-    AO: {
-        arguments: {
-            length: 0
-        }
+  AO: {
+    arguments: {
+      length: 0,
     },
-    Scope: [AO, checkscopeContext.AO, globalContext.VO],
-    this: undefined
-}
+  },
+  Scope: [AO, checkscopeContext.AO, globalContext.VO],
+  this: undefined,
+};
 ```
 
 7. The f function starts executing, looking up the value of scope with the scope chain and returning the scope value.
 
 8. The f function finished, execution context of f function pops out of the execution context stack.
 
-```
-ECStack = [
-    checkscopeContext,
-    globalContext
-];
+```js
+ECStack = [checkscopeContext, globalContext];
 ```
 
 9. The checkscope function finished, execution context of the checkscope function pops out of the stack.
 
-```
-ECStack = [
-    globalContext
-];
+```js
+ECStack = [globalContext];
 ```
 
 Now, you could try to think about the process of the second script by yourself.
 
-```
+```js
 var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f;
+function checkscope() {
+  var scope = "local scope";
+  function f() {
+    return scope;
+  }
+  return f;
 }
 checkscope()();
 ```
