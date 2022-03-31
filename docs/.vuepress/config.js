@@ -36,7 +36,7 @@ module.exports = {
         algolia: {},
         lastUpdated: "Last Updated", // string | boolean,
         nav: [
-          { text: "Home", link: "/" },
+          { text: "Home", link: "/", icon: "reco-home" },
           {
             text: "My Site",
             link: "https://harrylu99.github.io",
@@ -171,21 +171,40 @@ module.exports = {
               ],
             },
 
-            {
-              title: "Vue",
-              collapsable: true,
-              children: [
-                {
-                  title: "About Vue",
-                  path: "/vue/About",
-                },
-              ],
-            },
+            // {
+            //   title: "Vue",
+            //   collapsable: true,
+            //   children: [
+            //     {
+            //       title: "About Vue",
+            //       path: "/vue/About",
+            //     },
+            //   ],
+            // },
 
             {
               title: "BackEnd",
               collapsable: true,
               children: [
+                // BackEnd Basic
+                {
+                  title: "BackEnd Basic",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Notes",
+                      path: "/backEndBasic/Notes",
+                    },
+                    {
+                      title: "ORM",
+                      path: "/backEndBasic/ORM",
+                    },
+                    {
+                      title: ".Net MVC",
+                      path: "/backEndBasic/MVC",
+                    },
+                  ],
+                },
                 // C#
                 {
                   title: "C# Basic",
@@ -215,16 +234,13 @@ module.exports = {
                       title: "Class",
                       path: "/cSharpBasic/Class",
                     },
-                  ],
-                },
-                // ASP.NET
-                {
-                  title: "ASP.NET",
-                  collapsable: true,
-                  children: [
                     {
-                      title: "About ASP.NET",
-                      path: "/ASP.NET/About",
+                      title: "Inheritance",
+                      path: "cSharpBasic/Inheritance",
+                    },
+                    {
+                      title: "Polymorphism",
+                      path: "cSharpBasic/Polymorphism",
                     },
                   ],
                 },

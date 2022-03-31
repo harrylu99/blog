@@ -33,7 +33,7 @@ The defination start with the keyword `class`, followed by the name of the class
 }
 ```
 
-::: tip Notice
+::: tip Tips
 
 - Access Specifier specifies access rules to the class and its members. If not specified, the default access identifier is used. The default access identifier for the class is `internal`, and the default access identifier for members is `private`.
 - Data type specifies the type of the variable, return type specifies the data type returned by the returned method.
