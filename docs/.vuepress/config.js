@@ -186,6 +186,25 @@ module.exports = {
               title: "BackEnd",
               collapsable: true,
               children: [
+                // BackEnd Basic
+                {
+                  title: "BackEnd Basic",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Notes",
+                      path: "/backEndBasic/Notes",
+                    },
+                    {
+                      title: "ORM",
+                      path: "/backEndBasic/ORM",
+                    },
+                    {
+                      title: ".Net MVC",
+                      path: "/backEndBasic/MVC",
+                    },
+                  ],
+                },
                 // C#
                 {
                   title: "C# Basic",
@@ -224,21 +243,6 @@ module.exports = {
                       path: "cSharpBasic/Polymorphism",
                     },
                   ],
-                },
-                // // ASP.NET
-                // {
-                //   title: "ASP.NET",
-                //   collapsable: true,
-                //   children: [
-                //     {
-                //       title: "About ASP.NET",
-                //       path: "/ASP.NET/About",
-                //     },
-                //   ],
-                // },
-                {
-                  title: "Notes",
-                  path: "/BackEndNotes",
                 },
               ],
             },
