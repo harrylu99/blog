@@ -62,47 +62,47 @@ module.exports = {
                   children: [
                     {
                       title: "About JavaScript",
-                      path: "/jsBasic/About",
+                      path: "/jsBasic/about",
                     },
                     {
                       title: "Prototype and Prototype chain",
-                      path: "/jsBasic/Prototype",
+                      path: "/jsBasic/prototype",
                     },
                     {
                       title: "Scope",
-                      path: "/jsBasic/Scope",
+                      path: "/jsBasic/scope",
                     },
                     {
                       title: "Execution Stack",
-                      path: "/jsBasic/ExecutionStack",
+                      path: "/jsBasic/executionStack",
                     },
                     {
                       title: "Variable Object",
-                      path: "/jsBasic/VariableObject",
+                      path: "/jsBasic/variableObject",
                     },
                     {
                       title: "Scope Chain",
-                      path: "/jsBasic/ScopeChain",
+                      path: "/jsBasic/scopeChain",
                     },
                     {
                       title: "This",
-                      path: "/jsBasic/This",
+                      path: "/jsBasic/this",
                     },
                     {
                       title: "Execution Context",
-                      path: "/jsBasic/ExecutionContext",
+                      path: "/jsBasic/executionContext",
                     },
                     {
                       title: "Closure",
-                      path: "/jsBasic/Closure",
+                      path: "/jsBasic/closure",
                     },
                     {
                       title: "Debounce",
-                      path: "/jsBasic/Debounce",
+                      path: "/jsBasic/debounce",
                     },
                     {
                       title: "Throttle",
-                      path: "/jsBasic/Throttle",
+                      path: "/jsBasic/throttle",
                     },
                   ],
                 },
@@ -113,23 +113,23 @@ module.exports = {
                   children: [
                     {
                       title: "Let and Const",
-                      path: "/jsES6/LetAndConst",
+                      path: "/jsES6/letAndConst",
                     },
                     {
                       title: "Arrow Function",
-                      path: "/jsES6/ArrowFunction",
+                      path: "/jsES6/arrowFunction",
                     },
                     {
                       title: "for...of",
-                      path: "/jsES6/ForOf",
+                      path: "/jsES6/forOf",
                     },
                     {
                       title: "Promise",
-                      path: "/jsES6/Promise",
+                      path: "/jsES6/promise",
                     },
                     {
                       title: "Async ",
-                      path: "/jsES6/Async",
+                      path: "/jsES6/async",
                     },
                   ],
                 },
@@ -145,26 +145,38 @@ module.exports = {
                   title: "Source Code",
                   collapsable: true,
                   children: [
-                    { title: "Concept", path: "/reactSourceCode/Concept" },
+                    { title: "Concept", path: "/reactSourceCode/concept" },
                     {
                       title: "Architecture",
-                      path: "/reactSourceCode/Architecture",
+                      path: "/reactSourceCode/architecture",
                     },
                     {
                       title: "New Architecture",
-                      path: "/reactSourceCode/NewArchitecture",
+                      path: "/reactSourceCode/newArchitecture",
                     },
                     {
                       title: "Fiber - Mental Model",
-                      path: "/reactSourceCode/FiberMentalModel",
+                      path: "/reactSourceCode/fiberMentalModel",
                     },
                     {
                       title: "Fiber - Implementation",
-                      path: "/reactSourceCode/FiberImplementation",
+                      path: "/reactSourceCode/fiberImplementation",
                     },
                     {
                       title: "Fiber - Working Principle",
-                      path: "/reactSourceCode/FiberWorkingPrinciple",
+                      path: "/reactSourceCode/fiberWorkingPrinciple",
+                    },
+                    {
+                      title: "File Structure",
+                      path: "/reactSourceCode/fileStructure",
+                    },
+                    {
+                      title: "render - Overview",
+                      path: "/reactSourceCode/renderOverview",
+                    },
+                    {
+                      title: "render - beginWork",
+                      path: "/reactSourceCode/renderBeginWork",
                     },
                   ],
                 },
@@ -193,7 +205,7 @@ module.exports = {
                   children: [
                     {
                       title: "Notes",
-                      path: "/backEndBasic/Notes",
+                      path: "/backEndBasic/notes",
                     },
                     {
                       title: "ORM",
@@ -212,35 +224,35 @@ module.exports = {
                   children: [
                     {
                       title: "About C#",
-                      path: "/cSharpBasic/About",
+                      path: "/cSharpBasic/about",
                     },
                     {
                       title: "Structure and Data Type",
-                      path: "/cSharpBasic/StructureAndDataType",
+                      path: "/cSharpBasic/structureAndDataType",
                     },
                     {
                       title: "Method",
-                      path: "/cSharpBasic/Method",
+                      path: "/cSharpBasic/method",
                     },
                     {
                       title: "Nullable",
-                      path: "/cSharpBasic/Nullable",
+                      path: "/cSharpBasic/nullable",
                     },
                     {
                       title: "Struct",
-                      path: "/cSharpBasic/Struct",
+                      path: "/cSharpBasic/struct",
                     },
                     {
                       title: "Class",
-                      path: "/cSharpBasic/Class",
+                      path: "/cSharpBasic/class",
                     },
                     {
                       title: "Inheritance",
-                      path: "cSharpBasic/Inheritance",
+                      path: "cSharpBasic/inheritance",
                     },
                     {
                       title: "Polymorphism",
-                      path: "cSharpBasic/Polymorphism",
+                      path: "cSharpBasic/polymorphism",
                     },
                   ],
                 },

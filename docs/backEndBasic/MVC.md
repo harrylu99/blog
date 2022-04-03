@@ -1,5 +1,5 @@
 ---
-title: MVC basic
+title: MVC
 date: 2022-03-29
 ---
 
