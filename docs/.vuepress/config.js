@@ -38,8 +38,8 @@ module.exports = {
         nav: [
           { text: "Home", link: "/", icon: "reco-home" },
           {
-            text: "My Site",
-            link: "https://harrylu99.github.io",
+            text: "About Me",
+            link: "https://github.com/harrylu99",
             icon: "reco-coding",
           },
           // { text: 'Suggestion', link: 'https://harrylu99.github.io', icon: 'reco-suggestion' },
@@ -171,12 +171,32 @@ module.exports = {
                       path: "/reactSourceCode/fileStructure",
                     },
                     {
-                      title: "render - Overview",
+                      title: "Render - Overview",
                       path: "/reactSourceCode/renderOverview",
                     },
                     {
-                      title: "render - beginWork",
+                      title: "Render - beginWork",
                       path: "/reactSourceCode/renderBeginWork",
+                    },
+                    {
+                      title: "Render - completeWork",
+                      path: "/reactSourceCode/renderCompleteWork",
+                    },
+                    {
+                      title: "Commit - Overview",
+                      path: "/reactSourceCode/commitOverview",
+                    },
+                    {
+                      title: "Commit - Before Mutation",
+                      path: "/reactSourceCode/commitBeforeMutation",
+                    },
+                    {
+                      title: "Commit - Mutation",
+                      path: "/reactSourceCode/commitMutation",
+                    },
+                    {
+                      title: "Commit - Layout",
+                      path: "/reactSourceCode/commitLayout",
                     },
                   ],
                 },
@@ -282,7 +302,7 @@ module.exports = {
         nav: [
           { text: "Home", link: "/zh" },
           {
-            text: "GitHub",
+            text: "关于我",
             link: "https://github.com/harrylu99",
             icon: "reco-github",
           },
