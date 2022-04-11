@@ -1,6 +1,6 @@
 ---
 title: Commit -- Before Mutation
-date: 2022-04-13
+date: 2022-04-09
 ---
 
 ## Foreword
