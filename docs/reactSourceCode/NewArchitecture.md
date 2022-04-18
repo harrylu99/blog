@@ -3,7 +3,7 @@ title: New Architecture
 date: 2022-03-03
 ---
 
-## Foreward
+## Foreword
 
 We are going to talk about how does `React` support asynchronous updates in React 16.
 

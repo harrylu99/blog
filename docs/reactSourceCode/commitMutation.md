@@ -3,7 +3,7 @@ title: Commit -- Mutation
 date: 2022-04-11
 ---
 
-## Foreward
+## Foreword
 
 Same as `before mutation` stage, `mutation` stage is aslo traverse the `effectList`, executaion function which is `commitMutationEffects`.
 

@@ -198,6 +198,18 @@ module.exports = {
                       title: "Commit - Layout",
                       path: "/reactSourceCode/commitLayout",
                     },
+                    {
+                      title: "Diff - Overview",
+                      path: "/reactSourceCode/diffOverview",
+                    },
+                    {
+                      title: "Diff - Single Node",
+                      path: "/reactSourceCode/diffSingleNode",
+                    },
+                    {
+                      title: "Diff - Multiple Node",
+                      path: "/reactSourceCode/diffMultipleNode",
+                    },
                   ],
                 },
               ],
