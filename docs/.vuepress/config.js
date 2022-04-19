@@ -137,15 +137,88 @@ module.exports = {
             },
 
             {
-              title: "React",
+              title: "React Source Code",
               collapsable: true,
               children: [
-                // Source Code
+                // {
+                //   title: "Source Code",
+                //   collapsable: true,
+                //   children: [
+                //     { title: "Concept", path: "/reactSourceCode/concept" },
+                //     {
+                //       title: "Architecture",
+                //       path: "/reactSourceCode/architecture",
+                //     },
+                //     {
+                //       title: "New Architecture",
+                //       path: "/reactSourceCode/newArchitecture",
+                //     },
+                //     {
+                //       title: "Fiber - Mental Model",
+                //       path: "/reactSourceCode/fiberMentalModel",
+                //     },
+                //     {
+                //       title: "Fiber - Implementation",
+                //       path: "/reactSourceCode/fiberImplementation",
+                //     },
+                //     {
+                //       title: "Fiber - Working Principle",
+                //       path: "/reactSourceCode/fiberWorkingPrinciple",
+                //     },
+                //     {
+                //       title: "File Structure",
+                //       path: "/reactSourceCode/fileStructure",
+                //     },
+                //     {
+                //       title: "Render -----",
+                //       path: "/reactSourceCode/renderOverview",
+                //     },
+                //     {
+                //       title: "beginWork",
+                //       path: "/reactSourceCode/renderBeginWork",
+                //     },
+                //     {
+                //       title: "completeWork",
+                //       path: "/reactSourceCode/renderCompleteWork",
+                //     },
+                //     {
+                //       title: "Commit -----",
+                //       path: "/reactSourceCode/commitOverview",
+                //     },
+                //     {
+                //       title: "Before Mutation",
+                //       path: "/reactSourceCode/commitBeforeMutation",
+                //     },
+                //     {
+                //       title: "Mutation",
+                //       path: "/reactSourceCode/commitMutation",
+                //     },
+                //     {
+                //       title: "Layout",
+                //       path: "/reactSourceCode/commitLayout",
+                //     },
+                //     {
+                //       title: "Diff -----",
+                //       path: "/reactSourceCode/diffOverview",
+                //     },
+                //     {
+                //       title: "Single Node",
+                //       path: "/reactSourceCode/diffSingleNode",
+                //     },
+                //     {
+                //       title: "Multiple Node",
+                //       path: "/reactSourceCode/diffMultipleNode",
+                //     },
+                //   ],
+                // },
                 {
-                  title: "Source Code",
+                  title: "Concept",
                   collapsable: true,
                   children: [
-                    { title: "Concept", path: "/reactSourceCode/concept" },
+                    {
+                      title: "Concept",
+                      path: "/reactSourceCode/concept",
+                    },
                     {
                       title: "Architecture",
                       path: "/reactSourceCode/architecture",
@@ -155,77 +228,99 @@ module.exports = {
                       path: "/reactSourceCode/newArchitecture",
                     },
                     {
-                      title: "Fiber - Mental Model",
-                      path: "/reactSourceCode/fiberMentalModel",
-                    },
-                    {
-                      title: "Fiber - Implementation",
-                      path: "/reactSourceCode/fiberImplementation",
-                    },
-                    {
-                      title: "Fiber - Working Principle",
-                      path: "/reactSourceCode/fiberWorkingPrinciple",
-                    },
-                    {
                       title: "File Structure",
                       path: "/reactSourceCode/fileStructure",
                     },
+                  ],
+                },
+                {
+                  title: "Fiber",
+                  collapsable: true,
+                  children: [
                     {
-                      title: "Render - Overview",
+                      title: "Mental Model",
+                      path: "/reactSourceCode/fiberMentalModel",
+                    },
+                    {
+                      title: "Implementation",
+                      path: "/reactSourceCode/fiberImplementation",
+                    },
+                    {
+                      title: "Working Principle",
+                      path: "/reactSourceCode/fiberWorkingPrinciple",
+                    },
+                  ],
+                },
+                {
+                  title: "Render",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Overview",
                       path: "/reactSourceCode/renderOverview",
                     },
                     {
-                      title: "Render - beginWork",
+                      title: "beginWork",
                       path: "/reactSourceCode/renderBeginWork",
                     },
                     {
-                      title: "Render - completeWork",
+                      title: "completeWork",
                       path: "/reactSourceCode/renderCompleteWork",
                     },
+                  ],
+                },
+                {
+                  title: "Commit",
+                  collapsable: true,
+                  children: [
                     {
-                      title: "Commit - Overview",
+                      title: "Overview",
                       path: "/reactSourceCode/commitOverview",
                     },
                     {
-                      title: "Commit - Before Mutation",
+                      title: "Before Mutation",
                       path: "/reactSourceCode/commitBeforeMutation",
                     },
                     {
-                      title: "Commit - Mutation",
+                      title: "Mutation",
                       path: "/reactSourceCode/commitMutation",
                     },
                     {
-                      title: "Commit - Layout",
+                      title: "Layout",
                       path: "/reactSourceCode/commitLayout",
                     },
+                  ],
+                },
+                {
+                  title: "Diff",
+                  collapsable: true,
+                  children: [
                     {
-                      title: "Diff - Overview",
+                      title: "Overview",
                       path: "/reactSourceCode/diffOverview",
                     },
                     {
-                      title: "Diff - Single Node",
+                      title: "Single Node",
                       path: "/reactSourceCode/diffSingleNode",
                     },
                     {
-                      title: "Diff - Multiple Node",
+                      title: "Multiple Node",
                       path: "/reactSourceCode/diffMultipleNode",
+                    },
+                  ],
+                },
+                {
+                  title: "State",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Overview",
+                      path: "/reactSourceCode/stateOverview",
                     },
                   ],
                 },
               ],
             },
-
-            // {
-            //   title: "Vue",
-            //   collapsable: true,
-            //   children: [
-            //     {
-            //       title: "About Vue",
-            //       path: "/vue/About",
-            //     },
-            //   ],
-            // },
-
             {
               title: "BackEnd",
               collapsable: true,
