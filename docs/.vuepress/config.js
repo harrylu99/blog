@@ -140,96 +140,25 @@ module.exports = {
               title: "React Source Code",
               collapsable: true,
               children: [
-                // {
-                //   title: "Source Code",
-                //   collapsable: true,
-                //   children: [
-                //     { title: "Concept", path: "/reactSourceCode/concept" },
-                //     {
-                //       title: "Architecture",
-                //       path: "/reactSourceCode/architecture",
-                //     },
-                //     {
-                //       title: "New Architecture",
-                //       path: "/reactSourceCode/newArchitecture",
-                //     },
-                //     {
-                //       title: "Fiber - Mental Model",
-                //       path: "/reactSourceCode/fiberMentalModel",
-                //     },
-                //     {
-                //       title: "Fiber - Implementation",
-                //       path: "/reactSourceCode/fiberImplementation",
-                //     },
-                //     {
-                //       title: "Fiber - Working Principle",
-                //       path: "/reactSourceCode/fiberWorkingPrinciple",
-                //     },
-                //     {
-                //       title: "File Structure",
-                //       path: "/reactSourceCode/fileStructure",
-                //     },
-                //     {
-                //       title: "Render -----",
-                //       path: "/reactSourceCode/renderOverview",
-                //     },
-                //     {
-                //       title: "beginWork",
-                //       path: "/reactSourceCode/renderBeginWork",
-                //     },
-                //     {
-                //       title: "completeWork",
-                //       path: "/reactSourceCode/renderCompleteWork",
-                //     },
-                //     {
-                //       title: "Commit -----",
-                //       path: "/reactSourceCode/commitOverview",
-                //     },
-                //     {
-                //       title: "Before Mutation",
-                //       path: "/reactSourceCode/commitBeforeMutation",
-                //     },
-                //     {
-                //       title: "Mutation",
-                //       path: "/reactSourceCode/commitMutation",
-                //     },
-                //     {
-                //       title: "Layout",
-                //       path: "/reactSourceCode/commitLayout",
-                //     },
-                //     {
-                //       title: "Diff -----",
-                //       path: "/reactSourceCode/diffOverview",
-                //     },
-                //     {
-                //       title: "Single Node",
-                //       path: "/reactSourceCode/diffSingleNode",
-                //     },
-                //     {
-                //       title: "Multiple Node",
-                //       path: "/reactSourceCode/diffMultipleNode",
-                //     },
-                //   ],
-                // },
                 {
-                  title: "Concept",
+                  title: "Starter",
                   collapsable: true,
                   children: [
                     {
                       title: "Concept",
-                      path: "/reactSourceCode/concept",
+                      path: "/reactSourceCode/starterConcept",
                     },
                     {
                       title: "Architecture",
-                      path: "/reactSourceCode/architecture",
+                      path: "/reactSourceCode/starterArchitecture",
                     },
                     {
                       title: "New Architecture",
-                      path: "/reactSourceCode/newArchitecture",
+                      path: "/reactSourceCode/starterNewArchitecture",
                     },
                     {
                       title: "File Structure",
-                      path: "/reactSourceCode/fileStructure",
+                      path: "/reactSourceCode/starterFileStructure",
                     },
                   ],
                 },
