@@ -9,11 +9,11 @@ We are going to talk about how does `React` support asynchronous updates in Reac
 
 ## Architecture
 
-There are three layers in React15, which are
+There are three layers in `React16`, which are
 
-- Scheduler -- In charge for rank the priority of the tasks. Make sure the task with high priority would enter Reconciler first.
-- Reconciler -- Find the modified components.
-- Renderer -- Render the modified components to the page.
+- `Scheduler` -- In charge for rank the priority of the tasks. Make sure the task with high priority would enter `Reconciler` first.
+- `Reconciler` -- Find the modified components.
+- `Renderer` -- Render the modified components to the page.
 
 You might find out that React16 has the brand new Scheduler compare with React15.
 
@@ -21,20 +21,20 @@ You might find out that React16 has the brand new Scheduler compare with React15
 
 As we talked in the previous article concept, we know that `React` use the remaining time of the browser to judge if the update finish or need to be paused. Therefore, we need the browser tell us if they still got time.
 
-In fact, some browser have [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) for implement the requriment. However, React gave up using it based on
+In fact, some browser have [requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) for implement the requriment. However, React did not choose to use it, because
 
 - Browser Compatibility.
 - Trigger event is not stable. For example, the frequency of requestIdleCallback for triggering the former tab will decrease after we switch the tab in the browser.
 
-Based on that, `React` has a more functional requestIdleCallback polyfill, which is _Scheduler_. Scheduler also provides mutiple settings for set the priority of the tasks.
+Based on that, `React` has a more functional `requestIdleCallback` polyfill, which is `Scheduler`. `Scheduler` also provides mutiple settings for set the priority of the tasks.
 
 [Scheduler is an independce package of React](https://github.com/facebook/react/tree/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/scheduler)
 
 ### Reconciler
 
-Reconciler update the virtual DOM recursively in React 15. [Check it in React16](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1673)
+`Reconciler` update the virtual DOM recursively in React 15. [Check it in React16](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1673)
 
-From the code we know that the updating have changed to be pasued friendly. And each loop will call `shouldYield` for checking the remaining time.
+We could know that the updating have changed to be pasued friendly based on the source code. And each loop will call `shouldYield` for checking the remaining time.
 
 ```js
 /** @noinline */
@@ -46,9 +46,9 @@ function workLoopConcurrent() {
 }
 ```
 
-And how React16 handle the problem when we paued the updating?
+And how React16 handle the problem when we pause the updating?
 
-The answer is, in `React16`, Reconciler will give a tag to the changed DOM after Scheduler handle the tasks to Reconciler.
+The answer is, in `React16`, `Reconciler` will give a `tag` to the changed DOM after `Scheduler` handle the tasks to `Reconciler`.
 
 ```js
 export const Placement = /*             */ 0b0000000000010;
@@ -57,17 +57,17 @@ export const PlacementAndUpdate = /*    */ 0b0000000000110;
 export const Deletion = /*              */ 0b0000000001000;
 ```
 
-[You can find the complete file here](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactSideEffectTags.js)
+[You can find the file here](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactSideEffectTags.js)
 
-The whole process of Scheduler and Reconciler are processing in the Memory, Renderer will receive them when the whole process is done.
+The whole process of `Scheduler` and `Reconciler` are processing in the `Memory`, `Renderer` will receive them when the whole process is done.
 
 [How React team explain the new Reconciler](https://reactjs.org/docs/codebase-overview.html#fiber-reconciler)
 
 ### Renderer
 
-Renderer will do what they required to do, based on the tag with virtual DOM from Reconciler.
+`Renderer` will do what they required to do, based on the tag with `virtual DOM` from `Reconciler`.
 
-As a result, if you pause the updating in the React16, it would not show you the incomplete updates based on the Scheduler and the new Reconciler.
+As the result, if you pause the updating in the React16, it will not show you the incomplete updates based on the `Scheduler` and the new `Reconciler`.
 
 ## Conclusion
 
