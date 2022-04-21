@@ -15,9 +15,9 @@ In this section, we will talking about how to use `Double Buffer` for update `DO
 
 When we draw animation with `canvas`, `ctx.clearRect` will be called before each frame is drawn to clear the previous frame.
 
-If the current frame is computationally heavy, a `white screen` will appear during the long gap between clearing the previous frame and drawing the current frame.
+If the current frame includes heavy computation, the `white screen` will appear during the long gap between clearing the previous frame and drawing the current frame.
 
-To solve this problem, we can draw the current frame in the memory and replace the previous frame with the current frame directly after drawing, which will not cause the white screen because the computation time between two replacement frames is eliminated.
+To solve this problem, we can draw the current frame in the memory and replace the previous frame with the current frame directly after drawing, which will not cause the white screen because the computation time between those two replacement frames is eliminated.
 
 This in-memory build and direct replacement technique is called `double buffer`.
 
@@ -25,9 +25,9 @@ This in-memory build and direct replacement technique is called `double buffer`.
 
 ## Double Buffer Fiber Tree
 
-There will be at most two `Fiber tree` in `React` at the same time. The `Fiber tree` corresponding to the content currently displayed on the screen is called the `current tree`, and the `Fiber tree` being built in memory is called the `workInProgress tree`.
+There will be at most two `Fiber tree` in `React` at the same time. The `Fiber tree` corresponding to the content currently displayed on the screen is called the `current tree`, and the `Fiber tree` which built in the memory is called the `workInProgress tree`.
 
-The `Fiber node` in the `current tree` are called `current fiber`, and the `Fiber node` in the `workInProgress tree` are called `workInProgress fiber`, and they are connected by the `alternate` property.
+The `Fiber node` in the `current Fiber tree` are called `current fiber`, and the `Fiber node` in the `workInProgress Fiber tree` are called `workInProgress fiber`, and they are connected by the `alternate` property.
 
 ```js
 currentFiber.alternate === workInProgressFiber;

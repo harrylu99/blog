@@ -5,15 +5,17 @@ date: 2022-03-03
 
 ## Foreword
 
-React core team member [Sebastian Markbåge](https://github.com/sebmarkbage/) once said: We React what is done in pratice is `Algebraic Effects`. So, what is `Algebraic Effects` and how does it related with React?
+React core team member [Sebastian Markbåge](https://github.com/sebmarkbage/) once said: We React what is done in pratice is `Algebraic Effects`.
+
+So, what is `Algebraic Effects` and how does it related with `React`?
 
 ## Algebraic Effects
 
-`Algebraic Effects` is a concept of the functional programming, it could be used for separating side effects from he functions.
+`Algebraic Effects` is a concept of the `functional programming`, it could be used for separating `side effects` from the `functions`.
 
 We are going to use fake syntax for explain it.
 
-Think about if we have a function `getTotalPicNum` and after I receive two `User Name`, it could search for the number of pics in the platform from both users and return a total pic number.
+Think about if we have a function `getTotalPicNum` and after receive two `user`, it could search for the number of pics in the platform from both users and return a total pic number.
 
 ```js
 function getTotalPicNum(user1, user2) {
@@ -39,11 +41,11 @@ async function getTotalPicNum(user1, user2) {
 }
 ```
 
-However, every function it has been used should be async after `getTotalPicNum` become `async`, which changed the synchronous of `getTotalPicNum`.
+However, the functions which call the `async` function should be `async` as well, which changed the synchronous of `getTotalPicNum`.
 
 Any solutions for us to solve this problem? Unfortunally, there is no way for implement asynchronous requests when keep use the current `getTotalPicNum`.
 
-But we will create a fake syntax for solving it. Let's create a syntax that is similar with `try...catch`. We could named it `try...handle` and two opeartors `perform` and `resume`.
+We will create a fake syntax for solving it. Let's create a syntax that is similar with `try...catch`. We could named it `try...handle` with two opeartors `perform` and `resume`.
 
 ```js
 function getPicNum(name) {
@@ -69,9 +71,9 @@ When `getPicNum` have been called, `perform name` would be executed, followed by
 
 `Error` would be the parameter of `catch` after `throw Error` and `name` would be the parameter of `handle` after `perform name`.
 
-After `Error` be catched by the `catch`, the previous stack will be destroyed and back to the execution stak of `perform` after `handle` execute the `resume`.
+After `Error` catched by the `catch`, the previous stack will be destroyed and back to the execution stack of `perform` after `handle` execute the `resume`.
 
-For `case 'Evan'`, the execution stack will back to `getPicNum` after execured `resume with 120`. And `picNum === 120` in this time.
+For `case 'Evan'`, the execution stack will back to `getPicNum` after executed `resume with 120`. `picNum === 120` in this time.
 
 :::tip Tip
 `try...catch` is a fake syntax for explaining the `Algebraic Effects`.
@@ -108,9 +110,9 @@ function ProfileDetails() {
 
 ## Algebraic Effects and Generator
 
-One of the purpose of re-building Reconciler in React16 is to change the synchronous update to the asynchronous update which could be paused.
+One of the purpose of re-building `Reconciler` in `React16` is to change the synchronous update to the asynchronous update which could be paused.
 
-Which means, the updates could be paused or break from the middle of the tasks list and it could keep going with the former task in middle of the list.
+Which means, the updates could be paused or break from the middle of the tasks and it could keep handling with the previous task after resume.
 
 And that is the effect from the `Algebraic Effects`.
 
@@ -130,17 +132,17 @@ function* doWork(A, B, C) {
 }
 ```
 
-Everytime whn the browser has free time, it executes one of the `doExpensiveWorks` in turn and will be paused when the time runs out, then resumes from where it left off when it resumes again.
+Everytime when the browser has free time, it executes one of the `doExpensiveWorks` in turn and will be paused when the time runs out, then resumes from where it left off when it resumes again.
 
 That could be a good case for using `Generator` when we only need to consider about one task pause or resume.
 
-Besides, when we thinking about when the 'high priority' task is cutting the line after `doExpensiveWorkA` and `doExpensiveWorkB` have finished their job. For now, component `B` has recieve a `priority update`, however, since the `generators` are stateful, the value `x` and `y` cannot be reuse here, which means it has to be re-caculate.
+Besides, when we thinking about when the high priority task is cutting the line after `doExpensiveWorkA` and `doExpensiveWorkB` have finished their job. At this moment, component `B` has recieve a `priority update`, however, since the `generators` are stateful, the value `x` and `y` cannot be reuse here, which means it has to be re-caculate.
 
 Based on that, `React` did not choose use `Generator` for implement the `Reconciler`.
 
 ## Algebraic Effects and Fiber
 
-`Fiber`, as the same as `Process`, `Thread` and `Coroutine`, it is the virtual concepts of the operating system. Most articles think `Fiber` is an implementation of the `Coroutine`. In JavaScript, the implementation of `Coroutine` is `Generator`.
+`Fiber`, as the same as `Process`, `Thread` and `Coroutine`, it is one of the virtual concepts of the operating system. Most articles think `Fiber` is an implementation of the `Coroutine`. In JavaScript, the implementation of `Coroutine` is `Generator`.
 
 Now, we could think both of `Fiber` and `Generator` as an implemetation of the Algebraic Effects in JS.
 

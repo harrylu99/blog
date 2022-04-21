@@ -11,7 +11,7 @@ date: 2022-03-04
 
 ## Meaning of Fiber
 
-`Fiber` has three layers of meaning.
+`Fiber` has three layer meanings.
 
 - As an architecture, `Reaconciler` was recursive in React15 and the states are stored in the recursive stack so we call it `stack Reconciler`. `Reconciler` in React16 is implement based on the `Fiber Node`, that is the reason why we named it `Fiber Reconciler`.
 
@@ -21,7 +21,7 @@ date: 2022-03-04
 
 ## Structure of Fiber
 
-[You can check the definition of the attributes from here](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiber.new.js#L117). We could group them by different meanings.
+[You can check the definition of the Fiber from here](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiber.new.js#L117). We could group them by different meanings.
 
 ```js
 function FiberNode(tag: WorkTag, pendingProps: mixed, key: null | string, mode: TypeOfMode) {
@@ -64,7 +64,7 @@ function FiberNode(tag: WorkTag, pendingProps: mixed, key: null | string, mode: 
 }
 ```
 
-### Architecture
+### As for Architecture
 
 We know that each `Fiber Node` has its corresponding `React element`, so, how could mutilple `Fiber Node` connect as a tree? In fact, it depends on these attributes.
 
@@ -94,7 +94,7 @@ The Fiber Tree should be looks like
 
 ![Fiber Tree](../images/fiber1.png)
 
-## Static data structure
+### As for Static data structure
 
 As a static data structure, it saves the infos about the component
 
@@ -111,7 +111,7 @@ this.type = null;
 this.stateNode = null;
 ```
 
-### Dynamic work unit
+### As for Dynamic work unit
 
 As a dynamic unit of work, the following parameters in `Fiber` saved the information related to this update.
 
