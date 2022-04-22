@@ -246,6 +246,14 @@ module.exports = {
                       title: "Overview",
                       path: "/reactSourceCode/stateOverview",
                     },
+                    {
+                      title: "Mental Model",
+                      path: "/reactSourceCode/stateMentalModel",
+                    },
+                    {
+                      title: "Update",
+                      path: "/reactSourceCode/stateUpdate",
+                    },
                   ],
                 },
               ],
