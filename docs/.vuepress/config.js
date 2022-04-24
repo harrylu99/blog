@@ -254,6 +254,14 @@ module.exports = {
                       title: "Update",
                       path: "/reactSourceCode/stateUpdate",
                     },
+                    {
+                      title: "Priority",
+                      path: "/reactSourceCode/statePriority",
+                    },
+                    {
+                      title: "ReactDOM.render",
+                      path: "/reactSourceCode/stateReactDOM",
+                    },
                   ],
                 },
               ],
