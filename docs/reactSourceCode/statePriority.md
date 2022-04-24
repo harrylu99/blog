@@ -26,8 +26,8 @@ This method recevie a `priority` variable and a `callback function` a the perame
 
 > [This example from `Andrew`'s tweet.](https://twitter.com/acdlite/status/978412930973687808)
 
-![example of the Update workflow from Andrew 1](../images/statepriority1.png)
-![example of the Update workflow from Andrew 2](../images/statepriority2.png)
+![example of the Update workflow from Andrew 1](../images/statepriority1.jpg)
+![example of the Update workflow from Andrew 2](../images/statepriority2.jpg)
 
 There are two `Update` om this demo, we named the `Update` of `Change to light theme`as `u1` and `Input 'i'` as `u2`.
 
