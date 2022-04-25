@@ -34,7 +34,7 @@ module.exports = {
           },
         },
         algolia: {},
-        lastUpdated: "Last Updated", // string | boolean,
+        lastUpdated: false, // string | boolean,
         nav: [
           { text: "Home", link: "/", icon: "reco-home" },
           {
@@ -163,7 +163,7 @@ module.exports = {
                   ],
                 },
                 {
-                  title: "Fiber",
+                  title: "Fiber Architecture",
                   collapsable: true,
                   children: [
                     {
@@ -181,7 +181,7 @@ module.exports = {
                   ],
                 },
                 {
-                  title: "Render",
+                  title: "Render Stage",
                   collapsable: true,
                   children: [
                     {
@@ -199,7 +199,7 @@ module.exports = {
                   ],
                 },
                 {
-                  title: "Commit",
+                  title: "Commit Stage",
                   collapsable: true,
                   children: [
                     {
@@ -221,7 +221,7 @@ module.exports = {
                   ],
                 },
                 {
-                  title: "Diff",
+                  title: "Diff Algorithm",
                   collapsable: true,
                   children: [
                     {
@@ -261,6 +261,20 @@ module.exports = {
                     {
                       title: "ReactDOM.render",
                       path: "/reactSourceCode/stateReactDOM",
+                    },
+                    {
+                      title: "this.setState",
+                      path: "/reactSourceCode/stateSetState",
+                    },
+                  ],
+                },
+                {
+                  title: "Hooks",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Concept",
+                      path: "/reactSourceCode/hooksConcept",
                     },
                   ],
                 },
@@ -350,7 +364,7 @@ module.exports = {
         },
         // 当前 locale 的 algolia docsearch 选项
         algolia: {},
-        lastUpdated: "最后更新", // string | boolean,
+        lastUpdated: false, // string | boolean,
         nav: [
           { text: "Home", link: "/zh" },
           {
