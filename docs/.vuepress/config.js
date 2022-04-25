@@ -276,6 +276,14 @@ module.exports = {
                       title: "Concept",
                       path: "/reactSourceCode/hooksConcept",
                     },
+                    {
+                      title: "Implement useState",
+                      path: "/reactSourceCode/hooksImplementUseState",
+                    },
+                    {
+                      title: "Data Structure",
+                      path: "reactSourceCode/hooksDataStructure",
+                    },
                   ],
                 },
               ],

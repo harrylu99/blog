@@ -13,7 +13,7 @@ If you have not used `Hooks` yet, [you can start from the official documentation
 
 Let's start with the logo of `React`. YOu must seem familiar with it.
 
-![React logo](../images/hooksConcept.jpg)
+![React logo](../images/hooksConcept.png)
 
 The design of the `React logo` is a symbol representing the `atom`. Everything in the world is made up of `atoms`, and the types and `properties` of `atoms` determine how things look and behave.
 

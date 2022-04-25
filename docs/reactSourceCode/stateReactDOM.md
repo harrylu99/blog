@@ -51,7 +51,7 @@ export function createFiberRoot(
 
 Based on the code above, we could fill up the conntection between `rootFiber` and `fiberRootNode`.
 
-![connection of fiberRootNode and rootFiber](../images/reactDOM.jpg)
+![connection of fiberRootNode and rootFiber](../images/reactDOM.png)
 
 [You cen check the source code from here.](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberRoot.new.js#L97)
 
