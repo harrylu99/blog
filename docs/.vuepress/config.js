@@ -278,7 +278,7 @@ module.exports = {
                     },
                     {
                       title: "Implement useState",
-                      path: "/reactSourceCode/hooksImplementUseState",
+                      path: "/reactSourceCode/hooksImplementuseState",
                     },
                     {
                       title: "Data Structure",
