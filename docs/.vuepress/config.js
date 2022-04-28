@@ -296,6 +296,10 @@ module.exports = {
                       title: "useRef",
                       path: "/reactSourceCode/hooksUseRef",
                     },
+                    {
+                      title: "useMemo and useCallback",
+                      path: "/reactSourceCode/hooksUseMemoAndUseCallback",
+                    },
                   ],
                 },
               ],
