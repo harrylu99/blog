@@ -129,5 +129,3 @@ render (`performSyncWorkOnRoot`) or (`performConcurrentWorkOnRoot`)
 
 commit (`commitRoot`)
 ```
-
-🏗️ under construction

@@ -284,6 +284,18 @@ module.exports = {
                       title: "Data Structure",
                       path: "reactSourceCode/hooksDataStructure",
                     },
+                    {
+                      title: "useState and useReducer",
+                      path: "/reactSourceCode/hooksUseStateAndUseReducer",
+                    },
+                    {
+                      title: "useEffect",
+                      path: "/reactSourceCode/hooksUseEffect",
+                    },
+                    {
+                      title: "useRef",
+                      path: "/reactSourceCode/hooksUseRef",
+                    },
                   ],
                 },
               ],
