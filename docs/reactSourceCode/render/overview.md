@@ -66,7 +66,7 @@ function App() {
 ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
-![Fiber Tree](../images/fiber1.png)
+![Fiber Tree](../../images/fiber1.png)
 
 During the `render`, the exectuion will be like
 

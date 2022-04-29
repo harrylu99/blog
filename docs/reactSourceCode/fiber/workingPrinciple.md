@@ -63,7 +63,7 @@ The reason for the distinction between `fiberRootNode` and `rootFiber` is that w
 
 The `current` of the `fiberRootNode` will point to the `Fiber tree` corresponding to the rendered content on the current page, i.e. the `current tree`.
 
-![fiberRootNode current point to rootFiber ](../images/fiberworking1.png)
+![fiberRootNode current point to rootFiber ](../../images/fiberworking1.png)
 
 ```js
 fiberRootNode.current = rootFiber;
@@ -75,19 +75,19 @@ Since it is the first screen rendering, there is no `DOM` mounted in the page ye
 
 When building the `workInProgress tree`, we will try to reuse the properties in the existing `Fiber node` in the `current tree`, so that only the root Fiber has a corresponding `current fiber` when the first screen is rendered.
 
-![the right side of the figure below is the tree built in memory, and the left side is the tree displayed on the page](../images/fiberworking2.png)
+![the right side of the figure below is the tree built in memory, and the left side is the tree displayed on the page](../../images/fiberworking2.png)
 
 3. The finished `workInProgress tree` on the right side of the figure is rendered to the page at the `commit` stage.
    
 The `current` pointer of the `fiberRootNode` points to the `workInProgress tree` so that it becomes the `current tree`.
 
-![the finished workInProgress tree on the right side of the figure is rendered to the page at the commit stage](../images/fiberworking3.png)
+![the finished workInProgress tree on the right side of the figure is rendered to the page at the commit stage](../../images/fiberworking3.png)
 
 ## update
 
 1. Next, we click on the `p node` to trigger a state change, which opens a new `render` phase and builds a new `workInProgress tree`.
 
-![opens a new render phase and builds a new workInProgress tree](../images/fiberworking4.png)
+![opens a new render phase and builds a new workInProgress tree](../../images/fiberworking4.png)
 
 As the same as `mount`, the `workInProgress fiber` can be created by reusing the node data corresponding to the `current tree`.
 
@@ -97,7 +97,7 @@ This process of deciding whether or not to reuse is the `Diff` algorithm, which 
 
 2. The `workInProgress tree` is built in the `render` phase and then rendered to the page in the `commit` phase. When rendering is complete, the `workInProgress tree` becomes the `current tree`.
 
-![workInProgress tree become current tree](../images/fiberworking5.png)
+![workInProgress tree become current tree](../../images/fiberworking5.png)
 
 ## Summary
 

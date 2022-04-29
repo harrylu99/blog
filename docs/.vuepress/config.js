@@ -140,165 +140,172 @@ module.exports = {
               title: "React Source Code",
               collapsable: true,
               children: [
+                // Starter
                 {
                   title: "Starter",
                   collapsable: true,
                   children: [
                     {
                       title: "Concept",
-                      path: "/reactSourceCode/starterConcept",
+                      path: "/reactSourceCode/starter/concept",
                     },
                     {
                       title: "Architecture",
-                      path: "/reactSourceCode/starterArchitecture",
+                      path: "/reactSourceCode/starter/architecture",
                     },
                     {
                       title: "New Architecture",
-                      path: "/reactSourceCode/starterNewArchitecture",
+                      path: "/reactSourceCode/starter/newArchitecture",
                     },
                     {
                       title: "File Structure",
-                      path: "/reactSourceCode/starterFileStructure",
+                      path: "/reactSourceCode/starter/fileStructure",
                     },
                   ],
                 },
+                // Fiber Architecture
                 {
                   title: "Fiber Architecture",
                   collapsable: true,
                   children: [
                     {
                       title: "Mental Model",
-                      path: "/reactSourceCode/fiberMentalModel",
+                      path: "/reactSourceCode/fiber/mentalModel",
                     },
                     {
                       title: "Implementation",
-                      path: "/reactSourceCode/fiberImplementation",
+                      path: "/reactSourceCode/fiber/implementation",
                     },
                     {
                       title: "Working Principle",
-                      path: "/reactSourceCode/fiberWorkingPrinciple",
+                      path: "/reactSourceCode/fiber/workingPrinciple",
                     },
                   ],
                 },
+                // Render Stage
                 {
                   title: "Render Stage",
                   collapsable: true,
                   children: [
                     {
                       title: "Overview",
-                      path: "/reactSourceCode/renderOverview",
+                      path: "/reactSourceCode/render/overview",
                     },
                     {
                       title: "beginWork",
-                      path: "/reactSourceCode/renderBeginWork",
+                      path: "/reactSourceCode/render/beginWork",
                     },
                     {
                       title: "completeWork",
-                      path: "/reactSourceCode/renderCompleteWork",
+                      path: "/reactSourceCode/render/completeWork",
                     },
                   ],
                 },
+                // Commit Stage
                 {
                   title: "Commit Stage",
                   collapsable: true,
                   children: [
                     {
                       title: "Overview",
-                      path: "/reactSourceCode/commitOverview",
+                      path: "/reactSourceCode/commit/overview",
                     },
                     {
                       title: "Before Mutation",
-                      path: "/reactSourceCode/commitBeforeMutation",
+                      path: "/reactSourceCode/commit/beforeMutation",
                     },
                     {
                       title: "Mutation",
-                      path: "/reactSourceCode/commitMutation",
+                      path: "/reactSourceCode/commit/mutation",
                     },
                     {
                       title: "Layout",
-                      path: "/reactSourceCode/commitLayout",
+                      path: "/reactSourceCode/commit/layout",
                     },
                   ],
                 },
+                // Diff Algorithm
                 {
                   title: "Diff Algorithm",
                   collapsable: true,
                   children: [
                     {
                       title: "Overview",
-                      path: "/reactSourceCode/diffOverview",
+                      path: "/reactSourceCode/diff/overview",
                     },
                     {
                       title: "Single Node",
-                      path: "/reactSourceCode/diffSingleNode",
+                      path: "/reactSourceCode/diff/singleNode",
                     },
                     {
                       title: "Multiple Node",
-                      path: "/reactSourceCode/diffMultipleNode",
+                      path: "/reactSourceCode/diff/multipleNode",
                     },
                   ],
                 },
+                // State
                 {
                   title: "State",
                   collapsable: true,
                   children: [
                     {
                       title: "Overview",
-                      path: "/reactSourceCode/stateOverview",
+                      path: "/reactSourceCode/state/overview",
                     },
                     {
                       title: "Mental Model",
-                      path: "/reactSourceCode/stateMentalModel",
+                      path: "/reactSourceCode/state/mentalModel",
                     },
                     {
                       title: "Update",
-                      path: "/reactSourceCode/stateUpdate",
+                      path: "/reactSourceCode/state/update",
                     },
                     {
                       title: "Priority",
-                      path: "/reactSourceCode/statePriority",
+                      path: "/reactSourceCode/state/priority",
                     },
                     {
                       title: "ReactDOM.render",
-                      path: "/reactSourceCode/stateReactDOM",
+                      path: "/reactSourceCode/state/reactDOM",
                     },
                     {
                       title: "this.setState",
-                      path: "/reactSourceCode/stateSetState",
+                      path: "/reactSourceCode/state/setState",
                     },
                   ],
                 },
+                // Hooks
                 {
                   title: "Hooks",
                   collapsable: true,
                   children: [
                     {
                       title: "Concept",
-                      path: "/reactSourceCode/hooksConcept",
+                      path: "/reactSourceCode/hooks/concept",
                     },
                     {
                       title: "Implement useState",
-                      path: "/reactSourceCode/hooksImplementuseState",
+                      path: "/reactSourceCode/hooks/implementuseState",
                     },
                     {
                       title: "Data Structure",
-                      path: "reactSourceCode/hooksDataStructure",
+                      path: "reactSourceCode/hooks/dataStructure",
                     },
                     {
                       title: "useState and useReducer",
-                      path: "/reactSourceCode/hooksUseStateAndUseReducer",
+                      path: "/reactSourceCode/hooks/useStateAndUseReducer",
                     },
                     {
                       title: "useEffect",
-                      path: "/reactSourceCode/hooksUseEffect",
+                      path: "/reactSourceCode/hooks/useEffect",
                     },
                     {
                       title: "useRef",
-                      path: "/reactSourceCode/hooksUseRef",
+                      path: "/reactSourceCode/hooks/useRef",
                     },
                     {
                       title: "useMemo and useCallback",
-                      path: "/reactSourceCode/hooksUseMemoAndUseCallback",
+                      path: "/reactSourceCode/hooks/useMemoAndUseCallback",
                     },
                   ],
                 },

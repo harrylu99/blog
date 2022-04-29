@@ -24,7 +24,7 @@ if (isObject) {
 
 This logic of this function should be look like
 
-![Logic of the function ](../images/diffSingle.png)
+![Logic of the function ](../../images/diffSingle.png)
 
 Let's check how to determine if a DOM node is reusable is implemented in the second step.
 
