@@ -11,7 +11,7 @@ module.exports = {
     "/zh/": {
       lang: "zh-CN",
       title: "个人博客",
-      description: "个人博客",
+      description: `🏗️ Chinese station is under construction, please go back the English station.`,
     },
   },
   plugins: [],
@@ -51,6 +51,7 @@ module.exports = {
               path: "/",
               collapsable: false,
             },
+            // JavaScript
             {
               title: "JavaScript",
               collapsable: true,
@@ -135,7 +136,7 @@ module.exports = {
                 },
               ],
             },
-
+            // React Source Code
             {
               title: "React Source Code",
               collapsable: true,
@@ -311,6 +312,7 @@ module.exports = {
                 },
               ],
             },
+            // BackEnd
             {
               title: "BackEnd",
               collapsable: true,
@@ -404,30 +406,6 @@ module.exports = {
             icon: "reco-github",
           },
         ],
-        sidebar: {
-          "/zh/": [
-            {
-              title: "关于博客",
-              path: "/zh/",
-              collapsable: false,
-            },
-            {
-              title: "JavaScript",
-              collapsable: true,
-              children: [{ title: "About JavaScript", path: "/zh/js/About" }],
-            },
-            {
-              title: "React",
-              collapsable: true,
-              children: [{ title: "About React", path: "/zh/react/About" }],
-            },
-            {
-              title: "Vue",
-              collapsable: true,
-              children: [{ title: "About Vue", path: "/zh/vue/About" }],
-            },
-          ],
-        },
       },
     },
   },
