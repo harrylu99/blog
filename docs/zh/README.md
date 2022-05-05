@@ -1,5 +1,4 @@
 ---
 home: true
-title: Harry's Blog
-heroText: Hello, World!
+heroText: 中文站还正在建设中，请刷新后返回英文站
 ---

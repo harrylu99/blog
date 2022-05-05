@@ -11,7 +11,7 @@ module.exports = {
     "/zh/": {
       lang: "zh-CN",
       title: "个人博客",
-      description: "个人博客",
+      description: `🏗️ Chinese station is under construction, please go back the English station.`,
     },
   },
   plugins: [],
@@ -34,12 +34,12 @@ module.exports = {
           },
         },
         algolia: {},
-        lastUpdated: "Last Updated", // string | boolean,
+        lastUpdated: false, // string | boolean,
         nav: [
           { text: "Home", link: "/", icon: "reco-home" },
           {
-            text: "My Site",
-            link: "https://harrylu99.github.io",
+            text: "About Me",
+            link: "https://github.com/harrylu99",
             icon: "reco-coding",
           },
           // { text: 'Suggestion', link: 'https://harrylu99.github.io', icon: 'reco-suggestion' },
@@ -51,6 +51,7 @@ module.exports = {
               path: "/",
               collapsable: false,
             },
+            // JavaScript
             {
               title: "JavaScript",
               collapsable: true,
@@ -135,65 +136,183 @@ module.exports = {
                 },
               ],
             },
-
+            // React Source Code
             {
-              title: "React",
+              title: "React Source Code",
               collapsable: true,
               children: [
-                // Source Code
+                // Starter
                 {
-                  title: "Source Code",
+                  title: "Starter",
                   collapsable: true,
                   children: [
-                    { title: "Concept", path: "/reactSourceCode/concept" },
+                    {
+                      title: "Concept",
+                      path: "/reactSourceCode/starter/concept",
+                    },
                     {
                       title: "Architecture",
-                      path: "/reactSourceCode/architecture",
+                      path: "/reactSourceCode/starter/architecture",
                     },
                     {
                       title: "New Architecture",
-                      path: "/reactSourceCode/newArchitecture",
-                    },
-                    {
-                      title: "Fiber - Mental Model",
-                      path: "/reactSourceCode/fiberMentalModel",
-                    },
-                    {
-                      title: "Fiber - Implementation",
-                      path: "/reactSourceCode/fiberImplementation",
-                    },
-                    {
-                      title: "Fiber - Working Principle",
-                      path: "/reactSourceCode/fiberWorkingPrinciple",
+                      path: "/reactSourceCode/starter/newArchitecture",
                     },
                     {
                       title: "File Structure",
-                      path: "/reactSourceCode/fileStructure",
+                      path: "/reactSourceCode/starter/fileStructure",
+                    },
+                  ],
+                },
+                // Fiber Architecture
+                {
+                  title: "Fiber Architecture",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Mental Model",
+                      path: "/reactSourceCode/fiber/mentalModel",
                     },
                     {
-                      title: "render - Overview",
-                      path: "/reactSourceCode/renderOverview",
+                      title: "Implementation",
+                      path: "/reactSourceCode/fiber/implementation",
                     },
                     {
-                      title: "render - beginWork",
-                      path: "/reactSourceCode/renderBeginWork",
+                      title: "Working Principle",
+                      path: "/reactSourceCode/fiber/workingPrinciple",
+                    },
+                  ],
+                },
+                // Render Stage
+                {
+                  title: "Render Stage",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Overview",
+                      path: "/reactSourceCode/render/overview",
+                    },
+                    {
+                      title: "beginWork",
+                      path: "/reactSourceCode/render/beginWork",
+                    },
+                    {
+                      title: "completeWork",
+                      path: "/reactSourceCode/render/completeWork",
+                    },
+                  ],
+                },
+                // Commit Stage
+                {
+                  title: "Commit Stage",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Overview",
+                      path: "/reactSourceCode/commit/overview",
+                    },
+                    {
+                      title: "Before Mutation",
+                      path: "/reactSourceCode/commit/beforeMutation",
+                    },
+                    {
+                      title: "Mutation",
+                      path: "/reactSourceCode/commit/mutation",
+                    },
+                    {
+                      title: "Layout",
+                      path: "/reactSourceCode/commit/layout",
+                    },
+                  ],
+                },
+                // Diff Algorithm
+                {
+                  title: "Diff Algorithm",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Overview",
+                      path: "/reactSourceCode/diff/overview",
+                    },
+                    {
+                      title: "Single Node",
+                      path: "/reactSourceCode/diff/singleNode",
+                    },
+                    {
+                      title: "Multiple Node",
+                      path: "/reactSourceCode/diff/multipleNode",
+                    },
+                  ],
+                },
+                // State
+                {
+                  title: "State",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Overview",
+                      path: "/reactSourceCode/state/overview",
+                    },
+                    {
+                      title: "Mental Model",
+                      path: "/reactSourceCode/state/mentalModel",
+                    },
+                    {
+                      title: "Update",
+                      path: "/reactSourceCode/state/update",
+                    },
+                    {
+                      title: "Priority",
+                      path: "/reactSourceCode/state/priority",
+                    },
+                    {
+                      title: "ReactDOM.render",
+                      path: "/reactSourceCode/state/reactDOM",
+                    },
+                    {
+                      title: "this.setState",
+                      path: "/reactSourceCode/state/setState",
+                    },
+                  ],
+                },
+                // Hooks
+                {
+                  title: "Hooks",
+                  collapsable: true,
+                  children: [
+                    {
+                      title: "Concept",
+                      path: "/reactSourceCode/hooks/concept",
+                    },
+                    {
+                      title: "Implement useState",
+                      path: "/reactSourceCode/hooks/implementuseState",
+                    },
+                    {
+                      title: "Data Structure",
+                      path: "reactSourceCode/hooks/dataStructure",
+                    },
+                    {
+                      title: "useState and useReducer",
+                      path: "/reactSourceCode/hooks/useStateAndUseReducer",
+                    },
+                    {
+                      title: "useEffect",
+                      path: "/reactSourceCode/hooks/useEffect",
+                    },
+                    {
+                      title: "useRef",
+                      path: "/reactSourceCode/hooks/useRef",
+                    },
+                    {
+                      title: "useMemo and useCallback",
+                      path: "/reactSourceCode/hooks/useMemoAndUseCallback",
                     },
                   ],
                 },
               ],
             },
-
-            // {
-            //   title: "Vue",
-            //   collapsable: true,
-            //   children: [
-            //     {
-            //       title: "About Vue",
-            //       path: "/vue/About",
-            //     },
-            //   ],
-            // },
-
+            // BackEnd
             {
               title: "BackEnd",
               collapsable: true,
@@ -278,39 +397,15 @@ module.exports = {
         },
         // 当前 locale 的 algolia docsearch 选项
         algolia: {},
-        lastUpdated: "最后更新", // string | boolean,
+        lastUpdated: false, // string | boolean,
         nav: [
           { text: "Home", link: "/zh" },
           {
-            text: "GitHub",
+            text: "关于我",
             link: "https://github.com/harrylu99",
             icon: "reco-github",
           },
         ],
-        sidebar: {
-          "/zh/": [
-            {
-              title: "关于博客",
-              path: "/zh/",
-              collapsable: false,
-            },
-            {
-              title: "JavaScript",
-              collapsable: true,
-              children: [{ title: "About JavaScript", path: "/zh/js/About" }],
-            },
-            {
-              title: "React",
-              collapsable: true,
-              children: [{ title: "About React", path: "/zh/react/About" }],
-            },
-            {
-              title: "Vue",
-              collapsable: true,
-              children: [{ title: "About Vue", path: "/zh/vue/About" }],
-            },
-          ],
-        },
       },
     },
   },
