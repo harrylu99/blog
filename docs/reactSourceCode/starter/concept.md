@@ -1,6 +1,6 @@
 ---
 title: Concept of React
-date: 2022-02-28
+date: 2022-04-05
 ---
 
 ## Concept of React

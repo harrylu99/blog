@@ -1,6 +1,6 @@
 ---
 title: State -- Mental Model
-date: 2022-04-23
+date: 2022-05-09
 ---
 
 Before we jump into the source code, we should start from the `mental model` of the `updating`.

@@ -1,6 +1,6 @@
 ---
 title: State -- this.setState
-date: 2022-04-27
+date: 2022-05-17
 ---
 
 ## Workflow Overview
@@ -9,13 +9,21 @@ We could see `this.updater.enqueueSteState` method called in the `this.setState`
 
 ```js
 Component.prototype.setState = function (partialState, callback) {
-  if (!(typeof partialState === "object" || typeof partialState === "function" || partialState == null)) {
+  if (
+    !(
+      typeof partialState === 'object' ||
+      typeof partialState === 'function' ||
+      partialState == null
+    )
+  ) {
     {
-      throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");
+      throw Error(
+        'setState(...): takes an object of state variables to update or a function which returns an object of state variables.'
+      )
     }
   }
-  this.updater.enqueueSetState(this, partialState, callback, "setState");
-};
+  this.updater.enqueueSetState(this, partialState, callback, 'setState')
+}
 ```
 
 [You can find the source code here.](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react/src/ReactBaseClasses.js#L57)
@@ -89,15 +97,17 @@ So, what does `update.tag = ForceUpdate` do?
 When we judge if `ClassComponent` need to update, there are two conditions
 
 ```js
-const shouldUpdate = checkHasForceUpdateAfterProcessing() || checkShouldComponentUpdate(
-    workInProgress, 
-    ctor, 
-    oldProps, 
-    newProps, 
-    oldState, 
-    newState, 
+const shouldUpdate =
+  checkHasForceUpdateAfterProcessing() ||
+  checkShouldComponentUpdate(
+    workInProgress,
+    ctor,
+    oldProps,
+    newProps,
+    oldState,
+    newState,
     nextContext
- );
+  )
 ```
 
 [You can check the source code from here.](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberClassComponent.old.js#L1137)

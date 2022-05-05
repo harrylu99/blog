@@ -1,6 +1,6 @@
 ---
 title: Fiber -- Mental Model
-date: 2022-03-03
+date: 2022-04-13
 ---
 
 ## Foreword
@@ -19,10 +19,10 @@ Think about if we have a function `getTotalPicNum` and after receive two `user`,
 
 ```js
 function getTotalPicNum(user1, user2) {
-  const picNum1 = getPicNum(user1);
-  const picNum2 = getPicNum(user2);
+  const picNum1 = getPicNum(user1)
+  const picNum2 = getPicNum(user2)
 
-  return picNum1 + picNum2;
+  return picNum1 + picNum2
 }
 ```
 
@@ -34,10 +34,10 @@ The number of pics is stored in the server so that we need to do an asynchronous
 
 ```js
 async function getTotalPicNum(user1, user2) {
-  const picNum1 = await getPicNum(user1);
-  const picNum2 = await getPicNum(user2);
+  const picNum1 = await getPicNum(user1)
+  const picNum2 = await getPicNum(user2)
 
-  return picNum1 + picNum2;
+  return picNum1 + picNum2
 }
 ```
 
@@ -91,9 +91,9 @@ We only need to write the business logic when we using `useState`.
 
 ```js
 function App() {
-  const [num, updateNum] = useState(0);
+  const [num, updateNum] = useState(0)
 
-  return <button onClick={() => updateNum((num) => num + 1)}>{num}</button>;
+  return <button onClick={() => updateNum((num) => num + 1)}>{num}</button>
 }
 ```
 
@@ -103,8 +103,8 @@ function App() {
 
 ```js
 function ProfileDetails() {
-  const user = resource.user.read();
-  return <h1>{user.name}</h1>;
+  const user = resource.user.read()
+  return <h1>{user.name}</h1>
 }
 ```
 
@@ -123,12 +123,12 @@ And that is the effect from the `Algebraic Effects`.
 
 ```js
 function* doWork(A, B, C) {
-  var x = doExpensiveWorkA(A);
-  yield;
-  var y = x + doExpensiveWorkB(B);
-  yield;
-  var z = y + doExpensiveWorkC(C);
-  return z;
+  var x = doExpensiveWorkA(A)
+  yield
+  var y = x + doExpensiveWorkB(B)
+  yield
+  var z = y + doExpensiveWorkC(C)
+  return z
 }
 ```
 

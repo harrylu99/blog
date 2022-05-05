@@ -1,6 +1,6 @@
 ---
 title: New Architecture
-date: 2022-03-03
+date: 2022-04-09
 ---
 
 ## Foreword

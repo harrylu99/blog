@@ -1,6 +1,6 @@
 ---
 title: Commit -- Layout
-date: 2022-04-13
+date: 2022-05-01
 ---
 
 ## Foreword
@@ -14,20 +14,20 @@ Similar to the first two phases, the `layout` phase also traversal through the `
 The specific function to be executed is `commitLayoutEffects`.
 
 ```js
-root.current = finishedWork;
+root.current = finishedWork
 
-nextEffect = firstEffect;
+nextEffect = firstEffect
 do {
   try {
-    commitLayoutEffects(root, lanes);
+    commitLayoutEffects(root, lanes)
   } catch (error) {
-    invariant(nextEffect !== null, "Should be working on an effect.");
-    captureCommitPhaseError(nextEffect, error);
-    nextEffect = nextEffect.nextEffect;
+    invariant(nextEffect !== null, 'Should be working on an effect.')
+    captureCommitPhaseError(nextEffect, error)
+    nextEffect = nextEffect.nextEffect
   }
-} while (nextEffect !== null);
+} while (nextEffect !== null)
 
-nextEffect = null;
+nextEffect = null
 ```
 
 ## commitLayoutEffects
@@ -37,20 +37,20 @@ nextEffect = null;
 ```js
 function commitLayoutEffects(root: FiberRoot, committedLanes: Lanes) {
   while (nextEffect !== null) {
-    const effectTag = nextEffect.effectTag;
+    const effectTag = nextEffect.effectTag
 
     // call the lifecycle hook and hook
     if (effectTag & (Update | Callback)) {
-      const current = nextEffect.alternate;
-      commitLayoutEffectOnFiber(root, current, nextEffect, committedLanes);
+      const current = nextEffect.alternate
+      commitLayoutEffectOnFiber(root, current, nextEffect, committedLanes)
     }
 
     // ref
     if (effectTag & Ref) {
-      commitAttachRef(nextEffect);
+      commitAttachRef(nextEffect)
     }
 
-    nextEffect = nextEffect.nextEffect;
+    nextEffect = nextEffect.nextEffect
   }
 }
 ```
@@ -72,8 +72,8 @@ function commitLayoutEffects(root: FiberRoot, committedLanes: Lanes) {
 
 ```js
 this.setState({ xxx: 1 }, () => {
-  console.log("updating");
-});
+  console.log('updating')
+})
 ```
 
 - As for `FunctionComponent` and related types, it will call the `callback function` of `useLayoutEffect hook`, schedule the `destory` and `callback` function of `useEffect`.
@@ -109,9 +109,9 @@ This is the difference between `useLayoutEffect` and `useEffect`.
 - For `HostRoot`, which as known as `rootFiber`, will be called if it gets the third parameter, `callback function`.
 
 ```jsx
-ReactDOM.render(<App />, document.querySelector("#root"), function () {
-  console.log("i am mount~");
-});
+ReactDOM.render(<App />, document.querySelector('#root'), function () {
+  console.log('i am mount~')
+})
 ```
 
 ## commitAttachRef
@@ -122,26 +122,26 @@ The second process in the `commitLayoutEffects` is `commitAttachRef`.
 
 ```js
 function commitAttachRef(finishedWork: Fiber) {
-  const ref = finishedWork.ref;
+  const ref = finishedWork.ref
   if (ref !== null) {
-    const instance = finishedWork.stateNode;
+    const instance = finishedWork.stateNode
 
     // get the instance of DOM.
-    let instanceToUse;
+    let instanceToUse
     switch (finishedWork.tag) {
       case HostComponent:
-        instanceToUse = getPublicInstance(instance);
-        break;
+        instanceToUse = getPublicInstance(instance)
+        break
       default:
-        instanceToUse = instance;
+        instanceToUse = instance
     }
 
-    if (typeof ref === "function") {
+    if (typeof ref === 'function') {
       // call the callback if ref is function.
-      ref(instanceToUse);
+      ref(instanceToUse)
     } else {
       // assign ref.current if ref is the instance of ref.
-      ref.current = instanceToUse;
+      ref.current = instanceToUse
     }
   }
 }
@@ -156,7 +156,7 @@ At this point, the whole `layout` phase have been talked.
 Before we end this section, let's focus on this line of code.
 
 ```js
-root.current = finishedWork;
+root.current = finishedWork
 ```
 
 In the previous section, we described that the `workInProgress Fiber tree` will change to the `current Fiber tree` after the `commit` phase finishes rendering. The purpose of this line of code is to switch the `current Fiber tree` pointed to by the `fiberRootNode`.

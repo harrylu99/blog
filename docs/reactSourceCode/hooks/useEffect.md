@@ -1,6 +1,6 @@
 ---
 title: Hooks -- useEffect
-date: 2022-05-02
+date: 2022-05-27
 ---
 
 ## Foreword
@@ -39,20 +39,20 @@ In stage one, all the `destroy function` of the `useEffect` are traversed and ex
 
 ```js
 // save the useEffect which needed destoryed in pendingPassiveHookEffectsUnmount
-const unmountEffects = pendingPassiveHookEffectsUnmount;
-pendingPassiveHookEffectsUnmount = [];
+const unmountEffects = pendingPassiveHookEffectsUnmount
+pendingPassiveHookEffectsUnmount = []
 for (let i = 0; i < unmountEffects.length; i += 2) {
-  const effect = ((unmountEffects[i]: any): HookEffect);
-  const fiber = ((unmountEffects[i + 1]: any): Fiber);
-  const destroy = effect.destroy;
-  effect.destroy = undefined;
+  const effect = ((unmountEffects[i]: any): HookEffect)
+  const fiber = ((unmountEffects[i + 1]: any): Fiber)
+  const destroy = effect.destroy
+  effect.destroy = undefined
 
-  if (typeof destroy === "function") {
+  if (typeof destroy === 'function') {
     // execute if the destroy function existing
     try {
-      destroy();
+      destroy()
     } catch (error) {
-      captureCommitPhaseError(fiber, error);
+      captureCommitPhaseError(fiber, error)
     }
   }
 }
@@ -64,24 +64,25 @@ The index `i` of the `pendingPaddiveHookEffectsUnmount` saves the `effect` which
 
 ```js
 function schedulePassiveEffects(finishedWork: Fiber) {
-  const updateQueue: FunctionComponentUpdateQueue | null = (finishedWork.updateQueue: any);
-  const lastEffect = updateQueue !== null ? updateQueue.lastEffect : null;
+  const updateQueue: FunctionComponentUpdateQueue | null =
+    (finishedWork.updateQueue: any)
+  const lastEffect = updateQueue !== null ? updateQueue.lastEffect : null
   if (lastEffect !== null) {
-    const firstEffect = lastEffect.next;
-    let effect = firstEffect;
+    const firstEffect = lastEffect.next
+    let effect = firstEffect
     do {
-      const {next, tag} = effect;
+      const { next, tag } = effect
       if (
         (tag & HookPassive) !== NoHookEffect &&
         (tag & HookHasEffect) !== NoHookEffect
       ) {
         // push effect needed destoryed to pendingPassiveHookEffectsUnmount
-        enqueuePendingPassiveHookEffectUnmount(finishedWork, effect);
+        enqueuePendingPassiveHookEffectUnmount(finishedWork, effect)
         // push effect needed callbacked to pendingPassiveHookEffectsMount
-        enqueuePendingPassiveHookEffectMount(finishedWork, effect);
+        enqueuePendingPassiveHookEffectMount(finishedWork, effect)
       }
-      effect = next;
-    } while (effect !== firstEffect);
+      effect = next
+    } while (effect !== firstEffect)
   }
 }
 ```
@@ -94,17 +95,17 @@ The operation of `push` data to `pendingPassiveHookEffectsMount` is done in the 
 
 ```js
 // save the useEffect which needed callback in pendingPassiveHookEffectsMount
-const mountEffects = pendingPassiveHookEffectsMount;
-pendingPassiveHookEffectsMount = [];
+const mountEffects = pendingPassiveHookEffectsMount
+pendingPassiveHookEffectsMount = []
 for (let i = 0; i < mountEffects.length; i += 2) {
-  const effect = ((mountEffects[i]: any): HookEffect);
-  const fiber = ((mountEffects[i + 1]: any): Fiber);
-  
+  const effect = ((mountEffects[i]: any): HookEffect)
+  const fiber = ((mountEffects[i + 1]: any): Fiber)
+
   try {
-    const create = effect.create;
-   effect.destroy = create();
+    const create = effect.create
+    effect.destroy = create()
   } catch (error) {
-    captureCommitPhaseError(fiber, error);
+    captureCommitPhaseError(fiber, error)
   }
 }
 ```

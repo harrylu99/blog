@@ -1,6 +1,6 @@
 ---
 title: Hooks -- useRef
-date: 2022-05-03
+date: 2022-05-29
 ---
 
 ## Foreword
@@ -16,18 +16,18 @@ Just like other `Hook`, `useRef` has two different `dispatcher` for `mount` and 
 ```js
 function mountRef<T>(initialValue: T): {| current: T |} {
   // get the current useRef hook
-  const hook = mountWorkInProgressHook();
+  const hook = mountWorkInProgressHook()
   // create ref
-  const ref = { current: initialValue };
-  hook.memoizedState = ref;
-  return ref;
+  const ref = { current: initialValue }
+  hook.memoizedState = ref
+  return ref
 }
 
 function updateRef<T>(initialValue: T): {| current: T |} {
   // get the current useRef hook
-  const hook = updateWorkInProgressHook();
+  const hook = updateWorkInProgressHook()
   // return the saved data
-  return hook.memoizedState;
+  return hook.memoizedState
 }
 ```
 
@@ -49,7 +49,7 @@ In `React`, `HostComponent`, `ClassComponent` and `ForwardRef` can assigned the 
 `ForwardRef` use the `ref` as the second parameter for passing into the function, it will not get into the workflow of `ref`.
 
 ```js
-let children = Component(props, secondArg);
+let children = Component(props, secondArg)
 ```
 
 [You can find the source code here.](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberHooks.old.js#L415)
@@ -64,10 +64,10 @@ As the result, if `HostComponent` or `ClassComponent` have the opration of `ref`
 
 ```js
 // ...
-export const Placement = /*                    */ 0b0000000000000010;
-export const Update = /*                       */ 0b0000000000000100;
-export const Deletion = /*                     */ 0b0000000000001000;
-export const Ref = /*                          */ 0b0000000010000000;
+export const Placement = /*                    */ 0b0000000000000010
+export const Update = /*                       */ 0b0000000000000100
+export const Deletion = /*                     */ 0b0000000000001000
+export const Ref = /*                          */ 0b0000000010000000
 // ...
 ```
 
@@ -83,15 +83,18 @@ There is a method `markRef` in both `beginWork` and `completeWork` during the `r
 ```js
 // markRef of beginWork
 function markRef(current: Fiber | null, workInProgress: Fiber) {
-  const ref = workInProgress.ref;
-  if ((current === null && ref !== null) || (current !== null && current.ref !== ref)) {
+  const ref = workInProgress.ref
+  if (
+    (current === null && ref !== null) ||
+    (current !== null && current.ref !== ref)
+  ) {
     // Schedule a Ref effect
-    workInProgress.effectTag |= Ref;
+    workInProgress.effectTag |= Ref
   }
 }
 // markRef of completeWork
 function markRef(workInProgress: Fiber) {
-  workInProgress.effectTag |= Ref;
+  workInProgress.effectTag |= Ref
 }
 ```
 
@@ -140,14 +143,14 @@ function commitMutationEffects(root: FiberRoot, renderPriorityLevel) {
 
 ```js
 function commitDetachRef(current: Fiber) {
-  const currentRef = current.ref;
+  const currentRef = current.ref
   if (currentRef !== null) {
-    if (typeof currentRef === "function") {
+    if (typeof currentRef === 'function') {
       // function type ref，parameter is null
-      currentRef(null);
+      currentRef(null)
     } else {
       // object type ref，current assign as null
-      currentRef.current = null;
+      currentRef.current = null
     }
   }
 }
@@ -161,16 +164,16 @@ For `commitDeletion`, `unmountHostComponents`, `commitUnmount`, `ClassComponent 
 
 ```js
 function safelyDetachRef(current: Fiber) {
-  const ref = current.ref;
+  const ref = current.ref
   if (ref !== null) {
-    if (typeof ref === "function") {
+    if (typeof ref === 'function') {
       try {
-        ref(null);
+        ref(null)
       } catch (refError) {
-        captureCommitPhaseError(current, refError);
+        captureCommitPhaseError(current, refError)
       }
     } else {
-      ref.current = null;
+      ref.current = null
     }
   }
 }
@@ -182,28 +185,27 @@ Next, we are get into the assign stage of the `ref`.
 
 ```js
 function commitAttachRef(finishedWork: Fiber) {
-  const ref = finishedWork.ref;
+  const ref = finishedWork.ref
   if (ref !== null) {
-    // get the corresponding Component instance of the ref 
-    const instance = finishedWork.stateNode;
-    let instanceToUse;
+    // get the corresponding Component instance of the ref
+    const instance = finishedWork.stateNode
+    let instanceToUse
     switch (finishedWork.tag) {
       case HostComponent:
-        instanceToUse = getPublicInstance(instance);
-        break;
+        instanceToUse = getPublicInstance(instance)
+        break
       default:
-        instanceToUse = instance;
+        instanceToUse = instance
     }
 
     // assign ref
     if (typeof ref === 'function') {
-      ref(instanceToUse);
+      ref(instanceToUse)
     } else {
-      ref.current = instanceToUse;
+      ref.current = instanceToUse
     }
   }
 }
 ```
 
 We have know the workflow of `ref` now.
-

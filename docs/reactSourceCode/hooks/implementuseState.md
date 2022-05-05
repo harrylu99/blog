@@ -1,6 +1,6 @@
 ---
 title: Hooks -- Implement useState
-date: 2022-04-29
+date: 2022-05-21
 ---
 
 ## Foreword
@@ -13,9 +13,9 @@ For `useState Hook`, think about the example of the following code:
 
 ```js
 function App() {
-  const [num, updateNum] = useState(0);
+  const [num, updateNum] = useState(0)
 
-  return <p onClick={() => updateNum((num) => num + 1)}>{num}</p>;
+  return <p onClick={() => updateNum((num) => num + 1)}>{num}</p>
 }
 ```
 
@@ -41,7 +41,7 @@ const update = {
   action,
   // chain table includes hook and other updates
   next: null,
-};
+}
 ```
 
 As for `App`, the action triggered by clicking tag `p` is `num => num + 1`.
@@ -50,20 +50,20 @@ If we change the `onClick` of `App`
 
 ```js
 // Before
-return <p onClick={() => updateNum((num) => num + 1)}>{num}</p>;
+return <p onClick={() => updateNum((num) => num + 1)}>{num}</p>
 
 // After
 return (
   <p
     onClick={() => {
-      updateNum((num) => num + 1);
-      updateNum((num) => num + 1);
-      updateNum((num) => num + 1);
+      updateNum((num) => num + 1)
+      updateNum((num) => num + 1)
+      updateNum((num) => num + 1)
     }}
   >
     {num}
   </p>
-);
+)
 ```
 
 As the result, clicking `p` tag will triggers `Update` three times.
@@ -82,19 +82,19 @@ function dispatchAction(queue, action) {
   const update = {
     action,
     next: null,
-  };
+  }
 
   // circular circle linked list
   if (queue.pending === null) {
-    update.next = update;
+    update.next = update
   } else {
-    update.next = queue.pending.next;
-    queue.pending.next = update;
+    update.next = queue.pending.next
+    queue.pending.next = update
   }
-  queue.pending = update;
+  queue.pending = update
 
   // mock sechedule update of React
-  schedule();
+  schedule()
 }
 ```
 
@@ -145,7 +145,7 @@ const fiber = {
   memoizedState: null,
   // points to the App function
   stateNode: App,
-};
+}
 ```
 
 ## Data Structure of Hook
@@ -164,7 +164,7 @@ hook = {
   memoizedState: initialState,
   // generate a circular linked list with next Hook
   next: null,
-};
+}
 ```
 
 ::: warning
@@ -186,7 +186,7 @@ function dispatchAction(queue, action) {
   // ...circular circle linked list
 
   // mock React start scheduling update
-  schedule();
+  schedule()
 }
 ```
 
@@ -196,28 +196,28 @@ Let's use `isMount` to indicate whether is `mount` or `update`.
 
 ```js
 // when first time render, it is mount
-isMount = true;
+isMount = true
 
 function schedule() {
   // reset workInProgressHoook as the first Hook saved by the fiber before update
-  workInProgressHook = fiber.memoizedState;
+  workInProgressHook = fiber.memoizedState
   // trigger component render
-  fiber.stateNode();
+  fiber.stateNode()
   // first time render is mount，the following update is update
-  isMount = false;
+  isMount = false
 }
 ```
 
 Point to the current working `hook` by `workInProgressHook`.
 
 ```js
-workInProgressHook = fiber.memoizedState;
+workInProgressHook = fiber.memoizedState
 ```
 
 When component `render`, we move the pointer of `workInProgressHook` everytime meet the next `useState`.
 
 ```js
-workInProgressHook = workInProgressHook.next;
+workInProgressHook = workInProgressHook.next
 ```
 
 As the result, as long as the order and number of `useState` calls remain the same for each component `render`, the `hook` object corresponding to the current `useState` can always be found through `workInProgressHook`.
@@ -231,7 +231,7 @@ When the component `render`, `useState` will be called and its logic looks like
 ```js
 function useState(initialState) {
   // hook used in current useState will assigned the variable
-  let hook;
+  let hook
 
   if (isMount) {
     // ...hook object generate when mount
@@ -239,13 +239,13 @@ function useState(initialState) {
     // ...get the corresponding hook of the useState from workInProgressHook when update
   }
 
-  let baseState = hook.memoizedState;
+  let baseState = hook.memoizedState
   if (hook.queue.pending) {
     // update state based on te update saved in the queue.pending
   }
-  hook.memoizedState = baseState;
+  hook.memoizedState = baseState
 
-  return [baseState, dispatchAction.bind(null, hook.queue)];
+  return [baseState, dispatchAction.bind(null, hook.queue)]
 }
 ```
 
@@ -260,21 +260,21 @@ if (isMount) {
     },
     memoizedState: initialState,
     next: null,
-  };
+  }
 
   // insert hook to the end of fiber.memoizedState chain
   if (!fiber.memoizedState) {
-    fiber.memoizedState = hook;
+    fiber.memoizedState = hook
   } else {
-    workInProgressHook.next = hook;
+    workInProgressHook.next = hook
   }
   // move the pointer of the workInProgressHook
-  workInProgressHook = hook;
+  workInProgressHook = hook
 } else {
   // find the corresponding hook when update
-  hook = workInProgressHook;
+  hook = workInProgressHook
   // move the pointer of workInProgressHook
-  workInProgressHook = workInProgressHook.next;
+  workInProgressHook = workInProgressHook.next
 }
 ```
 
@@ -282,34 +282,34 @@ When find the corresponding hook of useState, if `hook.queue.pending` is not nul
 
 ```js
 // initialState state before update
-let baseState = hook.memoizedState;
+let baseState = hook.memoizedState
 
 if (hook.queue.pending) {
   // get the first update in the circular linked list
-  let firstUpdate = hook.queue.pending.next;
+  let firstUpdate = hook.queue.pending.next
 
   do {
     // execute update action
-    const action = firstUpdate.action;
-    baseState = action(baseState);
-    firstUpdate = firstUpdate.next;
+    const action = firstUpdate.action
+    baseState = action(baseState)
+    firstUpdate = firstUpdate.next
 
     // end loop after last update executed
-  } while (firstUpdate !== hook.queue.pending.next);
+  } while (firstUpdate !== hook.queue.pending.next)
 
   // clear queue.pending
-  hook.queue.pending = null;
+  hook.queue.pending = null
 }
 
 // use state after update action executed as memoizedState
-hook.memoizedState = baseState;
+hook.memoizedState = baseState
 ```
 
 Complete code:
 
 ```js
 function useState(initialState) {
-  let hook;
+  let hook
 
   if (isMount) {
     hook = {
@@ -318,33 +318,33 @@ function useState(initialState) {
       },
       memoizedState: initialState,
       next: null,
-    };
-    if (!fiber.memoizedState) {
-      fiber.memoizedState = hook;
-    } else {
-      workInProgressHook.next = hook;
     }
-    workInProgressHook = hook;
+    if (!fiber.memoizedState) {
+      fiber.memoizedState = hook
+    } else {
+      workInProgressHook.next = hook
+    }
+    workInProgressHook = hook
   } else {
-    hook = workInProgressHook;
-    workInProgressHook = workInProgressHook.next;
+    hook = workInProgressHook
+    workInProgressHook = workInProgressHook.next
   }
 
-  let baseState = hook.memoizedState;
+  let baseState = hook.memoizedState
   if (hook.queue.pending) {
-    let firstUpdate = hook.queue.pending.next;
+    let firstUpdate = hook.queue.pending.next
 
     do {
-      const action = firstUpdate.action;
-      baseState = action(baseState);
-      firstUpdate = firstUpdate.next;
-    } while (firstUpdate !== hook.queue.pending.next);
+      const action = firstUpdate.action
+      baseState = action(baseState)
+      firstUpdate = firstUpdate.next
+    } while (firstUpdate !== hook.queue.pending.next)
 
-    hook.queue.pending = null;
+    hook.queue.pending = null
   }
-  hook.memoizedState = baseState;
+  hook.memoizedState = baseState
 
-  return [baseState, dispatchAction.bind(null, hook.queue)];
+  return [baseState, dispatchAction.bind(null, hook.queue)]
 }
 ```
 
@@ -356,15 +356,15 @@ Simulate the behavior of a component `click` by calling the `click` method retur
 
 ```js
 function App() {
-  const [num, updateNum] = useState(0);
+  const [num, updateNum] = useState(0)
 
-  console.log(`${isMount ? "mount" : "update"} num: `, num);
+  console.log(`${isMount ? 'mount' : 'update'} num: `, num)
 
   return {
     click() {
-      updateNum((num) => num + 1);
+      updateNum((num) => num + 1)
     },
-  };
+  }
 }
 ```
 

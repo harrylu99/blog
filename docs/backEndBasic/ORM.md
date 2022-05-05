@@ -39,4 +39,3 @@ When we develop systems, there are generally performance issues. Performance pro
 When doing persistence on objects, ORMs generally persist all attributes, which, sometimes, is undesirable.
 
 ORM is a tool, and tools do solve some repetitive, simple labor. This is undeniable. But we can't expect tools to solve all problems once and for all. Some problems still require special handling, but the parts that require special handling should be few and far between for the vast majority of systems.
-

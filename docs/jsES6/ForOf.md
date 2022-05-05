@@ -1,6 +1,6 @@
 ---
 title: for...of
-date: 2022-02-22
+date: 2022-02-12
 ---
 
 ## Foreword

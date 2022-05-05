@@ -1,6 +1,6 @@
 ---
 title: Hooks -- Data Structure
-date: 2022-04-30
+date: 2022-05-23
 ---
 
 ## Foreword
@@ -28,7 +28,7 @@ const HooksDispatcherOnMount: Dispatcher = {
   useRef: mountRef,
   useState: mountState,
   // ...
-};
+}
 
 // Dispatcher when update
 const HooksDispatcherOnUpdate: Dispatcher = {
@@ -42,7 +42,7 @@ const HooksDispatcherOnUpdate: Dispatcher = {
   useRef: updateRef,
   useState: updateState,
   // ...
-};
+}
 ```
 
 As we can see here, the fucntion of the `hook` called when `mount` is different with the funtion of the `hook` called when `update`.
@@ -50,16 +50,16 @@ As we can see here, the fucntion of the `hook` called when `mount` is different 
 Before `FunctionComponent` `render`, `mount` or `update` will be judged by the different conditions of the `FunctionComponent` corresponding fiber.
 
 ```js
-current === null || current.memoizedState === null;
+current === null || current.memoizedState === null
 ```
 
 And assign the `dispatcher` corresponding to the different cases to the `current` property of the global variable `ReactCurrentDispatcher`.
 
 ```js
 ReactCurrentDispatcher.current =
-      current === null || current.memoizedState === null
-        ? HooksDispatcherOnMount
-        : HooksDispatcherOnUpdate;  
+  current === null || current.memoizedState === null
+    ? HooksDispatcherOnMount
+    : HooksDispatcherOnUpdate
 ```
 
 [You can find these code from here.](https://github.com/acdlite/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberHooks.new.js#L409)
@@ -76,7 +76,7 @@ When we got a wrong `hook`, like
 
 ```js
 useEffect(() => {
-  useState(0);
+  useState(0)
 })
 ```
 
@@ -105,7 +105,7 @@ const hook: Hook = {
   queue: null,
 
   next: null,
-};
+}
 ```
 
 [You can find the source code of creating `hook` here.](https://github.com/acdlite/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberHooks.new.js#L546)
@@ -119,7 +119,7 @@ Note: Both `hook` and `FunctionComponent fiber` have the `memoizedState` propert
 
 - `fiber.memoizedState`: Saved `Hooks` chain table of the `FunctionComponent` corresponding `fiber`.
 - `hook.memeoizedState`: Saved `hook` corresponding data in the `Hooks` chain table.
-:::
+  :::
 
 Differnet `hook`'s `memoizedState` save different type of data.
 

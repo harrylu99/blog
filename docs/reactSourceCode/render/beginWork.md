@@ -1,6 +1,6 @@
 ---
 title: Render -- beginWork
-date: 2022-04-03
+date: 2022-04-22
 ---
 
 ## Foreword
@@ -17,7 +17,7 @@ From the previous section we already know that the job of `beginWork` is to pass
 function beginWork(
   current: Fiber | null,
   workInProgress: Fiber,
-  renderLanes: Lanes,
+  renderLanes: Lanes
 ): Fiber | null {
   // ...
 }
@@ -27,7 +27,7 @@ Including these parameters
 
 - `current`, the `Fiber node` corresponding to the current component at the last update, i.e. `workInProgress.alternate`.
 - `workInProgress`, the `Fiber node` corresponding to the current component.
-- `renderLanes`, prioritization related, we will talk about it when we talking about `Scheduler`. 
+- `renderLanes`, prioritization related, we will talk about it when we talking about `Scheduler`.
 
 From the previous section `double buffer`, we know that except the `rootFiber`, when a component is `mount`, because it is rendered for the first time, there is no `Fiber node` corresponding to the current component at the last update, as the reslut, `current === null` when it is `mount`.
 
@@ -39,8 +39,6 @@ Based on that, we could devided `beginWork` into two parts.
 
 - `update`, if `current` exists, you can reuse `current node` when certain conditions are met, so that you can clone `current.child` as `workInProgress.child` instead of creating new `workInProgress.child`.
 
-
-
 - `mount`, except for `fiberRootNode`, `current === null`. different types of `child Fiber node` will be created depending on `fiber.tag`.
 
 ```js
@@ -49,36 +47,30 @@ function beginWork(
   workInProgress: Fiber,
   renderLanes: Lanes
 ): Fiber | null {
-
   // update
   if (current !== null) {
-
     // reuse current
-    return bailoutOnAlreadyFinishedWork(
-      current,
-      workInProgress,
-      renderLanes,
-    );
+    return bailoutOnAlreadyFinishedWork(current, workInProgress, renderLanes)
   } else {
-    didReceiveUpdate = false;
+    didReceiveUpdate = false
   }
 
   // mount
-switch (workInProgress.tag) {
-    case IndeterminateComponent: 
-      // ...
-    case LazyComponent: 
-      // ...
-    case FunctionComponent: 
-      // ...
-    case ClassComponent: 
-      // ...
+  switch (workInProgress.tag) {
+    case IndeterminateComponent:
+    // ...
+    case LazyComponent:
+    // ...
+    case FunctionComponent:
+    // ...
+    case ClassComponent:
+    // ...
     case HostRoot:
-      // ...
+    // ...
     case HostComponent:
-      // ...
+    // ...
     case HostText:
-      // ...
+    // ...
     // ...
   }
 }
@@ -93,34 +85,32 @@ We can find out that when `didReceiveUpdate === false`, which means the `child F
 
 ```js
 if (current !== null) {
-    const oldProps = current.memoizedProps;
-    const newProps = workInProgress.pendingProps;
+  const oldProps = current.memoizedProps
+  const newProps = workInProgress.pendingProps
 
-    if (
-      oldProps !== newProps ||
-      hasLegacyContextChanged() ||
-      (__DEV__ ? workInProgress.type !== current.type : false)
+  if (
+    oldProps !== newProps ||
+    hasLegacyContextChanged() ||
+    (__DEV__ ? workInProgress.type !== current.type : false)
+  ) {
+    didReceiveUpdate = true
+  } else if (!includesSomeLane(renderLanes, updateLanes)) {
+    didReceiveUpdate = false
+    switch (
+      workInProgress.tag
+      //...
     ) {
-      didReceiveUpdate = true;
-    } else if (!includesSomeLane(renderLanes, updateLanes)) {
-      didReceiveUpdate = false;
-      switch (workInProgress.tag) {
-        //...
-      }
-      return bailoutOnAlreadyFinishedWork(
-        current,
-        workInProgress,
-        renderLanes,
-      );
-    } else {
-      didReceiveUpdate = false;
     }
+    return bailoutOnAlreadyFinishedWork(current, workInProgress, renderLanes)
   } else {
-    didReceiveUpdate = false;
+    didReceiveUpdate = false
   }
+} else {
+  didReceiveUpdate = false
+}
 ```
 
-## mount 
+## mount
 
 When the optimization path is not satisfied, we move to the second part, the creation of new `child Fiber`.
 
@@ -130,20 +120,20 @@ We can see the logic to enter the creation of different types of `Fiber` dependi
 
 ```js
 switch (workInProgress.tag) {
-  case IndeterminateComponent: 
-    // ...
-  case LazyComponent: 
-    // ...
-  case FunctionComponent: 
-    // ...
-  case ClassComponent: 
-    // ...
+  case IndeterminateComponent:
+  // ...
+  case LazyComponent:
+  // ...
+  case FunctionComponent:
+  // ...
+  case ClassComponent:
+  // ...
   case HostRoot:
-    // ...
+  // ...
   case HostComponent:
-    // ...
+  // ...
   case HostText:
-    // ...
+  // ...
   // ...
 }
 ```
@@ -170,16 +160,16 @@ export function reconcileChildren(
       workInProgress,
       null,
       nextChildren,
-      renderLanes,
-    );
+      renderLanes
+    )
   } else {
     // for update
     workInProgress.child = reconcileChildFibers(
       workInProgress,
       current.child,
       nextChildren,
-      renderLanes,
-    );
+      renderLanes
+    )
   }
 }
 ```
@@ -202,13 +192,13 @@ For example,
 
 ```js
 // insert DOM
-export const Placement = /*                */ 0b00000000000010;
+export const Placement = /*                */ 0b00000000000010
 // DOM required update
-export const Update = /*                   */ 0b00000000000100;
+export const Update = /*                   */ 0b00000000000100
 // insert DOM and required update
-export const PlacementAndUpdate = /*       */ 0b00000000000110;
+export const PlacementAndUpdate = /*       */ 0b00000000000110
 // delete DOM
-export const Deletion = /*                 */ 0b00000000001000;
+export const Deletion = /*                 */ 0b00000000001000
 ```
 
 The binary representation of the `effectTag` makes it easy to assign multiple `effects` to `fiber.effectTag` using bit manipulation.

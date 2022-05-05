@@ -1,6 +1,6 @@
 ---
 title: Render Overview
-date: 2022-04-02
+date: 2022-04-20
 ---
 
 ## Foreword
@@ -13,14 +13,14 @@ The `render` phase starts with a call to the `performSyncWorkOnRoot` or `perform
 // called by performSyncWorkOnRoot
 function workLoopSync() {
   while (workInProgress !== null) {
-    performUnitOfWork(workInProgress);
+    performUnitOfWork(workInProgress)
   }
 }
 
 // called by performConcurrentWorkOnRoot
 function workLoopConcurrent() {
   while (workInProgress !== null && !shouldYield()) {
-    performUnitOfWork(workInProgress);
+    performUnitOfWork(workInProgress)
   }
 }
 ```
@@ -60,10 +60,10 @@ function App() {
       I am
       <span>Harry</span>
     </div>
-  );
+  )
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 ![Fiber Tree](../../images/fiber1.png)

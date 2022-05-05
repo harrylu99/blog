@@ -1,6 +1,6 @@
 ---
 title: Commit Overview
-date: 2022-04-08
+date: 2022-04-26
 ---
 
 ## Foreword
@@ -8,7 +8,7 @@ date: 2022-04-08
 In the last section, we have introduced the `commitRoot` method is the begining of the `commit stage` work. And `fiberRootNode` will be the parameter.
 
 ```js
-commitRoot(root);
+commitRoot(root)
 ```
 
 An one-way linked list `effectList` which needed to excute the side-effect `Fiber node` has stored in the `rootFiber.firstEffect`.
@@ -36,41 +36,44 @@ From the begining to the first `if (firstEffect !== null)` in the `commitRootImp
 ```js
 do {
   // Triggers the useEffect callback with other synchronized tasks. Since these tasks may trigger new renders, iterate through the execution here until there are no more tasks.
-  flushPassiveEffects();
-} while (rootWithPendingPassiveEffects !== null);
+  flushPassiveEffects()
+} while (rootWithPendingPassiveEffects !== null)
 
 // root means fiberRootNode.
 // root.finishedWork means the current rootFiber.
-const finishedWork = root.finishedWork;
+const finishedWork = root.finishedWork
 
 // Any variable name with lane is priority related.
-const lanes = root.finishedLanes;
+const lanes = root.finishedLanes
 if (finishedWork === null) {
-  return null;
+  return null
 }
-root.finishedWork = null;
-root.finishedLanes = NoLanes;
+root.finishedWork = null
+root.finishedLanes = NoLanes
 
 // Reset the callback fucntion binding by the Scheduler.
-root.callbackNode = null;
-root.callbackId = NoLanes;
+root.callbackNode = null
+root.callbackId = NoLanes
 
-let remainingLanes = mergeLanes(finishedWork.lanes, finishedWork.childLanes);
+let remainingLanes = mergeLanes(finishedWork.lanes, finishedWork.childLanes)
 // Reset the related variables of priority.
-markRootFinished(root, remainingLanes);
+markRootFinished(root, remainingLanes)
 
 // Clears completed discrete updates, e.g., updates triggered by user mouse clicks.
 if (rootsWithPendingDiscreteUpdates !== null) {
-  if (!hasDiscreteLanes(remainingLanes) && rootsWithPendingDiscreteUpdates.has(root)) {
-    rootsWithPendingDiscreteUpdates.delete(root);
+  if (
+    !hasDiscreteLanes(remainingLanes) &&
+    rootsWithPendingDiscreteUpdates.has(root)
+  ) {
+    rootsWithPendingDiscreteUpdates.delete(root)
   }
 }
 
 // Reset global variables
 if (root === workInProgressRoot) {
-  workInProgressRoot = null;
-  workInProgress = null;
-  workInProgressRootRenderLanes = NoLanes;
+  workInProgressRoot = null
+  workInProgress = null
+  workInProgressRootRenderLanes = NoLanes
 } else {
 }
 
@@ -79,17 +82,17 @@ if (root === workInProgressRoot) {
 // So the root node with effectTag is not included.
 // So the root node with effectTag is inserted at the end of the effectList.
 // This ensures that all fibers with effects are in the effectList.
-let firstEffect;
+let firstEffect
 if (finishedWork.effectTag > PerformedWork) {
   if (finishedWork.lastEffect !== null) {
-    finishedWork.lastEffect.nextEffect = finishedWork;
-    firstEffect = finishedWork.firstEffect;
+    finishedWork.lastEffect.nextEffect = finishedWork
+    firstEffect = finishedWork.firstEffect
   } else {
-    firstEffect = finishedWork;
+    firstEffect = finishedWork
   }
 } else {
   // There is no effectTag in the root node.
-  firstEffect = finishedWork.firstEffect;
+  firstEffect = finishedWork.firstEffect
 }
 ```
 
@@ -100,14 +103,14 @@ We only need to focus on the last assignment of the `firstEffect`, which will be
 ## After layout
 
 ```js
-const rootDidHavePassiveEffects = rootDoesHavePassiveEffects;
+const rootDidHavePassiveEffects = rootDoesHavePassiveEffects
 
 // useEffect
 if (rootDoesHavePassiveEffects) {
-  rootDoesHavePassiveEffects = false;
-  rootWithPendingPassiveEffects = root;
-  pendingPassiveEffectsLanes = lanes;
-  pendingPassiveEffectsRenderPriority = renderPriorityLevel;
+  rootDoesHavePassiveEffects = false
+  rootWithPendingPassiveEffects = root
+  pendingPassiveEffectsLanes = lanes
+  pendingPassiveEffectsRenderPriority = renderPriorityLevel
 } else {
 }
 
@@ -133,16 +136,16 @@ if (remainingLanes === SyncLane) {
 }
 
 // ...called before leaving the commitRoot function to trigger a new dispatch and ensure that any additional tasks are dispatched
-ensureRootIsScheduled(root, now());
+ensureRootIsScheduled(root, now())
 
 // ...handle uncaught errors and legacy boundary issues from older versions
 
 // Execute synchronized tasks so that they don't have to wait until the next event loop
 // For example, updates created by executing setState in componentDidMount will be synchronized here
 // or useLayoutEffect
-flushSyncCallbackQueue();
+flushSyncCallbackQueue()
 
-return null;
+return null
 ```
 
 [You can find the complete code from here](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L2195)

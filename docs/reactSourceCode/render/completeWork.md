@@ -1,6 +1,6 @@
 ---
 title: Render -- completeWork
-date: 2022-04-05
+date: 2022-04-24
 ---
 
 ## Foreword
@@ -93,8 +93,8 @@ if (current !== null && workInProgress.stateNode != null) {
     workInProgress,
     type,
     newProps,
-    rootContainerInstance,
-  );
+    rootContainerInstance
+  )
 }
 ```
 
@@ -103,7 +103,7 @@ if (current !== null && workInProgress.stateNode != null) {
 In the `updateHostComponent`, the processed `props` are assigned to `workInProgress.updateQueue` and will be rendered on the page during the `commit` phase.
 
 ```js
-workInProgress.updateQueue = (updatePayload: any);
+workInProgress.updateQueue = (updatePayload: any)
 ```
 
 Where `updatePayload` is in array form and the value of its even index is the changed `prop key`, and the value of the odd index is the changed `prop value`.
@@ -123,19 +123,19 @@ Again, we omitted the irrelevant logic. The main logic at mount time consists of
 
 // ...server-side rendering-related logic
 
-const currentHostContext = getHostContext();
+const currentHostContext = getHostContext()
 // create DOM node for fiber
 const instance = createInstance(
-    type,
-    newProps,
-    rootContainerInstance,
-    currentHostContext,
-    workInProgress,
-  );
+  type,
+  newProps,
+  rootContainerInstance,
+  currentHostContext,
+  workInProgress
+)
 // bring the descendant DOM node to the exsiting DOM node
-appendAllChildren(instance, workInProgress, false, false);
+appendAllChildren(instance, workInProgress, false, false)
 // sign DOM Node to fiber.stateNode
-workInProgress.stateNode = instance;
+workInProgress.stateNode = instance
 
 // similar ti the process of updateHostComponent in update
 if (
@@ -144,10 +144,10 @@ if (
     type,
     newProps,
     rootContainerInstance,
-    currentHostContext,
+    currentHostContext
   )
 ) {
-  markUpdate(workInProgress);
+  markUpdate(workInProgress)
 }
 ```
 
@@ -180,12 +180,12 @@ As the result, you can execute all the `effects` in the `commit` phase by just i
 
 [You can see the logic of this code here](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1744)
 
-Dan Abramov offered an analogy for an effects list. He likes to think of it as a Christmas tree, with “Christmas lights” binding all effectful nodes together. 
+Dan Abramov offered an analogy for an effects list. He likes to think of it as a Christmas tree, with “Christmas lights” binding all effectful nodes together.
 
 ## Conclusion
 
 Now, the `render` phase is complete. The `fiberRootNode` in the `performStncWorkOnRoot` function is passed to the `commitRoot` method and start the `commit` ohase workflow.
 
 ```js
-commitRoot(root);
+commitRoot(root)
 ```

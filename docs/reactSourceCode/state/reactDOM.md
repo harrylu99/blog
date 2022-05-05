@@ -1,6 +1,6 @@
 ---
 title: State -- ReactDOM.render
-date: 2022-04-26
+date: 2022-05-15
 ---
 
 ## Foreword
@@ -11,16 +11,17 @@ We have now going to talk about the starter of `React` application. In this arit
 
 From the `Double Buffer` article, we know that when we first time run the `ReactDOM.render`, `fiberRootNode` and `rootFiber` will be created. `fiberRootNode` is the `root node` of the whole application and `rootFiber` is the `root node`of the render component tree.
 
-This happen in the `legactRenderSubtreeIntoContainer` method, which ia called after `ReactDOM.render`. 
+This happen in the `legactRenderSubtreeIntoContainer` method, which ia called after `ReactDOM.render`.
 
 ```js
 // container means the second parameter of the ReactDOM.render
 root = container._reactRootContainer = legacyCreateRootFromDOMContainer(
   container,
-  forceHydrate,
-);
-fiberRoot = root._internalRoot;
+  forceHydrate
+)
+fiberRoot = root._internalRoot
 ```
+
 [You can check the source code from here.](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-dom/src/client/ReactDOMLegacy.js#L193)
 
 In the `legacyCreateRootFromDOMContainer` method, `fiberRootNote` and `rootFiber` will be create and connect by calling `createFiberRoot` and initilize `updateQueue`.
@@ -30,22 +31,22 @@ export function createFiberRoot(
   containerInfo: any,
   tag: RootTag,
   hydrate: boolean,
-  hydrationCallbacks: null | SuspenseHydrationCallbacks,
+  hydrationCallbacks: null | SuspenseHydrationCallbacks
 ): FiberRoot {
   // create fiberRootNode
-  const root: FiberRoot = (new FiberRootNode(containerInfo, tag, hydrate): any);
-  
+  const root: FiberRoot = (new FiberRootNode(containerInfo, tag, hydrate): any)
+
   // create rootFiber
-  const uninitializedFiber = createHostRootFiber(tag);
+  const uninitializedFiber = createHostRootFiber(tag)
 
   // connect rootFiber and fiberRootNode
-  root.current = uninitializedFiber;
-  uninitializedFiber.stateNode = root;
+  root.current = uninitializedFiber
+  uninitializedFiber.stateNode = root
 
   // initialize updateQueue
-  initializeUpdateQueue(uninitializedFiber);
+  initializeUpdateQueue(uninitializedFiber)
 
-  return root;
+  return root
 }
 ```
 
@@ -64,26 +65,26 @@ export function updateContainer(
   element: ReactNodeList,
   container: OpaqueRoot,
   parentComponent: ?React$Component<any, any>,
-  callback: ?Function,
+  callback: ?Function
 ): Lane {
   // ...
 
   // create update
-  const update = createUpdate(eventTime, lane, suspenseConfig);
-  
+  const update = createUpdate(eventTime, lane, suspenseConfig)
+
   // update.payload is the component need to mount on the root node
-  update.payload = {element};
+  update.payload = { element }
 
   // callback is the third parameter of the ReactDOM.render
-  callback = callback === undefined ? null : callback;
+  callback = callback === undefined ? null : callback
   if (callback !== null) {
-    update.callback = callback;
+    update.callback = callback
   }
 
   // add update to the updateQueue
-  enqueueUpdate(current, update);
+  enqueueUpdate(current, update)
   // scheduke update
-  scheduleUpdateOnFiber(current, lane, eventTime);
+  scheduleUpdateOnFiber(current, lane, eventTime)
 
   // ...
 }

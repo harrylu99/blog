@@ -1,6 +1,6 @@
 ---
 title: Diff Overview
-date: 2022-04-18
+date: 2022-05-02
 ---
 
 ## Foreword
@@ -73,27 +73,26 @@ Let's start with the start function `reconcileChildFibers` of `Diff`, it will us
 function reconcileChildFibers(
   returnFiber: Fiber,
   currentFirstChild: Fiber | null,
-  newChild: any,
+  newChild: any
 ): Fiber | null {
-
-  const isObject = typeof newChild === 'object' && newChild !== null;
+  const isObject = typeof newChild === 'object' && newChild !== null
 
   if (isObject) {
     // type of object, could be REACT_ELEMENT_TYPE or REACT_PORTAL_TYPE
     switch (newChild.$$typeof) {
       case REACT_ELEMENT_TYPE:
-        // call reconcileSingleElement 
+      // call reconcileSingleElement
       // ...
     }
   }
 
   if (typeof newChild === 'string' || typeof newChild === 'number') {
-    // call reconcileSingleTextNode 
+    // call reconcileSingleTextNode
     // ...
   }
 
   if (isArray(newChild)) {
-    // call reconcileChildrenArray 
+    // call reconcileChildrenArray
     // ...
   }
 
@@ -101,7 +100,7 @@ function reconcileChildFibers(
   // ...
 
   // cannot satisfy one of above, delete the node
-  return deleteRemainingChildren(returnFiber, currentFirstChild);
+  return deleteRemainingChildren(returnFiber, currentFirstChild)
 }
 ```
 

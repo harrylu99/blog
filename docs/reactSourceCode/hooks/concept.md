@@ -1,6 +1,6 @@
 ---
 title: Hooks -- Concept
-date: 2022-04-28
+date: 2022-05-19
 ---
 
 ::: warning
@@ -39,8 +39,8 @@ For example, some of you might think `useEffect` could replace `componentWillRec
 
 ```js
 useEffect(() => {
-  console.log("something updated");
-}, [props.something]);
+  console.log('something updated')
+}, [props.something])
 ```
 
 But in fact, `componentWillReceiveProps` is executed in the `render` phase, while `useEffect` is executed asynchronously after the rendering is completed in the `commit` phase.

@@ -1,6 +1,6 @@
 ---
 title: Hooks -- useState and useReducer
-date: 2022-05-01
+date: 2022-05-25
 ---
 
 ## Foreword
@@ -17,16 +17,16 @@ We can sperate the workflow of these two `hooks` into two stage,
 
 ```js
 function App() {
-  const [state, dispatch] = useReducer(reducer, { a: 1 });
+  const [state, dispatch] = useReducer(reducer, { a: 1 })
 
-  const [num, updateNum] = useState(0);
+  const [num, updateNum] = useState(0)
 
   return (
     <div>
-      <button onClick={() => dispatch({ type: "a" })}>{state.a}</button>
+      <button onClick={() => dispatch({ type: 'a' })}>{state.a}</button>
       <button onClick={() => updateNum((num) => num + 1)}>{num}</button>
     </div>
-  );
+  )
 }
 ```
 
@@ -45,12 +45,12 @@ For these two `Hook`, their code looks like
 
 ```js
 function useState(initialState) {
-  var dispatcher = resolveDispatcher();
-  return dispatcher.useState(initialState);
+  var dispatcher = resolveDispatcher()
+  return dispatcher.useState(initialState)
 }
 function useReducer(reducer, initialArg, init) {
-  var dispatcher = resolveDispatcher();
-  return dispatcher.useReducer(reducer, initialArg, init);
+  var dispatcher = resolveDispatcher()
+  return dispatcher.useReducer(reducer, initialArg, init)
 }
 ```
 
@@ -64,9 +64,11 @@ When `mount`, `useReducer` will call `mountReducer` and `useState` will call `mo
 [You can find the source code of `mountState` here.](https://github.com/acdlite/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberHooks.new.js#L1143)
 
 ```js
-function mountState<S>(initialState: (() => S) | S): [S, Dispatch<BasicStateAction<S>>] {
+function mountState<S>(
+  initialState: (() => S) | S
+): [S, Dispatch<BasicStateAction<S>>] {
   // create and return current hook
-  const hook = mountWorkInProgressHook();
+  const hook = mountWorkInProgressHook()
 
   // ...assign the initial state value
 
@@ -76,15 +78,19 @@ function mountState<S>(initialState: (() => S) | S): [S, Dispatch<BasicStateActi
     dispatch: null,
     lastRenderedReducer: basicStateReducer,
     lastRenderedState: (initialState: any),
-  });
+  })
 
   // ...create dispatch
-  return [hook.memoizedState, dispatch];
+  return [hook.memoizedState, dispatch]
 }
 
-function mountReducer<S, I, A>(reducer: (S, A) => S, initialArg: I, init?: (I) => S): [S, Dispatch<A>] {
+function mountReducer<S, I, A>(
+  reducer: (S, A) => S,
+  initialArg: I,
+  init?: (I) => S
+): [S, Dispatch<A>] {
   // create and return current hook
-  const hook = mountWorkInProgressHook();
+  const hook = mountWorkInProgressHook()
 
   // ...assign the initial state value
 
@@ -94,10 +100,10 @@ function mountReducer<S, I, A>(reducer: (S, A) => S, initialArg: I, init?: (I) =
     dispatch: null,
     lastRenderedReducer: reducer,
     lastRenderedState: (initialState: any),
-  });
+  })
 
   // ...create dispatch
-  return [hook.memoizedState, dispatch];
+  return [hook.memoizedState, dispatch]
 }
 ```
 
@@ -125,7 +131,7 @@ The `basicStateReducer` method is
 
 ```js
 function basicStateReducer<S>(state: S, action: BasicStateAction<S>): S {
-  return typeof action === "function" ? action(state) : action;
+  return typeof action === 'function' ? action(state) : action
 }
 ```
 
@@ -138,17 +144,21 @@ When `update`, `useReducer` and `useState` call the same fucntion `updateReducer
 [You can check the source code of `updateReducer` here.](https://github.com/acdlite/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiberHooks.new.js#L665)
 
 ```js
-function updateReducer<S, I, A>(reducer: (S, A) => S, initialArg: I, init?: (I) => S): [S, Dispatch<A>] {
+function updateReducer<S, I, A>(
+  reducer: (S, A) => S,
+  initialArg: I,
+  init?: (I) => S
+): [S, Dispatch<A>] {
   // get the current hook
-  const hook = updateWorkInProgressHook();
-  const queue = hook.queue;
+  const hook = updateWorkInProgressHook()
+  const queue = hook.queue
 
-  queue.lastRenderedReducer = reducer;
+  queue.lastRenderedReducer = reducer
 
   // ...
 
-  const dispatch: Dispatch<A> = (queue.dispatch: any);
-  return [hook.memoizedState, dispatch];
+  const dispatch: Dispatch<A> = (queue.dispatch: any)
+  return [hook.memoizedState, dispatch]
 }
 ```
 
@@ -163,11 +173,11 @@ Given a example of trigger `Update` in the `render` stage.
 
 ```js
 function App() {
-  const [num, updateNum] = useState(0);
+  const [num, updateNum] = useState(0)
 
-  updateNum(num + 1);
+  updateNum(num + 1)
 
-  return <button onClick={() => updateNum((num) => num + 1)}>{num}</button>;
+  return <button onClick={() => updateNum((num) => num + 1)}>{num}</button>
 }
 ```
 
@@ -198,21 +208,28 @@ function dispatchAction(fiber, queue, action) {
     eagerReducer: null,
     eagerState: null,
     next: null,
-  };
+  }
 
   // ...add update to queue.pending
 
-  var alternate = fiber.alternate;
+  var alternate = fiber.alternate
 
-  if (fiber === currentlyRenderingFiber$1 || (alternate !== null && alternate === currentlyRenderingFiber$1)) {
+  if (
+    fiber === currentlyRenderingFiber$1 ||
+    (alternate !== null && alternate === currentlyRenderingFiber$1)
+  ) {
     // updates trigger in the render stage
-    didScheduleRenderPhaseUpdateDuringThisPass = didScheduleRenderPhaseUpdate = true;
+    didScheduleRenderPhaseUpdateDuringThisPass =
+      didScheduleRenderPhaseUpdate = true
   } else {
-    if (fiber.lanes === NoLanes && (alternate === null || alternate.lanes === NoLanes)) {
+    if (
+      fiber.lanes === NoLanes &&
+      (alternate === null || alternate.lanes === NoLanes)
+    ) {
       // ...updateQueue of fiber is null
     }
 
-    scheduleUpdateOnFiber(fiber, lane, eventTime);
+    scheduleUpdateOnFiber(fiber, lane, eventTime)
   }
 }
 ```

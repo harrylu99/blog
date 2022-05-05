@@ -1,6 +1,6 @@
 ---
 title: Diff -- Multiple Node
-date: 2022-04-20
+date: 2022-05-05
 ---
 
 ## Foreword
@@ -16,7 +16,7 @@ function List() {
       <li key="2">2</li>
       <li key="3">3</li>
     </ul>
-  );
+  )
 }
 ```
 
@@ -239,7 +239,7 @@ Since we do have some nodes changed their position, so we cannot use index `i` f
 For find the corresponding `key` of the `oldFiber` faster, we are going to save all of these unprocessed `oldFiber` to the `Map` and we use `key` as the key, `oldFiber` as the value.
 
 ```js
-const existingChildren = mapRemainingChildren(returnFiber, oldFiber);
+const existingChildren = mapRemainingChildren(returnFiber, oldFiber)
 ```
 
 [You can check the source code of this logic from here.](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactChildFiber.new.js#L890)

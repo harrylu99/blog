@@ -1,6 +1,6 @@
 ---
 title: Fiber -- Working Principle
-date: 2022-03-07
+date: 2022-04-17
 ---
 
 ## Foreword
@@ -30,8 +30,8 @@ There will be at most two `Fiber tree` in `React` at the same time. The `Fiber t
 The `Fiber node` in the `current Fiber tree` are called `current fiber`, and the `Fiber node` in the `workInProgress Fiber tree` are called `workInProgress fiber`, and they are connected by the `alternate` property.
 
 ```js
-currentFiber.alternate === workInProgressFiber;
-workInProgressFiber.alternate === currentFiber;
+currentFiber.alternate === workInProgressFiber
+workInProgressFiber.alternate === currentFiber
 ```
 
 The root node of the `React` application switches the `current tree` pointers by making the `current` pointer switch between the different trees `rootFiber`.
@@ -44,17 +44,15 @@ Next, we will explain the build/replace process when `mount` and `update` with c
 
 ## mount
 
-Take a look at this example first 
+Take a look at this example first
 
 ```js
 function App() {
-  const [num, add] = useState(0);
-  return (
-    <p onClick={() => add(num + 1)}>{num}</p>
-  )
+  const [num, add] = useState(0)
+  return <p onClick={() => add(num + 1)}>{num}</p>
 }
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 1. The first execution of `ReactDOM.render` creates `fiberRootNode` (called `fiberRoot` in the source code) and `rootFiber`. Where `fiberRootNode` is the root node of the entire application and `rootFiber` is the root node of the component tree where `<App/>` is located.
@@ -66,7 +64,7 @@ The `current` of the `fiberRootNode` will point to the `Fiber tree` correspondin
 ![fiberRootNode current point to rootFiber ](../../images/fiberworking1.png)
 
 ```js
-fiberRootNode.current = rootFiber;
+fiberRootNode.current = rootFiber
 ```
 
 Since it is the first screen rendering, there is no `DOM` mounted in the page yet, so the `rootFiber` pointed by `fiberRootNode.current` does not have any `child node` (i.e. the current Fiber tree is empty).
@@ -78,7 +76,7 @@ When building the `workInProgress tree`, we will try to reuse the properties in 
 ![the right side of the figure below is the tree built in memory, and the left side is the tree displayed on the page](../../images/fiberworking2.png)
 
 3. The finished `workInProgress tree` on the right side of the figure is rendered to the page at the `commit` stage.
-   
+
 The `current` pointer of the `fiberRootNode` points to the `workInProgress tree` so that it becomes the `current tree`.
 
 ![the finished workInProgress tree on the right side of the figure is rendered to the page at the commit stage](../../images/fiberworking3.png)

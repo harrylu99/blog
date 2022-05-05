@@ -1,6 +1,6 @@
 ---
 title: State -- Update
-date: 2022-04-24
+date: 2022-05-11
 ---
 
 ## Foreword
@@ -43,7 +43,7 @@ const update: Update<*> = {
   callback: null,
 
   next: null,
-};
+}
 ```
 
 > `update` return by `createUpdate`, [you can check the source code of `createUpdate` here.](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactUpdateQueue.old.js#L189)
@@ -101,7 +101,7 @@ const queue: UpdateQueue<State> = {
     pending: null,
   },
   effects: null,
-};
+}
 ```
 
 > `UpdateQueue` return by `initializeUpdateQueue`, [You can check the source code of `initializeUpdateQueue` from here.](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactUpdateQueue.new.js#L157)
@@ -129,9 +129,9 @@ There are two `Update` did not processed in the last `render` because of the `lo
 We name these `u1` and `u2`, which `u1.next === u2`.
 
 ```js
-fiber.updateQueue.firstBaseUpdate === u1;
-fiber.updateQueue.lastBaseUpdate === u2;
-u1.next === u2;
+fiber.updateQueue.firstBaseUpdate === u1
+fiber.updateQueue.lastBaseUpdate === u2
+u1.next === u2
 ```
 
 If we use `-->` presents the direction of the chain.
@@ -147,8 +147,8 @@ Each `update` will insert to the `updateQueue` queue by `enqueneUpdate` method.
 After inserting `u3`
 
 ```js
-fiber.updateQueue.shared.pending === u3;
-u3.next === u3;
+fiber.updateQueue.shared.pending === u3
+u3.next === u3
 ```
 
 the circle chain relationship of `shared,pending` looks like
@@ -162,9 +162,9 @@ fiber.updateQueue.shared.pending:   u3 ─────┐
 after insert `u4`
 
 ```js
-fiber.updateQueue.shared.pending === u4;
-u4.next === u3;
-u3.next === u4;
+fiber.updateQueue.shared.pending === u4
+u4.next === u3
+u3.next === u4
 ```
 
 the circle chain look like

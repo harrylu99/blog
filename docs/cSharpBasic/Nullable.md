@@ -1,5 +1,6 @@
 ---
 title: Nullable
+date: 2022-03-24
 ---
 
 ## `?` and `??` in C#

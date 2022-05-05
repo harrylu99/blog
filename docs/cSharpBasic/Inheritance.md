@@ -1,6 +1,6 @@
 ---
 title: Inheritance
-date: 2022-03-23
+date: 2022-03-30
 ---
 
 ## Defination

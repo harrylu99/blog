@@ -1,6 +1,6 @@
 ---
 title: Lexical Scope and Dynamic Scope
-date: 2022-01-19
+date: 2022-01-06
 ---
 
 ## Scope

@@ -1,6 +1,6 @@
 ---
 title: State -- Overview
-date: 2022-04-22
+date: 2022-05-07
 ---
 
 ## Key Nodes
@@ -61,7 +61,7 @@ Before we jump into this section, we could start to know the key nodes from the 
   The work have done here could be summarized as, traversal from the `fiber` to the `rootFiber` and return `rootFiber`.
 
 - update schedule
-  
+
   Now, we have a `rootFiber` and the corresponding `Fiber tree` includes a `Fiber node` which has an `Update`.
 
   Then, `Scheduler` will decided if the update `synchronous` or `asynchronous` based on the priority of the `Upadte`.
@@ -69,29 +69,29 @@ Before we jump into this section, we could start to know the key nodes from the 
   `ensureRootIsScheduled` is the method used here. Here is the core part of the `ensureRootIsScheduled` method.
 
   ```js
-    if (newCallbackPriority === SyncLanePriority) {
+  if (newCallbackPriority === SyncLanePriority) {
     // task expired，render synchronous.
     newCallbackNode = scheduleSyncCallback(
-        performSyncWorkOnRoot.bind(null, root)
-        );
-    } else {
+      performSyncWorkOnRoot.bind(null, root)
+    )
+  } else {
     // render based on the priority of the task asynchronous
-    var schedulerPriorityLevel = lanePriorityToSchedulerPriority(
-        newCallbackPriority
-    );
+    var schedulerPriorityLevel =
+      lanePriorityToSchedulerPriority(newCallbackPriority)
     newCallbackNode = scheduleCallback(
-        schedulerPriorityLevel,
-        performConcurrentWorkOnRoot.bind(null, root)
-    );
-    }
+      schedulerPriorityLevel,
+      performConcurrentWorkOnRoot.bind(null, root)
+    )
+  }
   ```
+
   [You can check the `ensureRootIsScheduled` source code from here.](https://github.com/facebook/react/blob/b6df4417c79c11cfb44f965fab55b573882b1d54/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L602)
 
   Besides, both `scheduleCallback` and `scheduleSyncCallback` will executed by the `priority` by using the method provided by `Scheduler`. We can find the callback function here is
 
   ```js
-    performSyncWorkOnRoot.bind(null, root);
-    performConcurrentWorkOnRoot.bind(null, root);
+  performSyncWorkOnRoot.bind(null, root)
+  performConcurrentWorkOnRoot.bind(null, root)
   ```
 
   This is the entry point of the `render`.

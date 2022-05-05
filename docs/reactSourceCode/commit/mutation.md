@@ -1,6 +1,6 @@
 ---
 title: Commit -- Mutation
-date: 2022-04-11
+date: 2022-04-29
 ---
 
 ## Foreword
@@ -8,16 +8,16 @@ date: 2022-04-11
 Same as `before mutation` stage, `mutation` stage is aslo traverse the `effectList`, executaion function which is `commitMutationEffects`.
 
 ```js
-nextEffect = firstEffect;
+nextEffect = firstEffect
 do {
   try {
-    commitMutationEffects(root, renderPriorityLevel);
+    commitMutationEffects(root, renderPriorityLevel)
   } catch (error) {
-    invariant(nextEffect !== null, "Should be working on an effect.");
-    captureCommitPhaseError(nextEffect, error);
-    nextEffect = nextEffect.nextEffect;
+    invariant(nextEffect !== null, 'Should be working on an effect.')
+    captureCommitPhaseError(nextEffect, error)
+    nextEffect = nextEffect.nextEffect
   }
-} while (nextEffect !== null);
+} while (nextEffect !== null)
 ```
 
 ## commitMutationEffects
@@ -28,69 +28,70 @@ do {
 function commitMutationEffects(root: FiberRoot, renderPriorityLevel) {
   // traverse effectList
   while (nextEffect !== null) {
-    const effectTag = nextEffect.effectTag;
+    const effectTag = nextEffect.effectTag
 
     // reset text node based on ContentReset effectTag
     if (effectTag & ContentReset) {
-      commitResetTextContent(nextEffect);
+      commitResetTextContent(nextEffect)
     }
 
     // ref update
     if (effectTag & Ref) {
-      const current = nextEffect.alternate;
+      const current = nextEffect.alternate
       if (current !== null) {
-        commitDetachRef(current);
+        commitDetachRef(current)
       }
     }
 
     // process by effectTag
-    const primaryEffectTag = effectTag & (Placement | Update | Deletion | Hydrating);
+    const primaryEffectTag =
+      effectTag & (Placement | Update | Deletion | Hydrating)
     switch (primaryEffectTag) {
       // insert DOM
       case Placement: {
-        commitPlacement(nextEffect);
-        nextEffect.effectTag &= ~Placement;
-        break;
+        commitPlacement(nextEffect)
+        nextEffect.effectTag &= ~Placement
+        break
       }
       // insert DOM and update DOM
       case PlacementAndUpdate: {
         // insert
-        commitPlacement(nextEffect);
+        commitPlacement(nextEffect)
 
-        nextEffect.effectTag &= ~Placement;
+        nextEffect.effectTag &= ~Placement
 
         // update
-        const current = nextEffect.alternate;
-        commitWork(current, nextEffect);
-        break;
+        const current = nextEffect.alternate
+        commitWork(current, nextEffect)
+        break
       }
       // SSR
       case Hydrating: {
-        nextEffect.effectTag &= ~Hydrating;
-        break;
+        nextEffect.effectTag &= ~Hydrating
+        break
       }
       // SSR
       case HydratingAndUpdate: {
-        nextEffect.effectTag &= ~Hydrating;
+        nextEffect.effectTag &= ~Hydrating
 
-        const current = nextEffect.alternate;
-        commitWork(current, nextEffect);
-        break;
+        const current = nextEffect.alternate
+        commitWork(current, nextEffect)
+        break
       }
       // update DOM
       case Update: {
-        const current = nextEffect.alternate;
-        commitWork(current, nextEffect);
-        break;
+        const current = nextEffect.alternate
+        commitWork(current, nextEffect)
+        break
       }
       // delete DOM
       case Deletion: {
-        commitDeletion(root, nextEffect, renderPriorityLevel);
-        break;
+        commitDeletion(root, nextEffect, renderPriorityLevel)
+        break
       }
     }
 
-    nextEffect = nextEffect.nextEffect;
+    nextEffect = nextEffect.nextEffect
   }
 }
 ```
@@ -116,24 +117,24 @@ The method need three steps to complete.
 1. get the `parent DOM node`, `finishedWork` is the incoming `Fiber node`.
 
 ```js
-const parentFiber = getHostParentFiber(finishedWork);
+const parentFiber = getHostParentFiber(finishedWork)
 // Father DOM node
-const parentStateNode = parentFiber.stateNode;
+const parentStateNode = parentFiber.stateNode
 ```
 
 2. Get the `DOM sibling node` of Fiber node.
 
 ```js
-const before = getHostSibling(finishedWork);
+const before = getHostSibling(finishedWork)
 ```
 
 3. Depending on whether the `DOM sibling node` exists or not, it is decided to call `parentNode.insertBefore` or `parentNode.appendChild` to perform the `DOM` insert operation.
 
 ```js
 if (isContainer) {
-  insertOrAppendPlacementNodeIntoContainer(finishedWork, before, parent);
+  insertOrAppendPlacementNodeIntoContainer(finishedWork, before, parent)
 } else {
-  insertOrAppendPlacementNode(finishedWork, before, parent);
+  insertOrAppendPlacementNode(finishedWork, before, parent)
 }
 ```
 
@@ -179,7 +180,7 @@ function App() {
       <p></p>
       <Item />
     </div>
-  );
+  )
 }
 ```
 
@@ -200,7 +201,7 @@ rootFiber -----> App -----> div -----> p
 Right now, the sibling node of the `DOM node` `p` is `li`, the `Fiber node` `p`'s sibling `DOM node` is
 
 ```js
-fiberP.sibling.child;
+fiberP.sibling.child
 ```
 
 Which is the `sibling fiber` of `fiber p`, `child fiber` of `Item`, `li`.
@@ -225,8 +226,8 @@ useLayoutEffect(() => {
 
   return () => {
     // ...this is the destroy function
-  };
-});
+  }
+})
 ```
 
 We will talk about `useLAyoutEffect` in the future section, for now, we only need to know that the destroy function of `useLayoutEffect` will be exectute in the `mutation` stage.
@@ -241,21 +242,21 @@ In the end, render the context of `updateQueue` assigned by `Fiber node` in the 
 
 ```js
 for (let i = 0; i < updatePayload.length; i += 2) {
-  const propKey = updatePayload[i];
-  const propValue = updatePayload[i + 1];
+  const propKey = updatePayload[i]
+  const propValue = updatePayload[i + 1]
 
   // style
   if (propKey === STYLE) {
-    setValueForStyles(domElement, propValue);
+    setValueForStyles(domElement, propValue)
     // DANGEROUSLY_SET_INNER_HTML
   } else if (propKey === DANGEROUSLY_SET_INNER_HTML) {
-    setInnerHTML(domElement, propValue);
+    setInnerHTML(domElement, propValue)
     // children
   } else if (propKey === CHILDREN) {
-    setTextContent(domElement, propValue);
+    setTextContent(domElement, propValue)
   } else {
     // rest props
-    setValueForProperty(domElement, propKey, propValue, isCustomComponentTag);
+    setValueForProperty(domElement, propKey, propValue, isCustomComponentTag)
   }
 }
 ```

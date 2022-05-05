@@ -1,6 +1,6 @@
 ---
 title: Understanding This With the ECMAScript Specification
-date: 2022-01-20
+date: 2022-01-14
 ---
 
 ## Foreword

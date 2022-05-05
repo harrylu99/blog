@@ -1,6 +1,6 @@
 ---
 title: Commit -- Before Mutation
-date: 2022-04-09
+date: 2022-04-27
 ---
 
 ## Foreword
@@ -11,21 +11,21 @@ The code for the `before mutation` phase is very short, the whole process is to 
 
 ```js
 // Save the previous priority, execute at synchronous priority, and restore the previous priority when execution is complete
-const previousLanePriority = getCurrentUpdateLanePriority();
-setCurrentUpdateLanePriority(SyncLanePriority);
+const previousLanePriority = getCurrentUpdateLanePriority()
+setCurrentUpdateLanePriority(SyncLanePriority)
 
 // Mark the current context as CommitContext, as a flag for the commit phase
-const prevExecutionContext = executionContext;
-executionContext |= CommitContext;
+const prevExecutionContext = executionContext
+executionContext |= CommitContext
 
 // Handle the focus state
-focusedInstanceHandle = prepareForCommit(root.containerInfo);
-shouldFireAfterActiveInstanceBlur = false;
+focusedInstanceHandle = prepareForCommit(root.containerInfo)
+shouldFireAfterActiveInstanceBlur = false
 
 // The main function of the beforeMutation phase
-commitBeforeMutationEffects(finishedWork);
+commitBeforeMutationEffects(finishedWork)
 
-focusedInstanceHandle = null;
+focusedInstanceHandle = null
 ```
 
 We will focus on the main fucntion `commitBeforeMutationEffects` from the `beforeMutation`.
@@ -37,30 +37,30 @@ We could start talking about it with the code
 ```js
 function commitBeforeMutationEffects() {
   while (nextEffect !== null) {
-    const current = nextEffect.alternate;
+    const current = nextEffect.alternate
 
     if (!shouldFireAfterActiveInstanceBlur && focusedInstanceHandle !== null) {
       // ...focus blur
     }
 
-    const effectTag = nextEffect.effectTag;
+    const effectTag = nextEffect.effectTag
 
     // call getSnapshotBeforeUpdate
     if ((effectTag & Snapshot) !== NoEffect) {
-      commitBeforeMutationEffectOnFiber(current, nextEffect);
+      commitBeforeMutationEffectOnFiber(current, nextEffect)
     }
 
     // schedule useEffect
     if ((effectTag & Passive) !== NoEffect) {
       if (!rootDoesHavePassiveEffects) {
-        rootDoesHavePassiveEffects = true;
+        rootDoesHavePassiveEffects = true
         scheduleCallback(NormalSchedulerPriority, () => {
-          flushPassiveEffects();
-          return null;
-        });
+          flushPassiveEffects()
+          return null
+        })
       }
     }
-    nextEffect = nextEffect.nextEffect;
+    nextEffect = nextEffect.nextEffect
   }
 }
 ```
@@ -97,12 +97,12 @@ Within these lines of code, the `scheduleCallback` method is provided by the `Sc
 // schedule useEffect
 if ((effectTag & Passive) !== NoEffect) {
   if (!rootDoesHavePassiveEffects) {
-    rootDoesHavePassiveEffects = true;
+    rootDoesHavePassiveEffects = true
     scheduleCallback(NormalSchedulerPriority, () => {
       // trigger useEffect
-      flushPassiveEffects();
-      return null;
-    });
+      flushPassiveEffects()
+      return null
+    })
   }
 }
 ```
@@ -134,12 +134,12 @@ So when will `rootWithPendingPassiveEffects` be assigned a value?
 The code snippet after the `layout` in the previous section will decide whether to assign `rootWithPendingPassiveEffects` based on `rootDoesHavePassiveEffects === true?`
 
 ```js
-const rootDidHavePassiveEffects = rootDoesHavePassiveEffects;
+const rootDidHavePassiveEffects = rootDoesHavePassiveEffects
 if (rootDoesHavePassiveEffects) {
-  rootDoesHavePassiveEffects = false;
-  rootWithPendingPassiveEffects = root;
-  pendingPassiveEffectsLanes = lanes;
-  pendingPassiveEffectsRenderPriority = renderPriorityLevel;
+  rootDoesHavePassiveEffects = false
+  rootWithPendingPassiveEffects = root
+  pendingPassiveEffectsLanes = lanes
+  pendingPassiveEffectsRenderPriority = renderPriorityLevel
 }
 ```
 

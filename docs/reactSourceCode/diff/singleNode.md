@@ -1,6 +1,6 @@
 ---
 title: Diff -- Single Node
-date: 2022-04-19
+date: 2022-05-03
 ---
 
 ## Single Node
@@ -10,7 +10,7 @@ As for `single node`, like `object`, it will call the `reconcileSingleElement`.
 [You can check the source code of `reconcileSingleElement` from here.](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactChildFiber.new.js#L1141)
 
 ```js
-const isObject = typeof newChild === "object" && newChild !== null;
+const isObject = typeof newChild === 'object' && newChild !== null
 
 if (isObject) {
   // object type，could be REACT_ELEMENT_TYPE or REACT_PORTAL_TYPE
@@ -29,9 +29,13 @@ This logic of this function should be look like
 Let's check how to determine if a DOM node is reusable is implemented in the second step.
 
 ```js
-function reconcileSingleElement(returnFiber: Fiber, currentFirstChild: Fiber | null, element: ReactElement): Fiber {
-  const key = element.key;
-  let child = currentFirstChild;
+function reconcileSingleElement(
+  returnFiber: Fiber,
+  currentFirstChild: Fiber | null,
+  element: ReactElement
+): Fiber {
+  const key = element.key
+  let child = currentFirstChild
 
   // If the corresponding DOM node exsit
   while (child !== null) {
@@ -46,22 +50,22 @@ function reconcileSingleElement(returnFiber: Fiber, currentFirstChild: Fiber | n
           if (child.elementType === element.type) {
             // same type means it could be reused
             // return the fiber
-            return existing;
+            return existing
           }
 
           // jump out the switch if type is not the same
-          break;
+          break
         }
       }
       // has the same key but has differnt type
       // mark fiber and its sibling node as delete
-      deleteRemainingChildren(returnFiber, child);
-      break;
+      deleteRemainingChildren(returnFiber, child)
+      break
     } else {
       // key is not the same, mark fiber as delete
-      deleteChild(returnFiber, child);
+      deleteChild(returnFiber, child)
     }
-    child = child.sibling;
+    child = child.sibling
   }
 
   // create the new Fiber and retuen...
@@ -121,10 +125,9 @@ Please determine whether the `DOM` elements corresponding to the following JSX o
 ```
 
 ::: details Check the answer
+
 1. `key prop` was not setted, so default `key == null`. `Key` are the same. Type is `div` before update and it changed to `p` after update, different type cannot be reused.
 2. `key` is not the same, so it cannot be resued.
 3. `key` is not the same, so it cannot be resued.
 4. Both `key` and `type` are not changed, so it could be resued.
-:::
-
-
+   :::

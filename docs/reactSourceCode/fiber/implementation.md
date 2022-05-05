@@ -1,6 +1,6 @@
 ---
 title: Fiber -- Implementation
-date: 2022-03-04
+date: 2022-04-15
 ---
 
 ## Foreword
@@ -24,43 +24,48 @@ date: 2022-03-04
 [You can check the definition of the Fiber from here](https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiber.new.js#L117). We could group them by different meanings.
 
 ```js
-function FiberNode(tag: WorkTag, pendingProps: mixed, key: null | string, mode: TypeOfMode) {
+function FiberNode(
+  tag: WorkTag,
+  pendingProps: mixed,
+  key: null | string,
+  mode: TypeOfMode
+) {
   // as the attribute of the static data structure
-  this.tag = tag;
-  this.key = key;
-  this.elementType = null;
-  this.type = null;
-  this.stateNode = null;
+  this.tag = tag
+  this.key = key
+  this.elementType = null
+  this.type = null
+  this.stateNode = null
 
   // for connect with other Fiber node
-  this.return = null;
-  this.child = null;
-  this.sibling = null;
-  this.index = 0;
+  this.return = null
+  this.child = null
+  this.sibling = null
+  this.index = 0
 
-  this.ref = null;
+  this.ref = null
 
   // as the attribute of the dynamic work unit
-  this.pendingProps = pendingProps;
-  this.memoizedProps = null;
-  this.updateQueue = null;
-  this.memoizedState = null;
-  this.dependencies = null;
+  this.pendingProps = pendingProps
+  this.memoizedProps = null
+  this.updateQueue = null
+  this.memoizedState = null
+  this.dependencies = null
 
-  this.mode = mode;
+  this.mode = mode
 
-  this.effectTag = NoEffect;
-  this.nextEffect = null;
+  this.effectTag = NoEffect
+  this.nextEffect = null
 
-  this.firstEffect = null;
-  this.lastEffect = null;
+  this.firstEffect = null
+  this.lastEffect = null
 
   // priority related
-  this.lanes = NoLanes;
-  this.childLanes = NoLanes;
+  this.lanes = NoLanes
+  this.childLanes = NoLanes
 
   // corresponding fiber which needed in the update
-  this.alternate = null;
+  this.alternate = null
 }
 ```
 
@@ -70,11 +75,11 @@ We know that each `Fiber Node` has its corresponding `React element`, so, how co
 
 ```js
 // points to the father Fiber Node
-this.return = null;
+this.return = null
 // points to the child Fiber Node
-this.child = null;
+this.child = null
 // points to the first brother Fiber Node from the right
-this.sibling = null;
+this.sibling = null
 ```
 
 for example,
@@ -86,7 +91,7 @@ function App() {
       I am
       <span>Harry</span>
     </div>
-  );
+  )
 }
 ```
 
@@ -100,15 +105,15 @@ As a static data structure, it saves the infos about the component
 
 ```js
 // Type of the compoent, such as Function/Class/Host...
-this.tag = tag;
+this.tag = tag
 // key attribute
-this.key = key;
+this.key = key
 // In some case, type might be different, for example, FunctionComponent wrapped by React.memo
-this.elementType = null;
+this.elementType = null
 // As for FunctionComponent, it means the function; as for ClassComponent, it means the class; As for HostComponent, it means the tagName of the DOM node
-this.type = null;
+this.type = null
 // Fiber corresponding the real DOM node
-this.stateNode = null;
+this.stateNode = null
 ```
 
 ### As for Dynamic work unit
@@ -117,27 +122,27 @@ As a dynamic unit of work, the following parameters in `Fiber` saved the informa
 
 ```js
 // update related state infos
-this.pendingProps = pendingProps;
-this.memoizedProps = null;
-this.updateQueue = null;
-this.memoizedState = null;
-this.dependencies = null;
+this.pendingProps = pendingProps
+this.memoizedProps = null
+this.updateQueue = null
+this.memoizedState = null
+this.dependencies = null
 
-this.mode = mode;
+this.mode = mode
 
 // update DOM opration infos
-this.effectTag = NoEffect;
-this.nextEffect = null;
+this.effectTag = NoEffect
+this.nextEffect = null
 
-this.firstEffect = null;
-this.lastEffect = null;
+this.firstEffect = null
+this.lastEffect = null
 ```
 
 The following two is about the priority of the `Scheduler`
 
 ```js
-this.lanes = NoLanes;
-this.childLanes = NoLanes;
+this.lanes = NoLanes
+this.childLanes = NoLanes
 ```
 
 ## Summary
