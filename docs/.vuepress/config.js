@@ -39,7 +39,7 @@ module.exports = {
           { text: 'Home', link: '/', icon: 'reco-home' },
           {
             text: 'About Me',
-            link: 'https://github.com/harrylu99',
+            link: 'https://harrylu99.github.io',
             icon: 'reco-coding',
           },
           // { text: 'Suggestion', link: 'https://harrylu99.github.io', icon: 'reco-suggestion' },
