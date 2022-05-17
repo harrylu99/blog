@@ -1,6 +1,6 @@
 ---
 title: Class
-date: 2022-03-28
+# date: 2022-03-28
 ---
 
 When you define a class, you define a blueprint for a data type. It defines what the name of the class means, that is, what the objects of the class are made of and what operations can be performed on that object. An object is an instance of a class. The methods and variables that make up a class are the members of the class.

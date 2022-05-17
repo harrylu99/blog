@@ -1,6 +1,6 @@
 ---
 title: Let and Const
-date: 2022-01-27
+# date: 2022-01-27
 ---
 
 ## Block Scope

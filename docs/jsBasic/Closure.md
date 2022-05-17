@@ -1,6 +1,6 @@
 ---
 title: Closure
-date: 2022-01-17
+# date: 2022-01-17
 ---
 
 ## Definition

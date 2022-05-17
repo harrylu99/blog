@@ -1,6 +1,6 @@
 ---
 title: Polymorphism
-date: 2022-03-31
+# date: 2022-03-31
 ---
 
 ## Defination

@@ -1,6 +1,6 @@
 ---
 title: Variable Object
-date: 2022-01-09
+# date: 2022-01-09
 ---
 
 ## Foreword

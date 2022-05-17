@@ -1,6 +1,6 @@
 ---
 title: Struct
-date: 2022-03-26
+# date: 2022-03-26
 ---
 
 > A structure type (or struct type) is a value type that can encapsulate data and related functionality.

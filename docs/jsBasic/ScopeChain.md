@@ -1,6 +1,6 @@
 ---
 title: Scope Chain
-date: 2022-01-11
+# date: 2022-01-11
 ---
 
 ## Foreword

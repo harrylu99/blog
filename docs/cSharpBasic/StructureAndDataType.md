@@ -1,6 +1,6 @@
 ---
 title: Structure and Data Type
-date: 2022-03-20
+# date: 2022-03-20
 ---
 
 ## Program Structure

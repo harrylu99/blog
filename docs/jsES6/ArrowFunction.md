@@ -1,6 +1,6 @@
 ---
 title: Arrow Function
-date: 2022-01-30
+# date: 2022-01-30
 ---
 
 ## Foreword

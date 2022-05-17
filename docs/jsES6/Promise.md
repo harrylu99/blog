@@ -1,6 +1,6 @@
 ---
 title: Promise
-date: 2022-02-17
+# date: 2022-02-17
 ---
 
 ## Callback
