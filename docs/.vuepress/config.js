@@ -6,13 +6,13 @@ module.exports = {
     '/': {
       lang: 'en-US',
       title: `Harry's Blog`,
-      description: ` 👨‍💻console.log( ) `,
+      description: ` 👨‍💻console.log( ) `
     },
     '/zh/': {
       lang: 'zh-CN',
       title: '个人博客',
-      description: `🏗️ Chinese station is under construction, please go back the English station.`,
-    },
+      description: `🏗️ Chinese station is under construction, please go back the English station.`
+    }
   },
   plugins: [],
   theme: 'reco',
@@ -30,8 +30,8 @@ module.exports = {
         serviceWorker: {
           updatePopup: {
             message: 'New content is available.',
-            buttonText: 'Refresh',
-          },
+            buttonText: 'Refresh'
+          }
         },
         algolia: {},
         lastUpdated: false, // string | boolean,
@@ -40,8 +40,8 @@ module.exports = {
           {
             text: 'About Me',
             link: 'https://harrylu99.github.io',
-            icon: 'reco-coding',
-          },
+            icon: 'reco-coding'
+          }
           // { text: 'Suggestion', link: 'https://harrylu99.github.io', icon: 'reco-suggestion' },
         ],
         sidebar: {
@@ -49,7 +49,7 @@ module.exports = {
             {
               title: '👨‍💻 About this blog',
               path: '/',
-              collapsable: false,
+              collapsable: false
             },
             // JavaScript
             {
@@ -63,49 +63,49 @@ module.exports = {
                   children: [
                     {
                       title: 'About JavaScript',
-                      path: '/jsBasic/about',
+                      path: '/jsBasic/about'
                     },
                     {
                       title: 'Prototype and Prototype chain',
-                      path: '/jsBasic/prototype',
+                      path: '/jsBasic/prototype'
                     },
                     {
                       title: 'Scope',
-                      path: '/jsBasic/scope',
+                      path: '/jsBasic/scope'
                     },
                     {
                       title: 'Execution Stack',
-                      path: '/jsBasic/executionStack',
+                      path: '/jsBasic/executionStack'
                     },
                     {
                       title: 'Variable Object',
-                      path: '/jsBasic/variableObject',
+                      path: '/jsBasic/variableObject'
                     },
                     {
                       title: 'Scope Chain',
-                      path: '/jsBasic/scopeChain',
+                      path: '/jsBasic/scopeChain'
                     },
                     {
                       title: 'This',
-                      path: '/jsBasic/this',
+                      path: '/jsBasic/this'
                     },
                     {
                       title: 'Execution Context',
-                      path: '/jsBasic/executionContext',
+                      path: '/jsBasic/executionContext'
                     },
                     {
                       title: 'Closure',
-                      path: '/jsBasic/closure',
+                      path: '/jsBasic/closure'
                     },
                     {
                       title: 'Debounce',
-                      path: '/jsBasic/debounce',
+                      path: '/jsBasic/debounce'
                     },
                     {
                       title: 'Throttle',
-                      path: '/jsBasic/throttle',
-                    },
-                  ],
+                      path: '/jsBasic/throttle'
+                    }
+                  ]
                 },
                 // ES6
                 {
@@ -114,31 +114,31 @@ module.exports = {
                   children: [
                     {
                       title: 'Let and Const',
-                      path: '/jsES6/letAndConst',
+                      path: '/jsES6/letAndConst'
                     },
                     {
                       title: 'Arrow Function',
-                      path: '/jsES6/arrowFunction',
+                      path: '/jsES6/arrowFunction'
                     },
                     {
                       title: 'for...of',
-                      path: '/jsES6/forOf',
+                      path: '/jsES6/forOf'
                     },
                     {
                       title: 'Promise',
-                      path: '/jsES6/promise',
+                      path: '/jsES6/promise'
                     },
                     {
                       title: 'Async ',
-                      path: '/jsES6/async',
-                    },
-                  ],
-                },
-              ],
+                      path: '/jsES6/async'
+                    }
+                  ]
+                }
+              ]
             },
-            // React Source Code
+            // React
             {
-              title: 'React Source Code',
+              title: 'React',
               collapsable: true,
               children: [
                 // Starter
@@ -148,21 +148,21 @@ module.exports = {
                   children: [
                     {
                       title: 'Concept',
-                      path: '/reactSourceCode/starter/concept',
+                      path: '/reactSourceCode/starter/concept'
                     },
                     {
                       title: 'Architecture',
-                      path: '/reactSourceCode/starter/architecture',
+                      path: '/reactSourceCode/starter/architecture'
                     },
                     {
                       title: 'New Architecture',
-                      path: '/reactSourceCode/starter/newArchitecture',
+                      path: '/reactSourceCode/starter/newArchitecture'
                     },
                     {
                       title: 'File Structure',
-                      path: '/reactSourceCode/starter/fileStructure',
-                    },
-                  ],
+                      path: '/reactSourceCode/starter/fileStructure'
+                    }
+                  ]
                 },
                 // Fiber Architecture
                 {
@@ -171,17 +171,17 @@ module.exports = {
                   children: [
                     {
                       title: 'Mental Model',
-                      path: '/reactSourceCode/fiber/mentalModel',
+                      path: '/reactSourceCode/fiber/mentalModel'
                     },
                     {
                       title: 'Implementation',
-                      path: '/reactSourceCode/fiber/implementation',
+                      path: '/reactSourceCode/fiber/implementation'
                     },
                     {
                       title: 'Working Principle',
-                      path: '/reactSourceCode/fiber/workingPrinciple',
-                    },
-                  ],
+                      path: '/reactSourceCode/fiber/workingPrinciple'
+                    }
+                  ]
                 },
                 // Render Stage
                 {
@@ -190,17 +190,17 @@ module.exports = {
                   children: [
                     {
                       title: 'Overview',
-                      path: '/reactSourceCode/render/overview',
+                      path: '/reactSourceCode/render/overview'
                     },
                     {
                       title: 'beginWork',
-                      path: '/reactSourceCode/render/beginWork',
+                      path: '/reactSourceCode/render/beginWork'
                     },
                     {
                       title: 'completeWork',
-                      path: '/reactSourceCode/render/completeWork',
-                    },
-                  ],
+                      path: '/reactSourceCode/render/completeWork'
+                    }
+                  ]
                 },
                 // Commit Stage
                 {
@@ -209,21 +209,21 @@ module.exports = {
                   children: [
                     {
                       title: 'Overview',
-                      path: '/reactSourceCode/commit/overview',
+                      path: '/reactSourceCode/commit/overview'
                     },
                     {
                       title: 'Before Mutation',
-                      path: '/reactSourceCode/commit/beforeMutation',
+                      path: '/reactSourceCode/commit/beforeMutation'
                     },
                     {
                       title: 'Mutation',
-                      path: '/reactSourceCode/commit/mutation',
+                      path: '/reactSourceCode/commit/mutation'
                     },
                     {
                       title: 'Layout',
-                      path: '/reactSourceCode/commit/layout',
-                    },
-                  ],
+                      path: '/reactSourceCode/commit/layout'
+                    }
+                  ]
                 },
                 // Diff Algorithm
                 {
@@ -232,17 +232,17 @@ module.exports = {
                   children: [
                     {
                       title: 'Overview',
-                      path: '/reactSourceCode/diff/overview',
+                      path: '/reactSourceCode/diff/overview'
                     },
                     {
                       title: 'Single Node',
-                      path: '/reactSourceCode/diff/singleNode',
+                      path: '/reactSourceCode/diff/singleNode'
                     },
                     {
                       title: 'Multiple Node',
-                      path: '/reactSourceCode/diff/multipleNode',
-                    },
-                  ],
+                      path: '/reactSourceCode/diff/multipleNode'
+                    }
+                  ]
                 },
                 // State
                 {
@@ -251,29 +251,29 @@ module.exports = {
                   children: [
                     {
                       title: 'Overview',
-                      path: '/reactSourceCode/state/overview',
+                      path: '/reactSourceCode/state/overview'
                     },
                     {
                       title: 'Mental Model',
-                      path: '/reactSourceCode/state/mentalModel',
+                      path: '/reactSourceCode/state/mentalModel'
                     },
                     {
                       title: 'Update',
-                      path: '/reactSourceCode/state/update',
+                      path: '/reactSourceCode/state/update'
                     },
                     {
                       title: 'Priority',
-                      path: '/reactSourceCode/state/priority',
+                      path: '/reactSourceCode/state/priority'
                     },
                     {
                       title: 'ReactDOM.render',
-                      path: '/reactSourceCode/state/reactDOM',
+                      path: '/reactSourceCode/state/reactDOM'
                     },
                     {
                       title: 'this.setState',
-                      path: '/reactSourceCode/state/setState',
-                    },
-                  ],
+                      path: '/reactSourceCode/state/setState'
+                    }
+                  ]
                 },
                 // Hooks
                 {
@@ -282,39 +282,39 @@ module.exports = {
                   children: [
                     {
                       title: 'Concept',
-                      path: '/reactSourceCode/hooks/concept',
+                      path: '/reactSourceCode/hooks/concept'
                     },
                     {
                       title: 'Implement useState',
-                      path: '/reactSourceCode/hooks/implementuseState',
+                      path: '/reactSourceCode/hooks/implementuseState'
                     },
                     {
                       title: 'Data Structure',
-                      path: 'reactSourceCode/hooks/dataStructure',
+                      path: 'reactSourceCode/hooks/dataStructure'
                     },
                     {
                       title: 'useState and useReducer',
-                      path: '/reactSourceCode/hooks/useStateAndUseReducer',
+                      path: '/reactSourceCode/hooks/useStateAndUseReducer'
                     },
                     {
                       title: 'useEffect',
-                      path: '/reactSourceCode/hooks/useEffect',
+                      path: '/reactSourceCode/hooks/useEffect'
                     },
                     {
                       title: 'useRef',
-                      path: '/reactSourceCode/hooks/useRef',
+                      path: '/reactSourceCode/hooks/useRef'
                     },
                     {
                       title: 'useMemo and useCallback',
-                      path: '/reactSourceCode/hooks/useMemoAndUseCallback',
-                    },
-                  ],
-                },
-              ],
+                      path: '/reactSourceCode/hooks/useMemoAndUseCallback'
+                    }
+                  ]
+                }
+              ]
             },
-            // BackEnd
+            // C#
             {
-              title: 'BackEnd',
+              title: 'C#',
               collapsable: true,
               children: [
                 // BackEnd Basic
@@ -324,17 +324,17 @@ module.exports = {
                   children: [
                     {
                       title: 'Notes',
-                      path: '/backEndBasic/notes',
+                      path: '/backEndBasic/notes'
                     },
                     {
                       title: 'ORM',
-                      path: '/backEndBasic/ORM',
+                      path: '/backEndBasic/ORM'
                     },
                     {
                       title: '.Net MVC',
-                      path: '/backEndBasic/MVC',
-                    },
-                  ],
+                      path: '/backEndBasic/MVC'
+                    }
+                  ]
                 },
                 // C#
                 {
@@ -343,42 +343,48 @@ module.exports = {
                   children: [
                     {
                       title: 'About C#',
-                      path: '/cSharpBasic/about',
+                      path: '/cSharpBasic/about'
                     },
                     {
                       title: 'Structure and Data Type',
-                      path: '/cSharpBasic/structureAndDataType',
+                      path: '/cSharpBasic/structureAndDataType'
                     },
                     {
                       title: 'Method',
-                      path: '/cSharpBasic/method',
+                      path: '/cSharpBasic/method'
                     },
                     {
                       title: 'Nullable',
-                      path: '/cSharpBasic/nullable',
+                      path: '/cSharpBasic/nullable'
                     },
                     {
                       title: 'Struct',
-                      path: '/cSharpBasic/struct',
+                      path: '/cSharpBasic/struct'
                     },
                     {
                       title: 'Class',
-                      path: '/cSharpBasic/class',
+                      path: '/cSharpBasic/class'
                     },
                     {
                       title: 'Inheritance',
-                      path: 'cSharpBasic/inheritance',
+                      path: 'cSharpBasic/inheritance'
                     },
                     {
                       title: 'Polymorphism',
-                      path: 'cSharpBasic/polymorphism',
-                    },
-                  ],
-                },
-              ],
+                      path: 'cSharpBasic/polymorphism'
+                    }
+                  ]
+                }
+              ]
             },
-          ],
-        },
+            // Node.js
+            {
+              title: 'Node.js',
+              collapsable: true,
+              children: []
+            }
+          ]
+        }
       },
 
       '/zh/': {
@@ -392,8 +398,8 @@ module.exports = {
         serviceWorker: {
           updatePopup: {
             message: '发现新内容可用.',
-            buttonText: '刷新',
-          },
+            buttonText: '刷新'
+          }
         },
         // 当前 locale 的 algolia docsearch 选项
         algolia: {},
@@ -403,10 +409,10 @@ module.exports = {
           {
             text: '关于我',
             link: 'https://github.com/harrylu99',
-            icon: 'reco-github',
-          },
-        ],
-      },
-    },
-  },
+            icon: 'reco-github'
+          }
+        ]
+      }
+    }
+  }
 }
