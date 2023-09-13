@@ -378,11 +378,11 @@ module.exports = {
               ]
             },
             // Node.js
-            {
-              title: 'Node.js',
-              collapsable: true,
-              children: []
-            }
+            // {
+            //   title: 'Node.js',
+            //   collapsable: true,
+            //   children: []
+            // }
           ]
         }
       },
