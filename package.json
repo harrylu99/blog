@@ -4,7 +4,8 @@
   "description": "Harry's Blog - migrated to VuePress Theme Reco 2",
   "scripts": {
     "dev": "vuepress dev .",
-    "build": "vuepress build ."
+    "build": "vuepress build .",
+    "postinstall": "python3 patch-reco.py"
   },
   "keywords": [],
   "author": "Harry Lu",
