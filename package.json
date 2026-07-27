@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vuepress dev .",
     "build": "vuepress build .",
-    "postinstall": "node patch-reco.js"
+    "postinstall": "node patch-reco.js",
+    "prod deploy": "bash deploy.sh"
   },
   "keywords": [],
   "author": "Harry Lu",
