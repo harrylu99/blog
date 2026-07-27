@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as r}from"./app-B8SEAMDd.js";const a={};function c(o,n){return r(),t("div")}const i=e(a,[["render",c]]),l=JSON.parse('{"path":"/categories/Fiber-Architecture/1.html","title":"","lang":"en-US","frontmatter":{"layout":"Categories"},"headers":[],"git":{},"filePathRelative":null}');export{i as comp,l as data};
