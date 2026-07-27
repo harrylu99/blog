@@ -6,7 +6,19 @@ export default defineUserConfig({
   title: "Harry's Blog",
   description: "Almost there...",
   base: '/blog/',
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      plugins: [{
+        name: 'inject-favicon',
+        transformIndexHtml(html) {
+          return html.replace(
+            '</head>',
+            '  <link rel="icon" href="/blog/favicon.ico">\n  </head>'
+          )
+        }
+      }]
+    }
+  }),
   head: [
     ['link', { rel: 'icon', href: '/blog/favicon.ico' }],
   ],
