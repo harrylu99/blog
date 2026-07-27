@@ -1,10 +1,13 @@
 ---
+
 title: 'Diff Overview'
 date: '2023-05-15'
 categories:
   - React
   - Diff Algorithm
 ---
+
+
 ## Foreword
 
 From the previous article which we talked about `beginWork`, we know that as for the `update` component, it will compare the the current component with the Fiber node corresponding to the component at the last update (also known as `Diff` algorithm), and generate a new Fiber node as a result of the comparison.

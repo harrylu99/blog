@@ -1,10 +1,13 @@
 ---
+
 title: 'Architecture'
 date: '2023-01-15'
 categories:
   - React
   - Starter
 ---
+
+
 ## Foreword
 
 We have talked about the concept of `React` in the last article. To sum up, the concept of `React` is fast response.

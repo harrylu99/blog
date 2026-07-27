@@ -1,10 +1,13 @@
 ---
+
 title: 'Hooks -- useEffect'
 date: '2023-07-15'
 categories:
   - React
   - Hooks
 ---
+
+
 ## Foreword
 
 We have talked about the workflow of the `useEffect` in the previous chapter, `commit`.

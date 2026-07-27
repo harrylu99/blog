@@ -1,10 +1,13 @@
 ---
+
 title: 'Commit -- Mutation'
 date: '2023-04-15'
 categories:
   - React
   - Commit Stage
 ---
+
+
 ## Foreword
 
 Same as `before mutation` stage, `mutation` stage is aslo traverse the `effectList`, executaion function which is `commitMutationEffects`.

@@ -1,10 +1,13 @@
 ---
+
 title: 'New Architecture'
 date: '2023-01-15'
 categories:
   - React
   - Starter
 ---
+
+
 ## Foreword
 
 We are going to talk about how does `React` support asynchronous updates in React 16.

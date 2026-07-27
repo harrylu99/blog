@@ -1,10 +1,13 @@
 ---
+
 title: 'Arrow Function'
 date: '2022-06-15'
 categories:
   - JavaScript
   - ES6
 ---
+
+
 ## Foreword
 
 Let's start with the syntax of the arrow function.

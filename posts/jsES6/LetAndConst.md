@@ -1,10 +1,13 @@
 ---
+
 title: 'Let and Const'
 date: '2022-06-15'
 categories:
   - JavaScript
   - ES6
 ---
+
+
 ## Block Scope
 
 Variables declared through _var_ have hoisting feature.

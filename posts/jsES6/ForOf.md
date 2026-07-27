@@ -1,10 +1,13 @@
 ---
+
 title: 'for...of'
 date: '2022-06-15'
 categories:
   - JavaScript
   - ES6
 ---
+
+
 ## Foreword
 
 Today is 22-02-2022 on the calander, just looks like 0 and 2 are doing a loop. So in this article, we will talk about the loop with ES6.

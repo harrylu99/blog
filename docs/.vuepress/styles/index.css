@@ -1,0 +1,18 @@
+/* 缩小 BannerBrand 高度，去掉 100vh */
+.banner-brand__wrapper {
+  min-height: unset;
+  height: auto;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.banner-brand__wrapper .banner-brand__content {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .banner-brand__wrapper {
+    height: auto;
+    min-height: unset;
+  }
+}

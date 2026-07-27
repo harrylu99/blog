@@ -1,10 +1,13 @@
 ---
+
 title: 'State -- Mental Model'
 date: '2023-06-15'
 categories:
   - React
   - State
 ---
+
+
 Before we jump into the source code, we should start from the `mental model` of the `updating`.
 
 ## Synchronous Update of React

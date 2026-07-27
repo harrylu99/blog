@@ -1,10 +1,16 @@
 ---
+
+
 title: 'Inheritance'
 date: '2024-01-15'
 categories:
-  - C#
-  - C# Basic
+  - CSharp
+  - Basic
+
 ---
+
+
+
 ## Defination
 
 > Inheritance, together with encapsulation and polymorphism, is one of the three primary characteristics of object-oriented programming. Inheritance enables you to create new classes that reuse, extend, and modify the behavior defined in other classes. The class whose members are inherited is called the `base class`, and the class that inherits those members is called the `derived class`. A derived class can have only one direct base class. However, inheritance is transitive. If ClassC is derived from ClassB, and ClassB is derived from ClassA, ClassC inherits the members declared in ClassB and ClassA.

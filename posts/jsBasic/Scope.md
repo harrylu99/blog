@@ -1,10 +1,13 @@
 ---
+
 title: 'Lexical Scope and Dynamic Scope'
 date: '2022-01-15'
 categories:
   - JavaScript
   - Basic
 ---
+
+
 ## Scope
 
 Scope refers to the area in the source code where variables are defined.

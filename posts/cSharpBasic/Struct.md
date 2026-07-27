@@ -1,10 +1,16 @@
 ---
+
+
 title: 'Struct'
 date: '2024-01-15'
 categories:
-  - C#
-  - C# Basic
+  - CSharp
+  - Basic
+
 ---
+
+
+
 > A structure type (or struct type) is a value type that can encapsulate data and related functionality.
 
 ## Defination

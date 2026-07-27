@@ -1,10 +1,13 @@
 ---
+
 title: 'File Structure'
 date: '2023-01-15'
 categories:
   - React
   - Starter
 ---
+
+
 ## Root Directory
 
 Excluding the configuration files and hidden folders, the root directory consists of three folders.

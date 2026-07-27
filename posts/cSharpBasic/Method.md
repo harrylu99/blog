@@ -1,10 +1,16 @@
 ---
+
+
 title: 'Method'
 date: '2024-01-15'
 categories:
-  - C#
-  - C# Basic
+  - CSharp
+  - Basic
+
 ---
+
+
+
 ## Defination
 
 One method is a code block to organize a number of related statements together to perform a task. Every C# program has at least one class with the Main method.

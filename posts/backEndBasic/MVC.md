@@ -1,10 +1,16 @@
 ---
+
+
 title: 'MVC'
 date: '2024-01-15'
 categories:
-  - C#
-  - BackEnd Basic
+  - CSharp
+  - Backend
+
 ---
+
+
+
 ## Foreword
 
 ASP.NET support three development modes, including Web Pages, MVC and Web Forms.

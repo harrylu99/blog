@@ -1,10 +1,13 @@
 ---
+
 title: 'Prototype and Prototype Chain'
 date: '2022-01-15'
 categories:
   - JavaScript
   - Basic
 ---
+
+
 ## Use Constructor Function create an object
 
 ```js

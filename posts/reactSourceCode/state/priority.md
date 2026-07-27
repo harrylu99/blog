@@ -1,10 +1,13 @@
 ---
+
 title: 'State -- Priority'
 date: '2023-06-15'
 categories:
   - React
   - State
 ---
+
+
 ## Foreword
 
 From the earlier ariticle of the `concept of React`, we know that `React` implement the human computer interaction to the real `UI`. `user interaction` cause the `state update` and user has their expection of the `interation` execute order. `React` assign different `priority` to the `state update` based on their research. Which includings

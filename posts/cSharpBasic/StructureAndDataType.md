@@ -1,10 +1,16 @@
 ---
+
+
 title: 'Structure and Data Type'
 date: '2024-01-15'
 categories:
-  - C#
-  - C# Basic
+  - CSharp
+  - Basic
+
 ---
+
+
+
 ## Program Structure
 
 A C# program should inclues these part

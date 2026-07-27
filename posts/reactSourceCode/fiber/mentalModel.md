@@ -1,10 +1,13 @@
 ---
+
 title: 'Fiber -- Mental Model'
 date: '2023-02-15'
 categories:
   - React
   - Fiber Architecture
 ---
+
+
 ## Foreword
 
 React core team member [Sebastian Markbåge](https://github.com/sebmarkbage/) once said: We React what is done in pratice is `Algebraic Effects`.

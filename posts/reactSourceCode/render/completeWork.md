@@ -1,10 +1,13 @@
 ---
+
 title: 'Render -- completeWork'
 date: '2023-03-15'
 categories:
   - React
   - Render Stage
 ---
+
+
 ## Foreword
 
 We have talked about the `child Fiber node` will be created after component executed `beginWork`, and `effectTag` might exsiting in the node.

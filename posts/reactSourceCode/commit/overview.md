@@ -1,10 +1,13 @@
 ---
+
 title: 'Commit Overview'
 date: '2023-04-15'
 categories:
   - React
   - Commit Stage
 ---
+
+
 ## Foreword
 
 In the last section, we have introduced the `commitRoot` method is the begining of the `commit stage` work. And `fiberRootNode` will be the parameter.

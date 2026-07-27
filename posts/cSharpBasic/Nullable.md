@@ -1,10 +1,16 @@
 ---
+
+
 title: 'Nullable'
 date: '2024-01-15'
 categories:
-  - C#
-  - C# Basic
+  - CSharp
+  - Basic
+
 ---
+
+
+
 ## `?` and `??` in C#
 
 `?` Single question mark can assign null to the data types which cannot be assign to null directly, such as int, double, bool, etc... Besides, it means the data type is Nullable.

@@ -5,15 +5,15 @@
   "scripts": {
     "dev": "vuepress dev .",
     "build": "vuepress build .",
-    "postinstall": "python3 patch-reco.py"
+    "postinstall": "node patch-reco.js"
   },
   "keywords": [],
   "author": "Harry Lu",
   "license": "ISC",
   "dependencies": {
-    "@vuepress-reco/style-default": "^2.0.1-alpha.32",
-    "@vuepress/bundler-vite": "^2.0.0-rc.30",
-    "vuepress": "^2.0.0-rc.30",
-    "vuepress-theme-reco": "^2.0.1-alpha.32"
+    "vue": "^3.3.8",
+    "@vuepress/bundler-vite": "2.0.0-rc.19",
+    "vuepress": "2.0.0-rc.19",
+    "vuepress-theme-reco": "2.0.0-rc.26"
   }
 }

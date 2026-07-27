@@ -1,10 +1,16 @@
 ---
+
+
 title: 'About C#'
 date: '2024-01-15'
 categories:
-  - C#
-  - C# Basic
+  - CSharp
+  - Basic
+
 ---
+
+
+
 ## Background
 
 C# is a modern object-oritened progrramming language created by Anders Hejlsbeg and his team from Microsoft.

@@ -1,10 +1,13 @@
 ---
+
 title: 'Throttle'
 date: '2022-01-15'
 categories:
   - JavaScript
   - Basic
 ---
+
+
 ## Foreword
 
 We have talked about why we have to limit the frequent trigger of events and how to do that in the last article and we will focus on the throttle in this article.

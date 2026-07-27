@@ -1,10 +1,13 @@
 ---
+
 title: 'Diff -- Multiple Node'
 date: '2023-05-15'
 categories:
   - React
   - Diff Algorithm
 ---
+
+
 ## Foreword
 
 We have talked about the single node `Diff`, now, consider we have a `FunctionComponent` which looks like

@@ -1,10 +1,13 @@
 ---
+
 title: 'Closure'
 date: '2022-01-15'
 categories:
   - JavaScript
   - Basic
 ---
+
+
 ## Definition
 
 Definition of closure from MDN

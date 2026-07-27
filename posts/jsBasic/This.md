@@ -1,10 +1,13 @@
 ---
+
 title: 'Understanding This With the ECMAScript Specification'
 date: '2022-01-15'
 categories:
   - JavaScript
   - Basic
 ---
+
+
 ## Foreword
 
 When JavaScript code executes a piece of executable code, a corresponding execution context is created.

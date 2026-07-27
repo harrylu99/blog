@@ -1,10 +1,16 @@
 ---
+
+
 title: 'ORM'
 date: '2024-01-15'
 categories:
-  - C#
-  - BackEnd Basic
+  - CSharp
+  - Backend
+
 ---
+
+
+
 ## Foreword
 
 `Object Relational Mapping` (ORM) pattern is a technology designed to address the mismatch between `object-oriented` and `relational databases`. Simply put, ORM is the automatic persistence of objects in an application into a relational database by using metadata that describes the mapping between objects and the database.

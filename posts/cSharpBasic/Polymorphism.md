@@ -1,10 +1,16 @@
 ---
+
+
 title: 'Polymorphism'
 date: '2024-01-15'
 categories:
-  - C#
-  - C# Basic
+  - CSharp
+  - Basic
+
 ---
+
+
+
 ## Defination
 
 Polymorphism is the ability of the same behavior to have multiple different manifestations or morphologies.

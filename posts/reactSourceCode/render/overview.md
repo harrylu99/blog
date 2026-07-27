@@ -1,10 +1,13 @@
 ---
+
 title: 'Render Overview'
 date: '2023-03-15'
 categories:
   - React
   - Render Stage
 ---
+
+
 ## Foreword
 
 In this chapter we will explain how `Fiber node` are created and `Fiber tree` are constructed.

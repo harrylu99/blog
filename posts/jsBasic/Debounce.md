@@ -1,10 +1,13 @@
 ---
+
 title: 'Debounce'
 date: '2022-01-15'
 categories:
   - JavaScript
   - Basic
 ---
+
+
 ## Foreword
 
 Some events might triggered frequently in the development, for example

@@ -1,10 +1,13 @@
 ---
+
 title: 'Diff -- Single Node'
 date: '2023-05-15'
 categories:
   - React
   - Diff Algorithm
 ---
+
+
 ## Single Node
 
 As for `single node`, like `object`, it will call the `reconcileSingleElement`.

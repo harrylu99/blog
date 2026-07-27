@@ -1,10 +1,13 @@
 ---
+
 title: 'State -- this.setState'
 date: '2023-06-15'
 categories:
   - React
   - State
 ---
+
+
 ## Workflow Overview
 
 We could see `this.updater.enqueueSteState` method called in the `this.setState`

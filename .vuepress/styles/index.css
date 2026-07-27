@@ -1,0 +1,40 @@
+/* Hide article publish date in page-info.
+   The calendar icon SVG has a unique path; :has() targets its container.
+   This avoids hiding author, categories, or tags. */
+.page-info > .xicon-container:has(svg path[d^="M26 4h-4V2h-2v2h-8V2h-2v2H6c-1.1"]) {
+  display: none;
+}
+
+/* Compact BannerBrand — remove 100vh so blog list is visible without scrolling */
+.banner-brand__wrapper {
+  height: auto !important;
+  min-height: unset !important;
+  padding-top: 4rem !important;
+  padding-bottom: 0.5rem !important;
+}
+section.banner-brand__wrapper div.banner-brand__content h1.title {
+  font-size: 1.75rem !important;
+  line-height: 1.2 !important;
+}
+.banner-brand__wrapper .banner-brand__content .description {
+  font-size: 1.25rem !important;
+}
+@media (min-width: 768px) {
+  .banner-brand__wrapper {
+    height: auto !important;
+    min-height: unset !important;
+  }
+  section.banner-brand__wrapper div.banner-brand__content h1.title {
+    font-size: 3rem !important;
+  }
+  .banner-brand__wrapper .banner-brand__content .description {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Always show page catalog sidebar (like reco 1) */
+@media (min-width: 768px) {
+  .page-catalog-container {
+    display: block !important;
+  }
+}

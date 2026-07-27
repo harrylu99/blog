@@ -1,10 +1,13 @@
 ---
+
 title: 'Hooks -- Data Structure'
 date: '2023-07-15'
 categories:
   - React
   - Hooks
 ---
+
+
 ## Foreword
 
 We have implemented a simple `useState` in tha last article for understanding the operational principle of `Hooks`.

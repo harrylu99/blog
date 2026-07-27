@@ -1,10 +1,13 @@
 ---
+
 title: 'Commit -- Before Mutation'
 date: '2023-04-15'
 categories:
   - React
   - Commit Stage
 ---
+
+
 ## Foreword
 
 The code for the `before mutation` phase is very short, the whole process is to traversal through the `effectList` and call the `commitBeforeMutationEffects` function to process it.

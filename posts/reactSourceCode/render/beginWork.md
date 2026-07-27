@@ -1,10 +1,13 @@
 ---
+
 title: 'Render -- beginWork'
 date: '2023-03-15'
 categories:
   - React
   - Render Stage
 ---
+
+
 ## Foreword
 
 In the previous section, we learned that the render phase has two phases. In this section, we'll look at what the `beginWork` method does.

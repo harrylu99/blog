@@ -1,10 +1,13 @@
 ---
+
 title: 'Promise'
 date: '2022-06-15'
 categories:
   - JavaScript
   - ES6
 ---
+
+
 ## Callback
 
 Eveytime when we talk abou promise, we might start talking with callback or the callback hell, at the beginning, I want talk about the negative parts when we using callback.

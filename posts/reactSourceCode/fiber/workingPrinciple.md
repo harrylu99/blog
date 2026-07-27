@@ -1,10 +1,13 @@
 ---
+
 title: 'Fiber -- Working Principle'
 date: '2023-02-15'
 categories:
   - React
   - Fiber Architecture
 ---
+
+
 ## Foreword
 
 We have talked about what excatly `Fiber` is and we know that `Fiber Nodes` could save its corresponding `DOM Node`.

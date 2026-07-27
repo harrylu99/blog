@@ -1,10 +1,13 @@
 ---
+
 title: 'Commit -- Layout'
 date: '2023-04-15'
 categories:
   - React
   - Commit Stage
 ---
+
+
 ## Foreword
 
 This phase is called `layout` because the code in this phase is executed after the `DOM` rendering is completed (`mutation` phase is completed).

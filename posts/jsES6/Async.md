@@ -1,10 +1,13 @@
 ---
+
 title: 'Async'
 date: '2022-06-15'
 categories:
   - JavaScript
   - ES6
 ---
+
+
 ## async
 
 We have async function since ES2017, it helps us much easier to do the asynchronous.
