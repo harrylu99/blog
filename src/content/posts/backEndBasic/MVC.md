@@ -1,6 +1,6 @@
 ---
 title: 'MVC'
-description: "A note about MVC."
+description: "Explains how models, views, and controllers divide data, presentation, and user-interaction responsibilities in web applications."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp

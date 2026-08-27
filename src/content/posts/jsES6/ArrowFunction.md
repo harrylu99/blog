@@ -1,6 +1,6 @@
 ---
 title: 'Arrow Function'
-description: "A note about Arrow Function."
+description: "Compares arrow and regular functions, focusing on lexical `this`, arguments, constructors, prototypes, `new.target`, and `super`."
 pubDatetime: 2022-06-15T00:00:00Z
 tags:
   - javascript

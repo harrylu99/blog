@@ -1,6 +1,6 @@
 ---
 title: 'Understanding This With the ECMAScript Specification'
-description: "A note about Understanding This With the ECMAScript Specification."
+description: "Uses the ECMAScript specification's Reference type and GetValue steps to explain how JavaScript determines `this`."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

@@ -1,6 +1,6 @@
 ---
 title: 'Render Overview'
-description: "A note about Render Overview."
+description: "Introduces React's render phase, depth-first Fiber traversal, interruptible work loops, and the roles of `beginWork` and `completeWork`."
 pubDatetime: 2023-03-15T00:00:00Z
 tags:
   - react

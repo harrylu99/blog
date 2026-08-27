@@ -1,6 +1,6 @@
 ---
 title: 'Scope Chain'
-description: "A note about Scope Chain."
+description: "Describes how JavaScript builds scope chains during function creation and activation to resolve variables across execution contexts."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

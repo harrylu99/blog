@@ -1,6 +1,6 @@
 ---
 title: 'Hooks -- useMemo and useCallback'
-description: "A note about Hooks -- useMemo and useCallback."
+description: "Compares React's `useMemo` and `useCallback` implementations during mount and update, focusing on stored values and functions."
 pubDatetime: 2023-07-15T00:00:00Z
 tags:
   - react

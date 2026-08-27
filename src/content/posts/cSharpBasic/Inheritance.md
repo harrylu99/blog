@@ -1,6 +1,6 @@
 ---
 title: 'Inheritance'
-description: "A note about Inheritance."
+description: "Explains C# inheritance through base and derived classes, initialization order, interfaces, and multiple inheritance constraints."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp

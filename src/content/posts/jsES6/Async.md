@@ -1,6 +1,6 @@
 ---
 title: 'Async'
-description: "A note about Async."
+description: "Explains async functions as Promise-based Generator abstractions, covering error handling, debugging, async hell, concurrency, and parallelism."
 pubDatetime: 2022-06-15T00:00:00Z
 tags:
   - javascript

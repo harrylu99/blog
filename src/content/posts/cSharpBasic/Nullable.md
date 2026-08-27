@@ -1,6 +1,6 @@
 ---
 title: 'Nullable'
-description: "A note about Nullable."
+description: "Explains nullable value types and the `?` and `??` operators for handling missing values in C#."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp

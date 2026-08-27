@@ -1,6 +1,6 @@
 ---
 title: 'State -- Mental Model'
-description: "A note about State -- Mental Model."
+description: "Contrasts synchronous and concurrent React updates using version-control analogies to explain prioritization and interrupted rendering."
 pubDatetime: 2023-06-15T00:00:00Z
 tags:
   - react

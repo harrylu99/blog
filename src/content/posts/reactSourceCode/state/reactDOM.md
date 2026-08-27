@@ -1,6 +1,6 @@
 ---
 title: 'State -- ReactDOM.render'
-description: "A note about State -- ReactDOM.render."
+description: "Traces `ReactDOM.render` from Fiber-root creation through update scheduling and the render workflow."
 pubDatetime: 2023-06-15T00:00:00Z
 tags:
   - react

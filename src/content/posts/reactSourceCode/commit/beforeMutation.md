@@ -1,6 +1,6 @@
 ---
 title: 'Commit -- Before Mutation'
-description: "A note about Commit -- Before Mutation."
+description: "Traces React's before-mutation commit phase, including snapshots, autofocus and blur handling, and asynchronous `useEffect` scheduling."
 pubDatetime: 2023-04-15T00:00:00Z
 tags:
   - react

@@ -1,6 +1,6 @@
 ---
 title: 'State -- Update'
-description: "A note about State -- Update."
+description: "Explains React's Update structures, queues, Fiber connections, priority handling, and how state is processed during rendering."
 pubDatetime: 2023-06-15T00:00:00Z
 tags:
   - react

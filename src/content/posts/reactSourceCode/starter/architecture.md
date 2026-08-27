@@ -1,6 +1,6 @@
 ---
 title: 'Architecture'
-description: "A note about Architecture."
+description: "Compares React 15's Reconciler and Renderer layers and examines the architectural problems that motivated React 16."
 pubDatetime: 2023-01-15T00:00:00Z
 tags:
   - react

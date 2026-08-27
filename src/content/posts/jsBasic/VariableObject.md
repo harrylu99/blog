@@ -1,6 +1,6 @@
 ---
 title: 'Variable Object'
-description: "A note about Variable Object."
+description: "Explains variable objects across global and function execution contexts, including parsing, hoisting, and execution procedures."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

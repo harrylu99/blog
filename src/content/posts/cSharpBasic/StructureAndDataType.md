@@ -1,6 +1,6 @@
 ---
 title: 'Structure and Data Type'
-description: "A note about Structure and Data Type."
+description: "Introduces C# program structure, syntax, identifiers, value types, reference types, and basic data declarations."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp

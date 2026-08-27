@@ -1,6 +1,6 @@
 ---
 title: 'Hooks -- Data Structure'
-description: "A note about Hooks -- Data Structure."
+description: "Examines React Hooks' dispatcher model and the Fiber-linked data structures used during mount and update phases."
 pubDatetime: 2023-07-15T00:00:00Z
 tags:
   - react

@@ -1,6 +1,6 @@
 ---
 title: 'Fiber -- Implementation'
-description: "A note about Fiber -- Implementation."
+description: "Explains Fiber as React's architecture, static data structure, and dynamic work unit, including its tree relationships."
 pubDatetime: 2023-02-15T00:00:00Z
 tags:
   - react

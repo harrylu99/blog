@@ -1,6 +1,6 @@
 ---
 title: 'Hooks -- useEffect'
-description: "A note about Hooks -- useEffect."
+description: "Traces React's passive-effect flushing, including cleanup execution, callback execution, and synchronous task handling."
 pubDatetime: 2023-07-15T00:00:00Z
 tags:
   - react

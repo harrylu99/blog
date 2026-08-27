@@ -1,6 +1,6 @@
 ---
 title: 'Let and Const'
-description: "A note about Let and Const."
+description: "Explains ES6 block scoping with `let` and `const`, including hoisting differences, temporal dead zones, loops, and Babel output."
 pubDatetime: 2022-06-15T00:00:00Z
 tags:
   - javascript

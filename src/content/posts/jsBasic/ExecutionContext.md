@@ -1,6 +1,6 @@
 ---
 title: 'Execution Context'
-description: "A note about Execution Context."
+description: "Traces JavaScript execution-context creation and stack changes for global code, functions, variable environments, scope chains, and `this`."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

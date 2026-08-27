@@ -1,6 +1,6 @@
 ---
 title: 'Commit Overview'
-description: "A note about Commit Overview."
+description: "Introduces React's commit stage and its before-mutation, mutation, and layout phases for applying Fiber side effects."
 pubDatetime: 2023-04-15T00:00:00Z
 tags:
   - react

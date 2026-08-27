@@ -1,6 +1,6 @@
 ---
 title: 'New Architecture'
-description: "A note about New Architecture."
+description: "Explains React 16's Scheduler, Reconciler, and Renderer layers and how cooperative scheduling enables pausable updates."
 pubDatetime: 2023-01-15T00:00:00Z
 tags:
   - react

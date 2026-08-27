@@ -1,6 +1,6 @@
 ---
 title: 'Hooks -- useState and useReducer'
-description: "A note about Hooks -- useState and useReducer."
+description: "Traces `useState` and `useReducer` through declaration and dispatch stages, including mount and update dispatchers."
 pubDatetime: 2023-07-15T00:00:00Z
 tags:
   - react

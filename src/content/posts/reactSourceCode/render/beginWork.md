@@ -1,6 +1,6 @@
 ---
 title: 'Render -- beginWork'
-description: "A note about Render -- beginWork."
+description: "Explains React's `beginWork` method during mount and update, including child Fiber creation, reconciliation, reuse, and effect tags."
 pubDatetime: 2023-03-15T00:00:00Z
 tags:
   - react

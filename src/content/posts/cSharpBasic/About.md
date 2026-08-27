@@ -1,6 +1,6 @@
 ---
 title: 'About C#'
-description: "A note about About C#."
+description: "Summarizes C#'s origins and highlights features such as garbage collection, standard libraries, and assembly versioning."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp

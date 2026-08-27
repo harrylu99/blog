@@ -1,6 +1,6 @@
 ---
 title: 'Render -- completeWork'
-description: "A note about Render -- completeWork."
+description: "Explains React's `completeWork` processing for host components, including DOM creation, prop updates, and effect-list construction."
 pubDatetime: 2023-03-15T00:00:00Z
 tags:
   - react

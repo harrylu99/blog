@@ -1,6 +1,6 @@
 ---
 title: 'Closure'
-description: "A note about Closure."
+description: "Explains JavaScript closures through lexical environments, retained outer variables, and practical examples involving nested functions."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

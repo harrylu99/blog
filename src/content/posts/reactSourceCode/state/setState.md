@@ -1,6 +1,6 @@
 ---
 title: 'State -- this.setState'
-description: "A note about State -- this.setState."
+description: "Traces `this.setState` and `this.forceUpdate` through update creation, scheduling, force-update tags, and component checks."
 pubDatetime: 2023-06-15T00:00:00Z
 tags:
   - react

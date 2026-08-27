@@ -1,6 +1,6 @@
 ---
 title: 'Fiber -- Working Principle'
-description: "A note about Fiber -- Working Principle."
+description: "Explains React's double-buffered Fiber trees, current and work-in-progress nodes, and mount/update replacement workflows."
 pubDatetime: 2023-02-15T00:00:00Z
 tags:
   - react

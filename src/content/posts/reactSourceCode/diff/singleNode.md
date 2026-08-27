@@ -1,6 +1,6 @@
 ---
 title: 'Diff -- Single Node'
-description: "A note about Diff -- Single Node."
+description: "Explains React's single-node reconciliation, showing how matching keys and element types determine Fiber and DOM reuse."
 pubDatetime: 2023-05-15T00:00:00Z
 tags:
   - react

@@ -1,6 +1,6 @@
 ---
 title: 'Hooks -- Concept'
-description: "A note about Hooks -- Concept."
+description: "Explores why React Hooks are a lower-level abstraction than class lifecycles and how they fit the render-commit flow."
 pubDatetime: 2023-07-15T00:00:00Z
 tags:
   - react

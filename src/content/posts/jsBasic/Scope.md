@@ -1,6 +1,6 @@
 ---
 title: 'Lexical Scope and Dynamic Scope'
-description: "A note about Lexical Scope and Dynamic Scope."
+description: "Compares lexical and dynamic scope, using variable lookup examples to explain JavaScript's static scoping behavior."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

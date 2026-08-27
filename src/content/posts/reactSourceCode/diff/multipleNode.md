@@ -1,6 +1,6 @@
 ---
 title: 'Diff -- Multiple Node'
-description: "A note about Diff -- Multiple Node."
+description: "Explains React's multiple-node diff algorithm, including sibling matching, additions, removals, moves, and effect marking."
 pubDatetime: 2023-05-15T00:00:00Z
 tags:
   - react

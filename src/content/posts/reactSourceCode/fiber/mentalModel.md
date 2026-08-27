@@ -1,6 +1,6 @@
 ---
 title: 'Fiber -- Mental Model'
-description: "A note about Fiber -- Mental Model."
+description: "Uses algebraic effects to explain how React separates side effects from computation and models asynchronous work in Fiber."
 pubDatetime: 2023-02-15T00:00:00Z
 tags:
   - react

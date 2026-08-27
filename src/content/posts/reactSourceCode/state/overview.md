@@ -1,6 +1,6 @@
 ---
 title: 'State -- Overview'
-description: "A note about State -- Overview."
+description: "Maps the main React source-code entry points connecting state updates, render work, and the commit stage."
 pubDatetime: 2023-06-15T00:00:00Z
 tags:
   - react

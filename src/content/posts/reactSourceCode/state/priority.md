@@ -1,6 +1,6 @@
 ---
 title: 'State -- Priority'
-description: "A note about State -- Priority."
+description: "Explains React update priorities, Scheduler's `runWithPriority`, interrupted renders, and preserving state across prioritized updates."
 pubDatetime: 2023-06-15T00:00:00Z
 tags:
   - react

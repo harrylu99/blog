@@ -1,6 +1,6 @@
 ---
 title: 'Throttle'
-description: "A note about Throttle."
+description: "Implements throttling with timestamps, timers, leading and trailing execution, combination strategies, and cancellation."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

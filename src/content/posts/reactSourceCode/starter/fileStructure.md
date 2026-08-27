@@ -1,6 +1,6 @@
 ---
 title: 'File Structure'
-description: "A note about File Structure."
+description: "Maps React's source tree, focusing on packages for React APIs, Scheduler, shared utilities, renderers, and reconciliation."
 pubDatetime: 2023-01-15T00:00:00Z
 tags:
   - react

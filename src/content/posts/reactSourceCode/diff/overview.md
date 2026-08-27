@@ -1,6 +1,6 @@
 ---
 title: 'Diff Overview'
-description: "A note about Diff Overview."
+description: "Introduces React's diff algorithm, its tree-comparison bottleneck, optimization assumptions, and key-based node reuse."
 pubDatetime: 2023-05-15T00:00:00Z
 tags:
   - react

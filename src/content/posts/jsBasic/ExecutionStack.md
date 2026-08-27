@@ -1,6 +1,6 @@
 ---
 title: 'Execution Context Stack'
-description: "A note about Execution Context Stack."
+description: "Explains executable code types and how JavaScript's execution-context stack manages global and function execution."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

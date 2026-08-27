@@ -1,6 +1,6 @@
 ---
 title: 'Hooks -- Implement useState'
-description: "A note about Hooks -- Implement useState."
+description: "Implements a simplified `useState` in under 100 lines, tracing updates, hook queues, state calculation, and rendering."
 pubDatetime: 2023-07-15T00:00:00Z
 tags:
   - react

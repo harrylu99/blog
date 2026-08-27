@@ -1,6 +1,6 @@
 ---
 title: 'ORM'
-description: "A note about ORM."
+description: "Explains object-relational mapping, its metadata-driven persistence model, core principles, and trade-offs for application performance."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp

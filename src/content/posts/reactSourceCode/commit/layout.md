@@ -1,6 +1,6 @@
 ---
 title: 'Commit -- Layout'
-description: "A note about Commit -- Layout."
+description: "Explains React's layout commit phase, lifecycle hooks, ref attachment, and switching between current and work-in-progress Fiber trees."
 pubDatetime: 2023-04-15T00:00:00Z
 tags:
   - react

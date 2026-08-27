@@ -1,6 +1,6 @@
 ---
 title: 'Prototype and Prototype Chain'
-description: "A note about Prototype and Prototype Chain."
+description: "Explains JavaScript prototypes, `__proto__`, constructors, instances, prototype chains, and inheritance relationships."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

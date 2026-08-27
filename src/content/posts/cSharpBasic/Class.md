@@ -1,6 +1,6 @@
 ---
 title: 'Class'
-description: "A note about Class."
+description: "Covers C# classes, members, encapsulation, constructors, destructors, static members, and object creation."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp

@@ -1,6 +1,6 @@
 ---
 title: 'Hooks -- useRef'
-description: "A note about Hooks -- useRef."
+description: "Explains React `useRef` implementation and ref workflows across render, mutation, host, class, and forwarded components."
 pubDatetime: 2023-07-15T00:00:00Z
 tags:
   - react

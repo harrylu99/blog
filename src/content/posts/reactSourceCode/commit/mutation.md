@@ -1,6 +1,6 @@
 ---
 title: 'Commit -- Mutation'
-description: "A note about Commit -- Mutation."
+description: "Traces React's mutation commit phase, covering placement, prop updates, ref handling, and deletion effects."
 pubDatetime: 2023-04-15T00:00:00Z
 tags:
   - react

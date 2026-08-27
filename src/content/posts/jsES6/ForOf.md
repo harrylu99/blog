@@ -1,6 +1,6 @@
 ---
 title: 'for...of'
-description: "A note about for...of."
+description: "Introduces iterators and `for...of`, explaining the iterator protocol, iterable values, and `Symbol.iterator`."
 pubDatetime: 2022-06-15T00:00:00Z
 tags:
   - javascript

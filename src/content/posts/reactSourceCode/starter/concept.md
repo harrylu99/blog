@@ -1,6 +1,6 @@
 ---
 title: 'Concept of React'
-description: "A note about Concept of React."
+description: "Explains React's response-time goals by comparing CPU and I/O bottlenecks and introducing scheduling as a solution."
 pubDatetime: 2023-01-15T00:00:00Z
 tags:
   - react

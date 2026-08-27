@@ -1,6 +1,6 @@
 ---
 title: 'Promise'
-description: "A note about Promise."
+description: "Explains callback limitations, Promise composition, inversion of control, promisification, error handling, and common Promise trade-offs."
 pubDatetime: 2022-06-15T00:00:00Z
 tags:
   - javascript

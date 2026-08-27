@@ -1,6 +1,6 @@
 ---
 title: 'Debounce'
-description: "A note about Debounce."
+description: "Builds a JavaScript debounce utility, covering delayed execution, immediate mode, return values, event objects, and cancellation."
 pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - javascript

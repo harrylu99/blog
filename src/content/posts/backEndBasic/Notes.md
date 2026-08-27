@@ -1,6 +1,6 @@
 ---
 title: 'Notes'
-description: "A note about Notes."
+description: "Introduces IIS as Windows' web server component, including its support for multiple IP addresses and hostnames."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp

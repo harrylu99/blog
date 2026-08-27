@@ -1,6 +1,6 @@
 ---
 title: 'Method'
-description: "A note about Method."
+description: "Covers C# method definition, invocation, recursion, parameters, and value-type versus reference-type argument passing."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp

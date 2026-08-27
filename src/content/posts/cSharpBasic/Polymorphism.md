@@ -1,6 +1,6 @@
 ---
 title: 'Polymorphism'
-description: "A note about Polymorphism."
+description: "Introduces static and dynamic polymorphism in C#, including function overloading and runtime method overriding."
 pubDatetime: 2024-01-15T00:00:00Z
 tags:
   - csharp
