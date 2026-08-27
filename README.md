@@ -1,16 +1,15 @@
----
-home: true
-modules:
-  - BannerBrand
-  - Blog
-  - MdContent
-  - Footer
-bannerBrand:
-  title: Hello, World!
-  description: console.log("👨‍💻...")
----
+# Harry's Blog
 
+Personal notes on JavaScript, React, and C#/.NET, published at
+<https://harrylu99.github.io/blog/>.
 
-<!-- ## Console.WriteLine("Welcome")
+## Development
 
-JavaScript, React, C#/.NET, and everything in between. -->
+Requires Node.js 22.12 or newer.
+
+```sh
+npm install
+npm run dev
+```
+
+Build the static site with `npm run build`.
