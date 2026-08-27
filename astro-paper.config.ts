@@ -3,7 +3,7 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://harrylu99.github.io",
-    title: "Harry's Blog",
+    title: "Harry.log",
     description: "Almost there...",
     author: "Harry Lu",
     profile: "https://harrylu99.github.io",
@@ -20,7 +20,7 @@ export default defineAstroPaperConfig({
   features: {
     lightAndDarkMode: true,
     dynamicOgImage: false,
-    showArchives: true,
+    showArchives: false,
     showBackButton: true,
     editPost: { enabled: false },
     search: "pagefind",

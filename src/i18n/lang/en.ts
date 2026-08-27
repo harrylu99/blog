@@ -34,8 +34,8 @@ export default {
     allPosts: "All Posts",
   },
   footer: {
-    copyright: "Copyright",
-    allRightsReserved: "All rights reserved.",
+    copyright: 'console.log("Thanks for stopping by 👋")',
+    allRightsReserved: "",
   },
   pages: {
     tagTitle: "Tag",

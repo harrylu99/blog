@@ -1,9 +1,12 @@
 ---
 title: "About"
-description: "A bit about Harry Lu and this blog."
+description: "A bit more about this website."
 ---
 
-This is Harry Lu's personal blog, started in 2022.
+Hi, I’m Harry 👋
 
-- [GitHub](https://github.com/harrylu99)
-- [Profile](https://harrylu99.github.io)
+This is where I dump things I learn, break, fix, and probably forget later.
+
+Mostly code. Sometimes rabbit holes.
+
+For more about me, [here’s my website](https://harrylu99.github.io).
