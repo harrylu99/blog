@@ -1,3 +1,6 @@
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/dm-sans";
+@import "@fontsource/dm-mono/latin-400.css";
 @import "tailwindcss";
 @import "./theme.css";
 @import "./typography.css";
@@ -11,6 +14,20 @@
     scrollbar-width: auto;
     scrollbar-color: var(--color-muted) transparent;
   }
+
+  body {
+    @apply font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+
   a,
   button,
   #main-content {
